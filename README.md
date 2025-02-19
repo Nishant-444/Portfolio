@@ -11,8 +11,8 @@ Welcome to my personal portfolio website! This site showcases my skills, project
 
 ## 🎨 Tech Stack
 - **Frontend**: HTML, CSS
-- **Styling**: Custom dark mode color scheme
-- **Hosting**: GitHub Pages (or future deployment platform)
+- **Styling**: Custom light mode color scheme
+- **Hosting**: GitHub Pages
 
 ## 📂 Project Structure
 ```
