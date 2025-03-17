@@ -33,7 +33,7 @@ Welcome to my personal portfolio website! This site showcases my skills, project
 2. Open `index.html` in your browser.
 
 ## 🌍 Live Demo
-[Click here](#) to view the live website.
+[Click here](https://nishant-444.github.io/Portfolio/) to view the live website.
 
 ## 📬 Connect with Me
 - **Email**: business.nishant777@gmail.com
