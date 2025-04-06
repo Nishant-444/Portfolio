@@ -26,12 +26,6 @@ I love solving problems, exploring tech, and bringing ideas to life through code
 
 ---
 
-## 📄 Resume
-
-You can find my detailed cv [here](nishant_cv.pdf).
-
----
-
 ## 📬 Contact Me
 
 - 📧 Email: [business.nishant777@gmail.com](mailto:business.nishant777@gmail.com)  
