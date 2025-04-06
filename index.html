@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nishant Sharma | Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Sections reveal on scroll
+            const sections = document.querySelectorAll('.section');
+            const revealSection = function (entries, observer) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            };
+
+            const sectionObserver = new IntersectionObserver(revealSection, {
+                root: null,
+                threshold: 0.15
+            });
+
+            sections.forEach(section => {
+                sectionObserver.observe(section);
+                section.classList.remove('active');
+            });
+
+            // Scroll to top button
+            const scrollTopBtn = document.createElement('a');
+            scrollTopBtn.href = '#home';
+            scrollTopBtn.className = 'scroll-top';
+            scrollTopBtn.innerHTML = '<i class="fas fa-arrow-up"></i>';
+            document.body.appendChild(scrollTopBtn);
+
+            window.addEventListener('scroll', function () {
+                if (window.pageYOffset > 500) {
+                    scrollTopBtn.classList.add('active');
+                } else {
+                    scrollTopBtn.classList.remove('active');
+                }
+            });
+        });
+    </script>
+
+    <div class="container">
+        <!-- Navigation -->
+        <nav>
+            <div class="logo">
+                <a href="#home">Nishant</a>
+            </div>
+            <input type="checkbox" id="nav-toggle">
+            <label for="nav-toggle" class="nav-toggle-label">
+                <span></span>
+            </label>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#certifications">Certifications</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+
+        <!-- Home Section -->
+        <section id="home" class="section home">
+            <div class="home-content">
+                <h1>Hello, I'm <span>Nishant Sharma</span></h1>
+                <h2>Computer Science Student & <span>Programmer</span></h2>
+                <p>Passionate about building efficient, scalable software solutions</p>
+                <div class="home-buttons">
+                    <a href="#contact" class="btn">Contact Me</a>
+                    <a href="assets/nishant_cv.pdf" class="btn btn-outline" download>Download CV</a>
+                </div>
+                <div class="social-icons">
+                    <a href="https://github.com/nishant-444" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://linkedin.com/nishant4712" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="mailto:business.nishant777@gmail.com"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+            <div class="scroll-down">
+                <span>Scroll Down</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section about">
+            <div class="section-title">
+                <h2>About Me</h2>
+                <div class="underline"></div>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Results-driven programmer with hands-on expertise in C, C++, HTML, CSS, and Data Structures &
+                        Algorithms. Adept at building efficient, scalable software solutions with a strong emphasis on
+                        algorithmic optimization and problem-solving.</p>
+                    <p>Currently pursuing a Bachelor's in Computer Application (BCA) with a focus on Data Structures,
+                        Algorithms, and Software Development. Passionate about competitive programming, full-stack
+                        development, and problem-solving.</p>
+                    <p>Committed to continuous learning and staying current with evolving technologies, I aim to
+                        contribute my technical skills and passion for innovation to dynamic software development and
+                        engineering projects.</p>
+                    <div class="personal-info">
+                        <div class="info-item">
+                            <span class="info-title">Name:</span>
+                            <span class="info-value">Nishant Sharma</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-title">Email:</span>
+                            <span class="info-value">business.nishant777@gmail.com</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-title">Phone:</span>
+                            <span class="info-value">+91 635-043-5068</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-title">Languages:</span>
+                            <span class="info-value">English, Hindi</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-title">Interests:</span>
+                            <span class="info-value">Reading Books & Newspaper, Volleyball</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="section skills">
+            <div class="section-title">
+                <h2>My Skills</h2>
+                <div class="underline"></div>
+            </div>
+            <div class="skills-content">
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>C++</h3>
+                    <p>Intermediate proficiency with knowledge of Object-Oriented Programming (OOP) and experience using
+                        the Standard Template Library (STL) for efficient coding.</p>
+                    <div class="skill-tags">
+                        <span>OOP</span>
+                        <span>Problem-Solving</span>
+                        <span>STL</span>
+                        <span>DSA</span>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-sitemap"></i>
+                    </div>
+                    <h3>Data Structures and Algorithms</h3>
+                    <p>Intermediate level knowledge. Continuously improving problem-solving skills through coding
+                        practice and algorithm analysis.</p>
+                    <div class="skill-tags">
+                        <span>Problem-Solving</span>
+                        <span>Algorithms</span>
+                        <span>Data Structures</span>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-file-code"></i>
+                    </div>
+                    <h3>C Language</h3>
+                    <p>Strong foundation in C programming with practical experience in developing applications and
+                        systems.</p>
+                    <div class="skill-tags">
+                        <span>File Handling</span>
+                        <span>Pointers</span>
+                        <span>Data Structures</span>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fab fa-html5"></i>
+                    </div>
+                    <h3>HTML & CSS</h3>
+                    <p>Experience in creating responsive web layouts and interfaces using modern HTML5 and CSS3
+                        techniques.</p>
+                    <div class="skill-tags">
+                        <span>HTML5</span>
+                        <span>CSS3</span>
+                        <span>Responsive Design</span>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3>SQL</h3>
+                    <p>Knowledge of database management and query optimization using SQL.</p>
+                    <div class="skill-tags">
+                        <span>Database</span>
+                        <span>Queries</span>
+                        <span>Data Management</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education" class="section education">
+            <div class="section-title">
+                <h2>Education</h2>
+                <div class="underline"></div>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>S.S. Jain Subodh PG College</h3>
+                        <span class="timeline-date">August 2024 - 2027 (Expected)</span>
+                        <p><strong>Bachelor's in Computer Application (BCA)</strong></p>
+                        <p>Pursuing a Bachelor's in Computer Application with a strong focus on Data Structures,
+                            Algorithms, and Software Development. Passionate about competitive programming, full-stack
+                            development, and problem-solving. Actively engaged in building projects and exploring new
+                            technologies.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-icon">
+                        <i class="fas fa-school"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>K.P.S. Udaan</h3>
+                        <span class="timeline-date">May 2024</span>
+                        <p><strong>Senior Secondary (Grade XII) - 90.2%</strong></p>
+                        <p>Physics, Chemistry, Mathematics (PCM)</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+
+        <!-- <section id="experience" class="section experience">
+            <div class="section-title">
+                <h2>Experience</h2>
+                <div class="underline"></div>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Future Company</h3>
+                        <span class="timeline-date">Future Date</span>
+                        <p><strong>Position Title</strong></p>
+                        <p>Description of responsibilities and achievements will go here.</p>
+                    </div>
+                </div>
+            </div>
+        </section> -->
+
+        <!-- Projects Section -->
+        <section id="projects" class="section projects">
+            <div class="section-title">
+                <h2>Projects</h2>
+                <div class="underline"></div>
+            </div>
+            <div class="projects-content">
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>BankEase</h3>
+                        <span class="project-date">February 2025</span>
+                    </div>
+                    <p class="project-subtitle">Bank Management System | C language</p>
+                    <div class="project-description">
+                        <p>Developed BankEase, a bank management system using C programming for efficient customer
+                            account handling. Implemented file handling for secure data storage, retrieval, and account
+                            validation.</p>
+                        <ul>
+                            <li>Integrated a password-protected menu to restrict unauthorized access and enhance
+                                security.</li>
+                            <li>Ensured data integrity and error handling for reliable banking operations.</li>
+                            <li>Focused on validation checks to maintain account uniqueness and prevent data
+                                inconsistencies.</li>
+                        </ul>
+                    </div>
+                    <div class="project-tags">
+                        <span>C Programming</span>
+                        <span>File Handling</span>
+                        <span>Data Security</span>
+                        <span>Password Protection</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="http://www.github.com/nishant-444/BankEase" class="btn btn-sm">View Project</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Portfolio Website</h3>
+                        <span class="project-date">April 2025</span>
+                    </div>
+                    <p class="project-subtitle">Personal Portfolio | HTML & CSS</p>
+                    <div class="project-description">
+                        <p>Created a responsive, dark-themed portfolio website using only HTML and CSS with smooth
+                            animations and responsive design.</p>
+                        <ul>
+                            <li>Implemented modern CSS techniques including flexbox and CSS grid for responsive layouts.
+                            </li>
+                            <li>Designed custom animations for enhanced user experience.</li>
+                            <li>Built with accessibility and cross-browser compatibility in mind.</li>
+                        </ul>
+                    </div>
+                    <div class="project-tags">
+                        <span>HTML5</span>
+                        <span>CSS3</span>
+                        <span>Responsive Design</span>
+                        <span>Animation</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="http://www.github.com/nishant-444/Portfolio/" class="btn btn-sm">View Project</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certifications Section -->
+        <section id="certifications" class="section certifications">
+            <div class="section-title">
+                <h2>Certifications</h2>
+                <div class="underline"></div>
+            </div>
+            <div class="certifications-content">
+                <div class="certification-card">
+                    <div class="certification-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <div class="certification-details">
+                        <h3>Software Engineer Intern</h3>
+                        <p>HackerRank</p>
+                        <span class="certification-date">20 March 2025</span>
+                        <a href="https://www.hackerrank.com/certificates/ca2411d2c669?trk=public_profile_see-credential"
+                            class="btn btn-sm">View Certificate</a>
+                    </div>
+                </div>
+                <div class="certification-card">
+                    <div class="certification-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <div class="certification-details">
+                        <h3>SQL (Basic)</h3>
+                        <p>HackerRank</p>
+                        <span class="certification-date">22 March 2025</span>
+                        <a href="https://www.hackerrank.com/certificates/c3e4298b5e2e" class="btn btn-sm">View
+                            Certificate</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section contact">
+            <div class="section-title">
+                <h2>Contact Me</h2>
+                <div class="underline"></div>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h3>Email</h3>
+                            <p>business.nishant777@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h3>Phone</h3>
+                            <p>+91 635-043-5068</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h3>Location</h3>
+                            <p>Jaipur, India</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form action="https://formsubmit.co/2a13e7ec261eb09c3d805cc2dc76f2e2" method="POST">
+                        <div class="form-group">
+                            <input type="text" name="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="subject" placeholder="Subject" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea name="message" placeholder="Your Message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-content">
+                <div class="footer-social">
+                    <a href="https://github.com/nishant-444" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://linkedin.com/nishant4712" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="mailto:business.nishant777@gmail.com"><i class="fas fa-envelope"></i></a>
+                </div>
+                <p>&copy; 2025 Nishant Sharma. All Rights Reserved.<br>This portfolio website is licensed under a Creative Commons Attribution-NoDerivatives 4.0 International License.</p>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>
