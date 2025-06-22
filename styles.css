@@ -1,5 +1,5 @@
 /* Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Raleway:wght@300;400;500;600;700;800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Raleway:wght@300;400;500;600;700;800&display=swap");
 
 /* Base Styles */
 :root {
@@ -25,7 +25,7 @@ html {
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
     background-color: var(--dark-color);
     color: var(--text-color);
     line-height: 1.6;
@@ -95,7 +95,7 @@ ul {
 .section-title h2 {
     font-size: 2.5rem;
     font-weight: 700;
-    font-family: 'Raleway', sans-serif;
+    font-family: "Raleway", sans-serif;
     position: relative;
     display: inline-block;
 }
@@ -127,7 +127,7 @@ nav {
     font-size: 2rem;
     font-weight: 700;
     color: var(--primary-color);
-    font-family: 'Raleway', sans-serif;
+    font-family: "Raleway", sans-serif;
 }
 
 .nav-links {
@@ -141,7 +141,7 @@ nav {
 }
 
 .nav-links li a::after {
-    content: '';
+    content: "";
     position: absolute;
     width: 0;
     height: 2px;
@@ -180,7 +180,7 @@ nav {
 
 .nav-toggle-label span::before,
 .nav-toggle-label span::after {
-    content: '';
+    content: "";
     position: absolute;
     transition: var(--transition);
 }
@@ -201,13 +201,17 @@ nav {
 }
 
 .home::before {
-    content: '';
+    content: "";
     position: absolute;
     top: -50%;
     right: -50%;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle, rgba(108, 99, 255, 0.1) 0%, rgba(0, 0, 0, 0) 70%);
+    background: radial-gradient(
+        circle,
+        rgba(108, 99, 255, 0.1) 0%,
+        rgba(0, 0, 0, 0) 70%
+    );
     z-index: 0;
 }
 
@@ -221,7 +225,7 @@ nav {
     font-size: 3rem;
     font-weight: 700;
     margin-bottom: 1rem;
-    font-family: 'Raleway', sans-serif;
+    font-family: "Raleway", sans-serif;
     animation: fadeInUp 1s ease;
 }
 
@@ -235,7 +239,7 @@ nav {
     font-weight: 600;
     margin-bottom: 1.5rem;
     opacity: 0.9;
-    font-family: 'Raleway', sans-serif;
+    font-family: "Raleway", sans-serif;
     animation: fadeInUp 1s ease 0.2s;
     animation-fill-mode: both;
 }
@@ -367,13 +371,18 @@ nav {
 }
 
 .skill-card::before {
-    content: '';
+    content: "";
     position: absolute;
     top: -2px;
     left: -2px;
     right: -2px;
     height: 2px;
-    background: linear-gradient(90deg, var(--darker-color), var(--primary-color), var(--darker-color));
+    background: linear-gradient(
+        90deg,
+        var(--darker-color),
+        var(--primary-color),
+        var(--darker-color)
+    );
     transform: scaleX(0);
     transition: transform 0.5s ease;
 }
@@ -441,7 +450,7 @@ nav {
 }
 
 .timeline::before {
-    content: '';
+    content: "";
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
@@ -542,13 +551,18 @@ nav {
 }
 
 .project-card::before {
-    content: '';
+    content: "";
     position: absolute;
     top: -2px;
     left: -2px;
     right: -2px;
     height: 2px;
-    background: linear-gradient(90deg, var(--darker-color), var(--secondary-color), var(--darker-color));
+    background: linear-gradient(
+        90deg,
+        var(--darker-color),
+        var(--secondary-color),
+        var(--darker-color)
+    );
     transform: scaleX(0);
     transition: transform 0.5s ease;
 }
@@ -750,7 +764,7 @@ nav {
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 5px;
     color: var(--text-color);
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
     transition: var(--transition);
 }
 
@@ -830,7 +844,6 @@ footer p {
 }
 
 @keyframes bounce {
-
     0%,
     20%,
     50%,
@@ -929,21 +942,21 @@ footer p {
         transition: transform 0.3s ease, opacity 0.3s ease;
     }
 
-    #nav-toggle:checked~.nav-links {
+    #nav-toggle:checked ~ .nav-links {
         transform: translateX(0);
         opacity: 1;
         pointer-events: auto;
     }
 
-    #nav-toggle:checked~.nav-toggle-label span {
+    #nav-toggle:checked ~ .nav-toggle-label span {
         background: transparent;
     }
 
-    #nav-toggle:checked~.nav-toggle-label span::before {
+    #nav-toggle:checked ~ .nav-toggle-label span::before {
         transform: rotate(45deg);
     }
 
-    #nav-toggle:checked~.nav-toggle-label span::after {
+    #nav-toggle:checked ~ .nav-toggle-label span::after {
         transform: rotate(-45deg);
     }
 
