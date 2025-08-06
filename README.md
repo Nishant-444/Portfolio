@@ -24,7 +24,7 @@ I love solving problems, exploring tech, and bringing ideas to life through code
   - File Handling & System Design (C)
 - **Portfolio Built With**:
   - HTML & CSS
-  - Vanilla JavaScript (via `<script>` tags)
+  - Vanilla JavaScript
 
 ---
 
