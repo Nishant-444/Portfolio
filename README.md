@@ -66,7 +66,7 @@ I love solving problems, exploring tech, and bringing ideas to life through code
 No setup needed — just clone the repository and open `index.html` in your browser:
 
 ```bash
-git clone https://github.com/yourusername/portfolio.git
+git clone https://github.com/Nishant-444/portfolio.git
 cd portfolio
 start index.html
 ```
