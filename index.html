@@ -1,761 +1,559 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-	    <meta charset="UTF-8" />
-	    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	    <title>Nishant Sharma - Full Stack Developer in Jaipur</title>
-	    <meta name="description" content="Portfolio of Nishant Sharma, a Full Stack Developer in Jaipur with a strong foundation in JavaScript, Node.js, Express, and MongoDB." />
-			<meta name="google-site-verification" content="gY6I7LTSJCTP78HgIPJ83VFHOnxKdhGjZkB9RVXvy5s" />
-	    <link rel="icon" href="/assets/nslogo.svg" type="image/svg+xml">
-	    <link rel="icon" type="image/png" sizes="32x32" href="/assets/nslogo-32x32.png">
-	    <link rel="icon" type="image/png" sizes="192x192" href="/assets/nslogo-192x192.png">
-	    <link rel="apple-touch-icon" sizes="180x180" href="/assets/nslogo-180x180.png">
 
-	    <link rel="stylesheet" href="styles.css" />
-	    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-    	<link href="https://cdn.jsdelivr.net/npm/@coreui/icons@2.0.1/css/all.min.css" rel="stylesheet" />
-	</head>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google-site-verification" content="gY6I7LTSJCTP78HgIPJ83VFHOnxKdhGjZkB9RVXvy5s" />
+  <title>Nishant Sharma - MERN Stack Developer</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
+  <style>
+    * {
+      scroll-behavior: smooth;
+    }
 
-	<body>
-		<script src="script.js"></script>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
 
-		<div class="container">
-			<!-- Navigation -->
-			<nav>
-				<div class="logo">
-					<a href="#home">Nishant</a>
-				</div>
-				<input type="checkbox" id="nav-toggle" />
-				<label for="nav-toggle" class="nav-toggle-label">
-					<span></span>
-				</label>
-				<ul class="nav-links">
-					<li><a href="#home">Home</a></li>
-					<li><a href="#about">About</a></li>
-					<li><a href="#skills">Skills</a></li>
-					<li><a href="#education">Education</a></li>
-					<li><a href="#projects">Projects</a></li>
-					<li><a href="#certifications">Certifications</a></li>
-					<li><a href="#contact">Contact</a></li>
-				</ul>
-			</nav>
+    .font-mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
 
-			<!-- Home Section -->
-			<section id="home" class="section home">
-				<div class="home-content">
-					<h1>Hello, I'm <span>Nishant Sharma</span></h1>
-					<h2>Computer Science Student & <span>Programmer</span></h2>
-					<p>
-						Passionate about building efficient, scalable software solutions
-					</p>
-					<div class="home-buttons">
-						<a href="#contact" class="btn">Contact Me</a>
-						<a href="assets/nishant_cv.pdf" class="btn btn-outline" target="_blank"
-							>Get My CV</a
-						>
-					</div>
-					<div class="social-icons">
-						<a href="https://github.com/nishant-444" target="_blank"
-							><i class="fab fa-github"></i
-						></a>
-						<a href="https://linkedin.com/in/nishant-developer" target="_blank"
-							><i class="fab fa-linkedin"></i
-						></a>
-						<a href="mailto:business.nishant777@gmail.com"
-							><i class="fas fa-envelope"></i
-						></a>
-						<a href="https://www.hackerrank.com/business_nishan1"
-							><i class="fa-brands fa-hackerrank"></i></a
-						><a href="https://leetcode.com/u/nishant4712/"
-							><i class="cib-leetcode"></i
-						></a>
-					</div>
-				</div>
-				<div class="scroll-down">
-					<span>Scroll Down</span>
-					<i class="fas fa-chevron-down"></i>
-				</div>
-			</section>
+    /* Blinking cursor animation */
+    @keyframes blink {
 
-			<!-- About Section -->
-			<section id="about" class="section about">
-				<div class="section-title">
-					<h2>About Me</h2>
-					<div class="underline"></div>
-				</div>
-				<div class="about-content">
-					<div class="about-text">
-						<p>
-							A Full Stack Developer with a strong foundation in JavaScript, Node.js, Express, and MongoDB. Proven ability to build robust backend systems, including a video streaming platform with over 20 RESTful APIs. Eager to apply problem-solving skills and knowledge of data structures to create efficient web solutions.
-						</p>
-						<p>
-							Committed to continuous learning and staying current with evolving
-							technologies, I aim to contribute my technical skills and passion
-							for innovation to dynamic software development and engineering
-							projects.
-						</p>
-						<div class="personal-info">
-							<div class="info-item">
-								<span class="info-title">Name:</span>
-								<span class="info-value">Nishant Sharma</span>
-							</div>
-							<div class="info-item">
-								<span class="info-title">Email:</span>
-								<span class="info-value">business.nishant777@gmail.com</span>
-							</div>
-							<div class="info-item">
-								<span class="info-title">Languages:</span>
-								<span class="info-value">English, Hindi</span>
-							</div>
-							<div class="info-item">
-								<span class="info-title">Interests:</span>
-								<span class="info-value"
-									>Reading Books & Newspaper, Volleyball</span
-								>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
+      0%,
+      50% {
+        opacity: 1;
+      }
 
-			<!-- Skills Section -->
-			<section id="skills" class="section skills">
-				<div class="section-title">
-					<h2>My Skills</h2>
-					<div class="underline"></div>
-				</div>
-				<div class="skills-content">
-					<!-- JavaScript -->
-					<div class="skill-card">
-						<div class="skill-icon">
-							<i class="fab fa-js-square"></i>
-						</div>
-						<h3>JavaScript</h3>
-						<p>
-							Proficient in JavaScript ES6+ with hands-on experience in building
-							interactive web applications and server-side logic.
-						</p>
-					</div>
+      51%,
+      100% {
+        opacity: 0;
+      }
+    }
 
-					<!-- Node.js -->
-					<div class="skill-card">
-						<div class="skill-icon">
-							<i class="fab fa-node"></i>
-						</div>
-						<h3>Node.js</h3>
-						<p>
-							Experienced in building scalable backend services and REST APIs
-							using Node.js with real-world deployment.
-						</p>
-					</div>
+    .cursor {
+      animation: blink 1s infinite;
+    }
 
-					<!-- Express.js -->
-					<div class="skill-card">
-						<div class="skill-icon">
-							<i class="fas fa-server"></i>
-						</div>
-						<h3>Express.js</h3>
-						<p>
-							Skilled in using Express.js for creating robust APIs, middleware,
-							and efficient server-side logic.
-						</p>
-					</div>
+    /* Icon hover effects */
+    .icon-hover {
+      transition: all 0.3s ease;
+    }
 
-					<!-- MongoDB -->
-					<div class="skill-card">
-						<div class="skill-icon">
-							<i class="fas fa-database"></i>
-						</div>
-						<h3>MongoDB</h3>
-						<p>
-							Familiar with NoSQL database design, CRUD operations, and
-							integrating MongoDB with Mongoose ODM.
-						</p>
-					</div>
+    .icon-hover:hover {
+      transform: scale(1.1);
+    }
+  </style>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            mono: ['JetBrains Mono', 'monospace'],
+            sans: ['Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+</head>
 
-					<!-- HTML & CSS -->
-					<div class="skill-card">
-						<div class="skill-icon">
-							<i class="fab fa-html5"></i>
-						</div>
-						<h3>HTML & CSS</h3>
-						<p>
-							Experience in creating responsive web layouts and interfaces using
-							modern HTML5 and CSS3 techniques.
-						</p>
-					</div>
+<body class="bg-gray-50 dark:bg-[#1a1a1a] text-gray-900 dark:text-gray-100 transition-colors duration-300">
 
-					<!-- Tailwind CSS -->
-					<div class="skill-card">
-						<div class="skill-icon">
-							<i class="fas fa-wind"></i>
-						</div>
-						<h3>Tailwind CSS</h3>
-						<p>
-							Hands-on experience with utility-first CSS framework to create
-							custom, scalable UI designs with minimal CSS.
-						</p>
-					</div>
+  <!-- Navbar -->
+  <nav class="sticky top-0 z-50 bg-white dark:bg-[#1a1a1a] border-b border-gray-200 dark:border-gray-800">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="index.html"
+        class="font-mono text-lg font-semibold hover:text-blue-600 dark:hover:text-blue-400 transition">Nishant
+        Sharma</a>
 
-					<!-- Bootstrap -->
-					<div class="skill-card">
-						<div class="skill-icon">
-							<i class="fab fa-bootstrap"></i>
-						</div>
-						<h3>Bootstrap</h3>
-						<p>
-							Proficient in using Bootstrap for building responsive,
-							mobile-first web interfaces with reusable UI components.
-						</p>
-					</div>
+      <div class="flex items-center gap-8">
+        <div class="hidden md:flex gap-6 font-sans text-sm">
+          <a href="#about" class="hover:text-blue-600 dark:hover:text-blue-400 transition">About</a>
+          <a href="#stack" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Stack</a>
+          <a href="#projects" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Projects</a>
+          <a href="#career" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Career</a>
+          <a href="#contact" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Contact</a>
+        </div>
 
-					<!-- C Language -->
-					<div class="skill-card">
-						<div class="skill-icon">
-							<i class="fas fa-c"></i>
-						</div>
-						<h3>C Language</h3>
-						<p>
-							Strong foundation in C programming with practical experience in
-							developing applications and systems.
-						</p>
-					</div>
+        <a href="./assets/nishant_cv.pdf"
+          class="hidden md:inline-block px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md text-sm font-medium transition">View
+          Resume</a>
 
-					<!-- C++ -->
-					<div class="skill-card">
-						<div class="skill-icon">
-							<i class="fas fa-code"></i>
-						</div>
-						<h3>C++</h3>
-						<p>
-							Intermediate proficiency with knowledge of Object-Oriented
-							Programming (OOP) and experience using STL.
-						</p>
-					</div>
+        <button id="themeToggle" class="p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition">
+          <svg id="sunIcon" class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z">
+            </path>
+          </svg>
+          <svg id="moonIcon" class="w-5 h-5 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+          </svg>
+        </button>
 
-					<!-- Data Structures and Algorithms -->
-					<div class="skill-card">
-						<div class="skill-icon">
-							<i class="fas fa-sitemap"></i>
-						</div>
-						<h3>Data Structures and Algorithms</h3>
-						<p>
-							Intermediate level knowledge. Continuously improving
-							problem-solving skills through coding practice and algorithm
-							analysis.
-						</p>
-					</div>
-
-					<!-- Git -->
-					<div class="skill-card">
-						<div class="skill-icon">
-							<i class="fab fa-git-alt"></i>
-						</div>
-						<h3>Git</h3>
-						<p>
-							Familiar with version control operations including branching,
-							merging, and resolving conflicts using Git.
-						</p>
-					</div>
-
-					<!-- GitHub -->
-					<div class="skill-card">
-						<div class="skill-icon">
-							<i class="fab fa-github"></i>
-						</div>
-						<h3>GitHub</h3>
-						<p>
-							Comfortable with managing repositories, pull requests, and
-							collaborative workflows using GitHub.
-						</p>
-					</div>
-
-					<!-- SQL -->
-					<div class="skill-card">
-						<div class="skill-icon">
-							<i class="fas fa-database"></i>
-						</div>
-						<h3>SQL</h3>
-						<p>
-							Knowledge of database management and query optimization using SQL.
-						</p>
-					</div>
-
-					<!-- MS Office Suite -->
-					<div class="skill-card">
-						<div class="skill-icon">
-							<i class="fas fa-file-word"></i>
-						</div>
-						<h3>MS Office Suite</h3>
-						<p>
-							Skilled in using Word, Excel, and PowerPoint for documentation,
-							data analysis, and professional presentations.
-						</p>
-					</div>
-				</div>
-			</section>
-
-			<!-- Education Section -->
-			<section id="education" class="section education">
-				<div class="section-title">
-					<h2>Education</h2>
-					<div class="underline"></div>
-				</div>
-				<div class="timeline">
-					<div class="timeline-item">
-						<div class="timeline-icon">
-							<i class="fas fa-graduation-cap"></i>
-						</div>
-						<div class="timeline-content">
-							<h3>S.S. Jain Subodh PG College</h3>
-							<span class="timeline-date">August 2024 - 2027</span>
-							<p>
-								<strong>Bachelor's in Computer Application (BCA)</strong>
-							</p>
-							<p>
-								Pursuing a Bachelor's in Computer Application with a strong
-								focus on Data Structures, Algorithms, and Software Development.
-								Passionate about competitive programming, full-stack
-								development, and problem-solving. Actively engaged in building
-								projects and exploring new technologies.
-							</p>
-						</div>
-					</div>
-					<div class="timeline-item">
-						<div class="timeline-icon">
-							<i class="fas fa-school"></i>
-						</div>
-						<div class="timeline-content">
-							<h3>K.P.S. Udaan</h3>
-							<span class="timeline-date">May 2024</span>
-							<p>
-								<strong>Senior Secondary (Grade XII) - 90.2%</strong>
-							</p>
-							<p>Physics, Chemistry, Mathematics (PCM)</p>
-						</div>
-					</div>
-					<div class="timeline-item">
-						<div class="timeline-icon">
-							<i class="fas fa-school"></i>
-						</div>
-						<div class="timeline-content">
-							<h3>K.P.S. Udaan</h3>
-							<span class="timeline-date">June 2022</span>
-							<p>
-								<strong>Secondary (Grade X) - 88.0%</strong>
-							</p>
-							<p>Information Technology, Maths, Science</p>
-						</div>
-					</div>
-				</div>
-			</section>
-
-			<!-- Experience Section -->
-
-			<section id="experience" class="section experience">
-				<div class="section-title">
-					<h2>Work Experience</h2>
-					<div class="underline"></div>
-				</div>
-				<div class="timeline">
-					<div class="timeline-item">
-						<div class="timeline-icon">
-							<i class="fas fa-briefcase"></i>
-						</div>
-						<div class="timeline-content">
-							<h3>Future Interns</h3>
-							<span class="timeline-date">July 2025 - Present</span>
-							<p><strong>Full Stack Developer Intern</strong></p>
-							<p>
-								Full Stack Web Development Intern at Future Interns, focused on
-								practical front-end and back-end skills. Developed a personal
-								portfolio, an e-commerce storefront, and executed a website
-								rebrand using AI tools.
-							</p>
-						</div>
-					</div>
-				</div>
-			</section>
-
-			<!-- Projects Section -->
-			<section id="projects" class="section projects">
-				<div class="section-title">
-					<h2>Projects</h2>
-					<div class="underline"></div>
-				</div>
-				<div class="projects-content">
-
-					<div class="project-card">
-    <div class="project-header">
-        <h3>TrendEngine - Real-Time Movie Discovery App</h3>
-        <span class="project-date">August 2025</span>
+        <!-- Hamburger menu -->
+        <button id="mobileMenuButton"
+          class="md:hidden p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition ml-2">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-16 6h16"></path>
+          </svg>
+        </button>
+      </div>
     </div>
-    <p class="project-subtitle">
-        Frontend Project | React, Appwrite, Tailwind CSS
-    </p>
-    <div class="project-description">
-        <p>
-            Built a modern, responsive web app to search for movies and view real-time trending titles based on actual user search patterns, powered by Appwrite.
+    <!-- Add this mobile menu div after the nav div -->
+    <div id="mobileMenu" class="hidden md:hidden fixed inset-0 z-40">
+      <div class="fixed inset-0 bg-black opacity-50"></div>
+      <div class="fixed inset-y-0 right-0 w-64 bg-white dark:bg-[#1a1a1a] shadow-lg">
+        <div class="p-6 space-y-4">
+          <button id="closeMenu" class="absolute top-4 right-4 p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </button>
+          <div class="flex flex-col gap-4 font-sans text-lg pt-8">
+            <a href="#about" class="hover:text-blue-600 dark:hover:text-blue-400 transition">About</a>
+            <a href="#stack" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Stack</a>
+            <a href="#projects" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Projects</a>
+            <a href="#career" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Career</a>
+            <a href="#contact" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Contact</a>
+            <a href="./assets/nishant_cv.pdf" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Resume</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="home" class="min-h-screen flex items-center justify-center px-6">
+    <div class="text-center max-w-3xl">
+      <h1 class="font-mono text-4xl md:text-6xl lg:text-7xl font-bold mb-4">Hi, I'm Nishant Sharma.</h1>
+      <h2 class="font-mono text-xl md:text-2xl text-gray-600 dark:text-gray-400 mb-2">I build the logic and
+        infrastructure behind web applications<span class="cursor">_</span></h2>
+      <p class="font-sans text-gray-500 dark:text-gray-500 mb-8 text-lg">MongoDB | Express | React | Node.js </p>
+      <div class="flex gap-4 justify-center flex-wrap">
+        <a href="#contact"
+          class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-md font-medium transition">Contact Me</a>
+        <a href="./assets/nishant_cv.pdf"
+          class="px-6 py-3 border-2 border-gray-300 dark:border-gray-700 hover:border-blue-600 dark:hover:border-blue-400 rounded-md font-medium transition">View
+          Resume</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="py-20 px-6 bg-white dark:bg-[#1a1a1a]">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="font-mono text-4xl font-bold mb-6">about-me</h2>
+      <pre class="font-mono text-sm text-gray-500 dark:text-gray-500 mb-6">&gt; cat ./bio.txt</pre>
+      <div class="space-y-4 font-sans text-lg leading-relaxed">
+        <p>I'm a <strong>backend-focused MERN stack developer</strong>, currently pursuing my Bachelor of Computer
+          Applications. I recently completed a full-stack internship where I architected a <em>Node.js API data
+            layer</em>
+          that <strong><u>cut backend errors by 25%</u></strong> and built reusable React components.</p>
+        <p>My passion is turning <strong>complex business requirements</strong> into clean, efficient, and scalable
+          APIs,
+          focusing on <em>server-side logic</em> and <u>database architecture</u>. I believe in writing code that not
+          only
+          works but is <strong>maintainable, testable, and production-ready</strong>.</p>
+        <p>Beyond coding, I'm constantly exploring <em>design patterns, system architecture, and performance
+            optimization
+            techniques</em>. I enjoy solving challenging problems that require deep thinking about data structures, API
+          design, and scalability.</p>
+      </div>
+
+      <!-- Github activity bar -->
+      <div class="mt-12">
+        <h3 class="font-mono text-xl font-semibold mb-4">GitHub Activity</h3>
+        <div
+          class="bg-white dark:bg-[#1a1a1a] rounded-lg p-4 border border-gray-200 dark:border-gray-700 overflow-hidden">
+          <img
+            src="https://github-readme-activity-graph.vercel.app/graph?username=nishant-444&bg_color=1a1a1a&color=9ca3af&line=6b7280&point=d1d5db&area=true&hide_border=true&custom_title=Contribution%20Activity"
+            alt="GitHub Contribution Graph" class="w-full dark:block hidden" />
+          <img
+            src="https://github-readme-activity-graph.vercel.app/graph?username=nishant-444&bg_color=ffffff&color=4b5563&line=6b7280&point=374151&area=true&hide_border=true&custom_title=Contribution%20Activity"
+            alt="GitHub Contribution Graph" class="w-full dark:hidden block" />
+        </div>
+        <p class="text-sm text-gray-500 dark:text-gray-500 mt-2 font-sans">
+          <a href="https://github.com/nishant-444" target="_blank" rel="noopener noreferrer"
+            class="hover:text-blue-600 dark:hover:text-blue-400 transition">View on GitHub →</a>
         </p>
-        <ul>
-            <li>
-                Implemented a debounced search bar for efficient API calls and a smooth user experience.
-            </li>
-            <li>
-                Developed a dynamic trending algorithm using Appwrite to track and rank popular searches.
-            </li>
-            <li>
-                Designed and built a fully responsive, mobile-first UI using Tailwind CSS v4.
-            </li>
-        </ul>
+      </div>
     </div>
-    <div class="project-tags">
-        <span>React</span>
-        <span>Tailwind CSS</span>
-        <span>Appwrite</span>
-        <span>Vite</span>
-        <span>TMDB API</span>
-        <span>REST API</span>
+  </section>
+
+  <!-- Stack Section -->
+  <section id="stack" class="py-20 px-6 bg-gray-50 dark:bg-[#1a1a1a]">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="font-mono text-4xl font-bold text-center mb-16">My Tech Stack</h2>
+
+      <div class="space-y-12">
+        <!-- Backend -->
+        <div>
+          <h3 class="font-mono text-sm text-gray-500 dark:text-gray-500 uppercase tracking-wider mb-6 text-center">
+            Backend</h3>
+          <div class="flex justify-center gap-8 flex-wrap">
+            <!-- Node.js -->
+            <a href="https://nodejs.org" target="_blank" rel="noopener noreferrer" class="icon-hover" title="Node.js">
+              <img src="https://cdn.simpleicons.org/nodedotjs/339933" alt="Node.js" class="w-16 h-16" />
+            </a>
+
+            <!-- Express.js -->
+            <a href="https://expressjs.com" target="_blank" rel="noopener noreferrer" class="icon-hover"
+              title="Express.js">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg"
+                alt="Express.js" class="w-16 h-16 dark:invert" />
+            </a>
+
+            <!-- MongoDB -->
+            <a href="https://www.mongodb.com" target="_blank" rel="noopener noreferrer" class="icon-hover"
+              title="MongoDB">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB"
+                class="w-16 h-16" />
+            </a>
+
+            <!-- MySQL -->
+            <a href="https://www.mysql.com" target="_blank" rel="noopener noreferrer" class="icon-hover" title="MySQL">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL"
+                class="w-16 h-16" />
+            </a>
+
+            <!-- Appwrite -->
+            <a href="https://appwrite.io" target="_blank" rel="noopener noreferrer" class="icon-hover" title="Appwrite">
+              <img src="https://cdn.simpleicons.org/appwrite/FD366E" alt="Appwrite" class="w-16 h-16" />
+            </a>
+          </div>
+        </div>
+
+        <!-- Frontend -->
+        <div>
+          <h3 class="font-mono text-sm text-gray-500 dark:text-gray-500 uppercase tracking-wider mb-6 text-center">
+            Frontend</h3>
+          <div class="flex justify-center gap-8 flex-wrap">
+            <!-- React -->
+            <a href="https://react.dev" target="_blank" rel="noopener noreferrer" class="icon-hover" title="React">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React"
+                class="w-16 h-16" />
+            </a>
+
+            <!-- HTML5 -->
+            <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank" rel="noopener noreferrer"
+              class="icon-hover" title="HTML5">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5"
+                class="w-16 h-16" />
+            </a>
+
+            <!-- CSS3 -->
+            <a href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank" rel="noopener noreferrer"
+              class="icon-hover" title="CSS3">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3"
+                class="w-16 h-16" />
+            </a>
+
+            <!-- Tailwind CSS -->
+            <a href="https://tailwindcss.com" target="_blank" rel="noopener noreferrer" class="icon-hover"
+              title="Tailwind CSS">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg"
+                alt="Tailwind CSS" class="w-16 h-16" />
+            </a>
+
+            <!-- EJS -->
+            <a href="https://ejs.co" target="_blank" rel="noopener noreferrer" class="icon-hover" title="EJS">
+              <img src="https://cdn.simpleicons.org/ejs/B4CA65" alt="EJS" class="w-16 h-16" />
+            </a>
+          </div>
+        </div>
+
+        <!-- Languages -->
+        <div>
+          <h3 class="font-mono text-sm text-gray-500 dark:text-gray-500 uppercase tracking-wider mb-6 text-center">
+            Languages</h3>
+          <div class="flex justify-center gap-8 flex-wrap">
+            <!-- JavaScript -->
+            <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noopener noreferrer"
+              class="icon-hover" title="JavaScript">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+                alt="JavaScript" class="w-16 h-16" />
+            </a>
+
+            <!-- C++ -->
+            <a href="https://cplusplus.com" target="_blank" rel="noopener noreferrer" class="icon-hover" title="C++">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="C++"
+                class="w-16 h-16" />
+            </a>
+          </div>
+        </div>
+
+        <!-- Tools & DevOps -->
+        <div>
+          <h3 class="font-mono text-sm text-gray-500 dark:text-gray-500 uppercase tracking-wider mb-6 text-center">Tools
+            & DevOps</h3>
+          <div class="flex justify-center gap-8 flex-wrap">
+            <!-- Git -->
+            <a href="https://git-scm.com" target="_blank" rel="noopener noreferrer" class="icon-hover" title="Git">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git"
+                class="w-16 h-16" />
+            </a>
+
+            <!-- GitHub -->
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="icon-hover" title="GitHub">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub"
+                class="w-16 h-16 dark:invert" />
+            </a>
+
+            <!-- Postman -->
+            <a href="https://www.postman.com" target="_blank" rel="noopener noreferrer" class="icon-hover"
+              title="Postman">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg" alt="Postman"
+                class="w-16 h-16" />
+            </a>
+
+            <!-- VS Code -->
+            <a href="https://code.visualstudio.com" target="_blank" rel="noopener noreferrer" class="icon-hover"
+              title="VS Code">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="VS Code"
+                class="w-16 h-16" />
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="project-links">
-        <a
-            href="https://github.com/Nishant-444/Trend-Engine"
-            class="btn btn-sm"
-            target="_blank" 
-            rel="noopener noreferrer"
-            >View Project</a
-        >
-        <a 
-            href="https://trend-engine.vercel.app" 
-            class="btn btn-sm"
-            target="_blank" 
-            rel="noopener noreferrer"
-            >Live Demo</a
-        >
+  </section>
+
+
+  <!-- Projects Section -->
+  <section id="projects" class="py-20 px-6 bg-white dark:bg-[#1a1a1a]">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="font-mono text-4xl font-bold text-center mb-16">Projects</h2>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Project 1 -->
+        <div
+          class="bg-gray-50 dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-xl transition">
+
+          <div class="h-48 bg-gradient-to-br from-green-400 to-blue-500 flex items-center justify-center">
+            <svg class="w-20 h-20 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z">
+              </path>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </div>
+          <div class="p-6">
+            <h3 class="font-mono text-xl font-semibold mb-3">VizTube - Video Streaming Backend</h3>
+            <p class="font-sans text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">Architected a production-ready
+              backend, fortifying security with a dual-token JWT strategy. Engineered a polymorphic like system for
+              video, comment, and tweet interactions.</p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span
+                class="px-3 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 rounded-full text-xs font-mono">Node.js</span>
+              <span
+                class="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full text-xs font-mono">Express.js</span>
+              <span
+                class="px-3 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 rounded-full text-xs font-mono">MongoDB</span>
+              <span
+                class="px-3 py-1 bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 rounded-full text-xs font-mono">JWT</span>
+            </div>
+            <div class="flex gap-4 text-sm">
+              <a href="https://github.com/nishant-444/VizTube"
+                class="text-blue-600 dark:text-blue-400 hover:underline font-medium">GitHub →</a>
+              <a href="https://viztube.onrender.com"
+                class="text-blue-600 dark:text-blue-400 hover:underline font-medium">Live API →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div
+          class="bg-gray-50 dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-xl transition">
+
+          <div class="h-48 bg-gradient-to-br from-purple-400 to-pink-500 flex items-center justify-center">
+            <svg class="w-20 h-20 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1z">
+              </path>
+            </svg>
+          </div>
+          <div class="p-6">
+            <h3 class="font-mono text-xl font-semibold mb-3">Trend-Engine - Movie Discovery App</h3>
+            <p class="font-sans text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">Engineered a real-time trending
+              engine by analyzing live user search patterns. Slashed server load by 60% via a 500ms debounced search.
+            </p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span
+                class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-xs font-mono">React</span>
+              <span
+                class="px-3 py-1 bg-cyan-100 dark:bg-cyan-900 text-cyan-800 dark:text-cyan-200 rounded-full text-xs font-mono">Tailwind
+                CSS</span>
+              <span
+                class="px-3 py-1 bg-pink-100 dark:bg-pink-900 text-pink-800 dark:text-pink-200 rounded-full text-xs font-mono">Appwrite</span>
+            </div>
+            <div class="flex gap-4 text-sm">
+              <a href="https://github.com/nishant-444/trend-engine"
+                class="text-blue-600 dark:text-blue-400 hover:underline font-medium">GitHub →</a>
+              <a href="https://trend-engine.vercel.app"
+                class="text-blue-600 dark:text-blue-400 hover:underline font-medium">Live Demo →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div
+          class="bg-gray-50 dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-xl transition">
+
+          <div class="h-48 bg-gradient-to-br from-blue-400 to-indigo-500 flex items-center justify-center">
+            <svg class="w-20 h-20 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path>
+            </svg>
+          </div>
+          <div class="p-6">
+            <h3 class="font-mono text-xl font-semibold mb-3">BankEase - Bank Management System</h3>
+            <p class="font-sans text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">Mastered low-level data
+              persistence by manually handling binary serialization of C++ objects. Guaranteed 100% data integrity with
+              encapsulated file I/O.</p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span
+                class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-xs font-mono">C++</span>
+              <span
+                class="px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 rounded-full text-xs font-mono">OOP</span>
+              <span
+                class="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full text-xs font-mono">Data
+                Persistence</span>
+            </div>
+            <div class="flex gap-4 text-sm">
+              <a href="https://github.com/nishant-444/bankease"
+                class="text-blue-600 dark:text-blue-400 hover:underline font-medium">GitHub →</a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-</div>
-					
-					<div class="project-card">
-						<div class="project-header">
-							<h3>VizTube - Video Streaming Platform</h3>
-							<span class="project-date">July 2025</span>
-						</div>
-						<p class="project-subtitle">
-							Backend Project | Node.js, Express, MongoDB
-						</p>
-						<div class="project-description">
-							<p>
-								Built a production-ready backend for a video streaming platform
-								with authentication, video uploads, playlists, and social
-								features like likes, comments, and subscriptions.
-							</p>
-							<ul>
-								<li>
-									Implemented secure JWT-based auth system with access & refresh
-									tokens.
-								</li>
-								<li>
-									Integrated Cloudinary for video and thumbnail cloud storage
-									with Multer.
-								</li>
-								<li>
-									Enabled full CRUD operations, MongoDB Atlas Search, and
-									detailed analytics.
-								</li>
-							</ul>
-						</div>
-						<div class="project-tags">
-							<span>Node.js</span>
-							<span>Express.js</span>
-							<span>MongoDB</span>
-							<span>Cloudinary</span>
-							<span>JWT</span>
-							<span>REST API</span>
-						</div>
-						<div class="project-links">
-							<a
-								href="https://github.com/Nishant-444/VizTube"
-								class="btn btn-sm"
-								>View Project</a
-							>
-							<a href="https://viztube.onrender.com" class="btn btn-sm"
-								>Live API</a
-							>
-						</div>
-					</div>
+  </section>
 
-					<div class="project-card">
-						<div class="project-header">
-							<h3>BankEase</h3>
-							<span class="project-date">April 2025</span>
-						</div>
-						<p class="project-subtitle">Bank Management System | C++</p>
-						<div class="project-description">
-							<p>
-								Built <strong>BankEase</strong>, an object-oriented C++ banking
-								system for managing customer accounts with secure file-based
-								storage and validation.
-							</p>
-							<ul>
-								<li>
-									Integrated password-protected access, reducing unauthorized
-									login attempts by 90%.
-								</li>
-								<li>
-									Improved system reliability by 95% via structured error
-									handling and data validation.
-								</li>
-								<li>
-									Enforced 100% unique account creation using real-time
-									duplicate checks.
-								</li>
-							</ul>
-						</div>
-						<div class="project-tags">
-							<span>C++</span>
-							<span>File Handling</span>
-							<span>OOP</span>
-							<span>Data Security & Protection</span>
-						</div>
-						<div class="project-links">
-							<a
-								href="http://www.github.com/nishant-444/BankEase"
-								class="btn btn-sm"
-								>View Project</a
-							>
-						</div>
-					</div>
-					<div class="project-card">
-						<div class="project-header">
-							<h3>Portfolio Website</h3>
-							<span class="project-date">January 2025</span>
-						</div>
-						<p class="project-subtitle">Personal Portfolio | HTML & CSS</p>
-						<div class="project-description">
-							<p>
-								Designed a dark-themed, responsive portfolio website using pure
-								HTML and CSS, featuring smooth animations and mobile-first
-								design.
-							</p>
-							<ul>
-								<li>
-									Utilized modern CSS features like Flexbox and Grid for
-									adaptive, clean layouts.
-								</li>
-								<li>
-									Crafted custom animations to elevate user experience and
-									visual appeal.
-								</li>
-								<li>
-									Ensured accessibility and cross-browser compatibility for
-									consistent performance.
-								</li>
-							</ul>
-						</div>
-						<div class="project-tags">
-							<span>HTML5</span>
-							<span>CSS3</span>
-							<span>Responsive Design</span>
-							<span>Animation</span>
-						</div>
-						<div class="project-links">
-							<a
-								href="https://github.com/Nishant-444/Portfolio"
-								class="btn btn-sm"
-								>View Project</a
-							>
-							<a href="https://nishantsharma.vercel.app" class="btn btn-sm"
-								>Live Website</a
-							>
-						</div>
-					</div>
-				</div>
-			</section>
+  <!-- Career Changelog Section -->
+  <section id="career" class="py-20 px-6 bg-white dark:bg-[#1a1a1a]">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="font-mono text-4xl font-bold mb-12">Career Changelog</h2>
 
-			<!-- Certifications Section -->
-			<section id="certifications" class="section certifications">
-				<div class="section-title">
-					<h2>Certifications</h2>
-					<div class="underline"></div>
-				</div>
-				<div class="certifications-content">
-					<div class="certification-card">
-						<div class="certification-icon">
-							<i class="fa-brands fa-free-code-camp"></i>
-						</div>
-						<div class="certification-details">
-							<h3>JavaScript Algorithms & Data Structures</h3>
-							<p>FreeCodeCamp</p>
-							<span class="certification-date">June 2025</span>
-							<a
-								href="https://freecodecamp.org/certification/LousyNishant/javascript-algorithms-and-data-structures-v8"
-								class="btn btn-sm"
-								>View Certificate</a
-							>
-						</div>
-					</div>
-					<div class="certification-card">
-						<div class="certification-icon">
-							<i class="fa-brands fa-free-code-camp"></i>
-						</div>
-						<div class="certification-details">
-							<h3>Responsive Web Design</h3>
-							<p>FreeCodeCamp</p>
-							<span class="certification-date">June 2025</span>
-							<a
-								href="https://www.hackerrank.com/certificates/ca2411d2c669?trk=public_profile_see-credential"
-								class="btn btn-sm"
-								>View Certificate</a
-							>
-						</div>
-					</div>
-					<div class="certification-card">
-						<div class="certification-icon">
-							<i class="fa-brands fa-hackerrank"></i>
-						</div>
-						<div class="certification-details">
-							<h3>CSS</h3>
-							<p>HackerRank</p>
-							<span class="certification-date">May 2025</span>
-							<a
-								href="https://www.freecodecamp.org/certification/LousyNishant/responsive-web-design"
-								class="btn btn-sm"
-								>View Certificate</a
-							>
-						</div>
-					</div>
-					<div class="certification-card">
-						<div class="certification-icon">
-							<i class="fa-brands fa-hackerrank"></i>
-						</div>
-						<div class="certification-details">
-							<h3>SQL</h3>
-							<p>HackerRank</p>
-							<span class="certification-date">March 2025</span>
-							<a
-								href="https://www.hackerrank.com/certificates/c3e4298b5e2e"
-								class="btn btn-sm"
-								>View Certificate</a
-							>
-						</div>
-					</div>
-					<div class="certification-card">
-						<div class="certification-icon">
-							<i class="fa-brands fa-hackerrank"></i>
-						</div>
-						<div class="certification-details">
-							<h3>SWE Intern</h3>
-							<p>HackerRank</p>
-							<span class="certification-date">March 2025</span>
-							<a
-								href="https://www.hackerrank.com/certificates/ca2411d2c669?trk=public_profile_see-credential"
-								class="btn btn-sm"
-								>View Certificate</a
-							>
-						</div>
-					</div>
-				</div>
-			</section>
+      <div class="space-y-4 font-mono text-sm">
+        <div class="flex gap-4 hover:bg-gray-100 dark:hover:bg-gray-900 p-3 rounded transition">
 
-			<!-- Contact Section -->
-			<section id="contact" class="section contact">
-				<div class="section-title">
-					<h2>Contact Me</h2>
-					<div class="underline"></div>
-				</div>
-				<div class="contact-content">
-					<div class="contact-info">
-						<div class="contact-item">
-							<div class="contact-icon">
-								<i class="fas fa-envelope"></i>
-							</div>
-							<div class="contact-text">
-								<h3>Email</h3>
-								<p>business.nishant777@gmail.com</p>
-							</div>
-						</div>
-						<div class="contact-item">
-							<div class="contact-icon">
-								<i class="fas fa-phone"></i>
-							</div>
-							<div class="contact-text">
-								<h3>Phone</h3>
-								<p>+91 635-043-5068</p>
-							</div>
-						</div>
-						<div class="contact-item">
-							<div class="contact-icon">
-								<i class="fas fa-map-marker-alt"></i>
-							</div>
-							<div class="contact-text">
-								<h3>Location</h3>
-								<p>Jaipur, India</p>
-							</div>
-						</div>
-					</div>
-					<div class="contact-form">
-						<form
-							action="https://formsubmit.co/2a13e7ec261eb09c3d805cc2dc76f2e2"
-							method="POST"
-						>
-							<div class="form-group">
-								<input
-									type="text"
-									name="name"
-									placeholder="Your Name"
-									required
-								/>
-							</div>
-							<div class="form-group">
-								<input
-									type="email"
-									name="email"
-									placeholder="Your Email"
-									required
-								/>
-							</div>
-							<div class="form-group">
-								<input
-									type="text"
-									name="subject"
-									placeholder="Subject"
-									required
-								/>
-							</div>
-							<div class="form-group">
-								<textarea
-									name="message"
-									placeholder="Your Message"
-									required
-								></textarea>
-							</div>
-							<button type="submit" class="btn">Send Message</button>
-						</form>
-					</div>
-				</div>
-			</section>
+          <span class="text-gray-500 dark:text-gray-500 whitespace-nowrap">[2025-10]</span>
+          <span>Completed Fullstack Developer Internship at Future Interns</span>
+        </div>
+        <div class="flex gap-4 hover:bg-gray-100 dark:hover:bg-gray-900 p-3 rounded transition">
 
-			<!-- Footer -->
-			<footer>
-				<div class="footer-content">
-					<div class="footer-social">
-						<a href="https://github.com/nishant-444" target="_blank"
-							><i class="fab fa-github"></i
-						></a>
-						<a href="https://linkedin.com/nishant4712" target="_blank"
-							><i class="fab fa-linkedin"></i
-						></a>
-						<a href="mailto:business.nishant777@gmail.com"
-							><i class="fas fa-envelope"></i
-						></a>
-					</div>
-					<p>
-						&copy; 2025 Nishant Sharma. All Rights Reserved.<br />This portfolio
-						website is licensed under a Creative Commons
-						Attribution-NoDerivatives 4.0 International License.
-					</p>
-				</div>
-			</footer>
-		</div>
-	</body>
+          <span class="text-gray-500 dark:text-gray-500 whitespace-nowrap">[2025-07]</span>
+          <span>Started as Fullstack Developer Intern at Future Interns</span>
+        </div>
+        <div class="flex gap-4 hover:bg-gray-100 dark:hover:bg-gray-900 p-3 rounded transition">
+
+          <span class="text-gray-500 dark:text-gray-500 whitespace-nowrap">[2024-XX]</span>
+          <span>Earned Back End Development & APIs Certification (freeCodeCamp)</span>
+        </div>
+        <div class="flex gap-4 hover:bg-gray-100 dark:hover:bg-gray-900 p-3 rounded transition">
+
+          <span class="text-gray-500 dark:text-gray-500 whitespace-nowrap">[2024-XX]</span>
+          <span>Earned Microsoft GitHub Foundations Certification</span>
+        </div>
+        <div class="flex gap-4 hover:bg-gray-100 dark:hover:bg-gray-900 p-3 rounded transition">
+
+          <span class="text-gray-500 dark:text-gray-500 whitespace-nowrap">[2024-08]</span>
+          <span>Started Bachelor of Computer Applications at S.S. Jain Subodh PG College</span>
+        </div>
+        <div class="flex gap-4 hover:bg-gray-100 dark:hover:bg-gray-900 p-3 rounded transition">
+
+          <span class="text-gray-500 dark:text-gray-500 whitespace-nowrap">[2024-03]</span>
+          <span>Completed Senior Secondary (Grade XII) at KPS Udaan</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-20 px-6 bg-white dark:bg-[#1a1a1a]">
+    <div class="max-w-2xl mx-auto text-center">
+      <h2 class="font-mono text-4xl font-bold mb-6">Get In Touch</h2>
+      <p class="font-sans text-xl text-gray-600 dark:text-gray-400 mb-8 leading-relaxed">My inbox is always open.
+        Whether you have a question or just want to say hi, I'll get back to you!</p>
+
+      <a href="mailto:business.nishant777@gmail.com"
+        class="inline-block px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-md font-medium text-lg transition mb-8">Email
+        Me</a>
+
+      <div class="flex justify-center gap-6 mt-8">
+        <a href="#" class="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition"
+          title="LinkedIn">
+          <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+            <path
+              d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+          </svg>
+        </a>
+        <a href="#" class="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition"
+          title="GitHub">
+          <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+            <path
+              d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-8 text-center text-sm text-gray-500 dark:text-gray-500 font-sans">
+    <p>Designed & Built by Nishant Sharma.</p>
+  </footer>
+
+  <script>
+    try { window.themePreference = 'dark'; } catch { }
+    const themeToggle = document.getElementById('themeToggle');
+    const html = document.documentElement;
+
+    const theme = (() => {
+      try {
+        return window.themePreference || 'light';
+      } catch {
+        return 'light';
+      }
+    })();
+
+    if (theme === 'dark') {
+      html.classList.add('dark');
+    }
+
+    themeToggle.addEventListener('click', () => {
+      html.classList.toggle('dark');
+      const newTheme = html.classList.contains('dark') ? 'dark' : 'light';
+      try {
+        window.themePreference = newTheme;
+      } catch { }
+    });
+    const mobileMenuButton = document.getElementById('mobileMenuButton');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const closeMenu = document.getElementById('closeMenu');
+    const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+
+    function toggleMenu() {
+      mobileMenu.classList.toggle('hidden');
+    }
+
+    mobileMenuButton.addEventListener('click', toggleMenu);
+    closeMenu.addEventListener('click', toggleMenu);
+    mobileMenuLinks.forEach(link => link.addEventListener('click', toggleMenu));
+  </script>
+</body>
+
 </html>
