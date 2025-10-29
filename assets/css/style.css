@@ -29,8 +29,17 @@ body {
 
 @media (max-width: 640px) {
 	.terminal-window {
-		padding: 3rem 1.25rem 1.5rem;
+		padding: 2.5rem 1rem 1.5rem;
 		border-radius: 8px;
+		width: calc(100% - 1rem);
+	}
+}
+
+@media (max-width: 480px) {
+	.terminal-window {
+		padding: 2.5rem 0.75rem 1.25rem;
+		border-radius: 6px;
+		width: calc(100% - 0.5rem);
 	}
 }
 
@@ -57,6 +66,14 @@ body {
 	transition: opacity 0.2s;
 	position: relative;
 	cursor: pointer;
+}
+
+@media (max-width: 480px) {
+	.terminal-button {
+		width: 0.6rem;
+		height: 0.6rem;
+		margin-right: 0.4rem;
+	}
 }
 
 .terminal-button::before {
@@ -175,18 +192,83 @@ body {
 	width: 100%;
 }
 
+/* Mobile menu animations */
+#mobileMenu {
+	transition: opacity 0.3s ease-in-out;
+}
+
+#mobileMenu:not(.hidden) {
+	animation: fadeIn 0.3s ease-in-out;
+}
+
+#mobileMenu > div:last-child {
+	transition: transform 0.3s ease-in-out;
+}
+
+#mobileMenu:not(.hidden) > div:last-child {
+	animation: slideInRight 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes slideInRight {
+	from {
+		transform: translateX(100%);
+	}
+	to {
+		transform: translateX(0);
+	}
+}
+
+@media (max-width: 480px) {
+	#mobileMenu .terminal-nav-link {
+		font-size: 1rem;
+		padding: 0.75rem 1rem;
+	}
+}
+
 @media (max-width: 640px) {
 	.terminal-command {
-		font-size: 0.875rem;
+		font-size: 0.8rem;
+		gap: 0.5rem;
+		flex-wrap: wrap;
 	}
 
 	.terminal-output {
-		font-size: 0.9375rem;
+		font-size: 0.875rem;
 	}
 
 	.terminal-window {
 		margin: 1rem;
 		width: calc(100% - 2rem);
+	}
+}
+
+@media (max-width: 480px) {
+	.terminal-command {
+		font-size: 0.75rem;
+		gap: 0.5rem;
+	}
+
+	.terminal-output {
+		font-size: 0.8125rem;
+	}
+}
+
+@media (max-width: 360px) {
+	.terminal-command {
+		font-size: 0.7rem;
+	}
+
+	.terminal-output {
+		font-size: 0.75rem;
 	}
 }
 
@@ -214,4 +296,81 @@ body {
 
 .icon-hover:hover {
 	transform: scale(1.1);
+}
+
+/* Mobile-specific optimizations */
+@media (max-width: 768px) {
+	/* Improve touch targets */
+	a,
+	button {
+		min-height: 44px;
+		min-width: 44px;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	/* Better text readability */
+	body {
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	}
+
+	/* Prevent horizontal overflow */
+	body,
+	html {
+		overflow-x: hidden;
+		max-width: 100vw;
+	}
+
+	/* Better word wrapping */
+	p,
+	span,
+	div {
+		word-wrap: break-word;
+		overflow-wrap: break-word;
+	}
+}
+
+/* Landscape mobile orientation */
+@media (max-width: 896px) and (orientation: landscape) {
+	.min-h-\[90vh\] {
+		min-height: auto;
+		padding-top: 2rem;
+		padding-bottom: 2rem;
+	}
+
+	section {
+		padding-top: 3rem !important;
+		padding-bottom: 3rem !important;
+	}
+}
+
+/* Small mobile devices */
+@media (max-width: 360px) {
+	body {
+		font-size: 14px;
+	}
+
+	.terminal-header {
+		height: 1.75rem;
+	}
+
+	.terminal-button {
+		width: 0.5rem;
+		height: 0.5rem;
+	}
+
+	/* Reduce padding even more on very small screens */
+	section {
+		padding-left: 0.75rem !important;
+		padding-right: 0.75rem !important;
+	}
+}
+
+/* Fix for iOS Safari viewport height issues */
+@supports (-webkit-touch-callout: none) {
+	.min-h-\[90vh\] {
+		min-height: -webkit-fill-available;
+	}
 }
