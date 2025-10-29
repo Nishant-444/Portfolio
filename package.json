@@ -1,0 +1,20 @@
+{
+	"name": "nishant-portfolio",
+	"version": "1.0.0",
+	"description": "Portfolio website for Nishant Sharma - MERN Stack Developer",
+	"scripts": {
+		"build:css": "tailwindcss -i ./src/input.css -o ./assets/css/tailwind.min.css --minify",
+		"watch:css": "tailwindcss -i ./src/input.css -o ./assets/css/tailwind.min.css --watch",
+		"build": "npm run build:css"
+	},
+	"keywords": [
+		"portfolio",
+		"mern",
+		"developer"
+	],
+	"author": "Nishant Sharma",
+	"license": "MIT",
+	"devDependencies": {
+		"tailwindcss": "^3.4.0"
+	}
+}
