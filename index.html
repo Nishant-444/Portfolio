@@ -48,11 +48,12 @@
   <meta name="google-site-verification" content="gY6I7LTSJCTP78HgIPJ83VFHOnxKdhGjZkB9RVXvy5s" />
 
   <!-- Performance & Preconnect -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://cdn.jsdelivr.net">
-  <link rel="dns-prefetch" href="https://cdn.tailwindcss.com">
   <link rel="dns-prefetch" href="https://cdn.simpleicons.org">
+
+  <!-- Preload Critical Fonts -->
+  <link rel="preload" href="./assets/fonts/inter-v20-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="./assets/fonts/JetBrainsMono-Regular.woff2" as="font" type="font/woff2" crossorigin>
 
   <!-- Self-hosted Fonts for Performance -->
   <link rel="stylesheet" href="./assets/css/fonts.css">
@@ -60,8 +61,9 @@
   <!-- Built Tailwind CSS (minified) -->
   <link rel="stylesheet" href="./assets/css/tailwind.min.css">
 
-  <!-- Devicons -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
+  <!-- Devicons (defer loading) -->
+  <link rel="preload" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css"></noscript>
 
   <!-- Structured Data (JSON-LD) -->
   <script type="application/ld+json">
