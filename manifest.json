@@ -1,0 +1,27 @@
+{
+  "name": "Nishant Sharma - Portfolio",
+  "short_name": "Nishant",
+  "description": "MERN Stack Developer Portfolio",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1a1a1a",
+  "theme_color": "#1a1a1a",
+  "icons": [
+    {
+      "src": "/assets/nslogo-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/nslogo-180x180.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/nslogo-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    }
+  ]
+}

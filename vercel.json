@@ -1,6 +1,13 @@
 {
 	"buildCommand": "npm run build",
 	"outputDirectory": "public",
+	"redirects": [
+		{
+			"source": "/index.html",
+			"destination": "/",
+			"permanent": true
+		}
+	],
 	"headers": [
 		{
 			"source": "/(.*)",

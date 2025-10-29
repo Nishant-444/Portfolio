@@ -38,11 +38,26 @@
   <!-- Canonical URL -->
   <link rel="canonical" href="https://nishants.dev/">
 
-  <!-- Favicon -->
+  <!-- Favicon - All Platforms -->
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/nslogo-32x32.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/nslogo-32x32.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="/assets/nslogo-192x192.png">
+  
+  <!-- Apple Touch Icons (iOS) -->
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/nslogo-180x180.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/assets/nslogo-180x180.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/assets/nslogo-180x180.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/nslogo-180x180.png">
+  
+  <!-- Android -->
+  <link rel="icon" type="image/png" sizes="192x192" href="/assets/nslogo-192x192.png">
+  <link rel="manifest" href="/manifest.json">
+  
+  <!-- Windows Tiles -->
+  <meta name="msapplication-TileColor" content="#1a1a1a">
+  <meta name="msapplication-TileImage" content="/assets/nslogo-192x192.png">
+  <meta name="theme-color" content="#1a1a1a">
 
   <!-- Google Site Verification -->
   <meta name="google-site-verification" content="gY6I7LTSJCTP78HgIPJ83VFHOnxKdhGjZkB9RVXvy5s" />
@@ -181,7 +196,7 @@
             <span class="text-yellow-300">echo $USER_NAME</span>
           </div>
           <div class="terminal-output pl-3 sm:pl-6 mb-4 sm:mb-6">
-            <p class="text-xl sm:text-2xl md:text-3xl font-bold text-white">Nishant Sharma</p>
+            <h1 class="text-xl sm:text-2xl md:text-3xl font-bold text-white">Nishant Sharma - MERN Stack Developer</h1>
           </div>
 
           <div class="terminal-command text-sm sm:text-base">
@@ -191,8 +206,8 @@
             <span class="text-yellow-300">cat role.txt</span>
           </div>
           <div class="terminal-output space-y-3 sm:space-y-4 pl-3 sm:pl-6">
-            <p class="text-xl sm:text-2xl md:text-3xl text-gray-200">MERN Stack Developer specialized in Backend &
-              Business Logic</p>
+            <p class="text-xl sm:text-2xl md:text-3xl text-gray-200">Backend Specialist | Business Logic Expert |
+              Full-Stack Engineer</p>
           </div>
 
           <!-- CTA Buttons as Terminal Output -->
@@ -532,7 +547,7 @@
                   <!-- Node.js -->
                   <a href="https://nodejs.org" target="_blank" rel="noopener noreferrer" class="icon-hover"
                     title="Node.js">
-                    <img src="https://cdn.simpleicons.org/nodedotjs/339933" alt="Node.js"
+                    <img src="https://cdn.simpleicons.org/nodedotjs/339933" alt="Node.js" title="Node.js"
                       class="w-8 h-8 sm:w-10 sm:h-10" loading="lazy" width="40" height="40" />
                   </a>
 
@@ -540,13 +555,14 @@
                   <a href="https://expressjs.com" target="_blank" rel="noopener noreferrer" class="icon-hover"
                     title="Express.js">
                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg"
-                      alt="Express.js" class="w-8 h-8 sm:w-10 sm:h-10 invert" loading="lazy" width="40" height="40" />
+                      alt="Express.js" title="Express.js" class="w-8 h-8 sm:w-10 sm:h-10 invert" loading="lazy"
+                      width="40" height="40" />
                   </a>
 
                   <!-- MongoDB -->
                   <a href="https://www.mongodb.com" target="_blank" rel="noopener noreferrer" class="icon-hover"
                     title="MongoDB">
-                    <img src="https://www.vectorlogo.zone/logos/mongodb/mongodb-icon.svg" alt="MongoDB"
+                    <img src="https://www.vectorlogo.zone/logos/mongodb/mongodb-icon.svg" alt="MongoDB" title="MongoDB"
                       class="w-8 h-8 sm:w-10 sm:h-10" loading="lazy" width="40" height="40" />
                   </a>
 
@@ -554,13 +570,13 @@
                   <a href="https://www.mysql.com" target="_blank" rel="noopener noreferrer" class="icon-hover"
                     title="MySQL">
                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL"
-                      class="w-8 h-8 sm:w-10 sm:h-10" loading="lazy" width="40" height="40" />
+                      title="MySQL" class="w-8 h-8 sm:w-10 sm:h-10" loading="lazy" width="40" height="40" />
                   </a>
 
                   <!-- Appwrite -->
                   <a href="https://appwrite.io" target="_blank" rel="noopener noreferrer" class="icon-hover"
                     title="Appwrite">
-                    <img src="https://cdn.simpleicons.org/appwrite/FD366E" alt="Appwrite"
+                    <img src="https://cdn.simpleicons.org/appwrite/FD366E" alt="Appwrite" title="Appwrite"
                       class="w-8 h-8 sm:w-10 sm:h-10" loading="lazy" width="40" height="40" />
                   </a>
                 </div>
@@ -574,34 +590,35 @@
                   <a href="https://react.dev" target="_blank" rel="noopener noreferrer" class="icon-hover"
                     title="React">
                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React"
-                      class="w-8 h-8 sm:w-10 sm:h-10" loading="lazy" width="40" height="40" />
+                      title="React" class="w-8 h-8 sm:w-10 sm:h-10" loading="lazy" width="40" height="40" />
                   </a>
 
                   <!-- HTML5 -->
                   <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank" rel="noopener noreferrer"
                     class="icon-hover" title="HTML5">
                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5"
-                      class="w-8 h-8 sm:w-10 sm:h-10" loading="lazy" width="40" height="40" />
+                      title="HTML5" class="w-8 h-8 sm:w-10 sm:h-10" loading="lazy" width="40" height="40" />
                   </a>
 
                   <!-- CSS3 -->
                   <a href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank" rel="noopener noreferrer"
                     class="icon-hover" title="CSS3">
                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3"
-                      class="w-8 h-8 sm:w-10 sm:h-10" loading="lazy" width="40" height="40" />
+                      title="CSS3" class="w-8 h-8 sm:w-10 sm:h-10" loading="lazy" width="40" height="40" />
                   </a>
 
                   <!-- Tailwind CSS -->
                   <a href="https://tailwindcss.com" target="_blank" rel="noopener noreferrer" class="icon-hover"
                     title="Tailwind CSS">
                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg"
-                      alt="Tailwind CSS" class="w-8 h-8 sm:w-10 sm:h-10" loading="lazy" width="40" height="40" />
+                      alt="Tailwind CSS" title="Tailwind CSS" class="w-8 h-8 sm:w-10 sm:h-10" loading="lazy" width="40"
+                      height="40" />
                   </a>
 
                   <!-- EJS -->
                   <a href="https://ejs.co" target="_blank" rel="noopener noreferrer" class="icon-hover" title="EJS">
-                    <img src="https://cdn.simpleicons.org/ejs/B4CA65" alt="EJS" class="w-8 h-8 sm:w-10 sm:h-10"
-                      loading="lazy" width="40" height="40" />
+                    <img src="https://cdn.simpleicons.org/ejs/B4CA65" alt="EJS" title="EJS"
+                      class="w-8 h-8 sm:w-10 sm:h-10" loading="lazy" width="40" height="40" />
                   </a>
                 </div>
               </div>
@@ -614,14 +631,15 @@
                   <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank"
                     rel="noopener noreferrer" class="icon-hover" title="JavaScript">
                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
-                      alt="JavaScript" class="w-8 h-8 sm:w-10 sm:h-10" loading="lazy" width="40" height="40" />
+                      alt="JavaScript" title="JavaScript" class="w-8 h-8 sm:w-10 sm:h-10" loading="lazy" width="40"
+                      height="40" />
                   </a>
 
                   <!-- C++ -->
                   <a href="https://cplusplus.com" target="_blank" rel="noopener noreferrer" class="icon-hover"
                     title="C++">
                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg"
-                      alt="C++" class="w-8 h-8 sm:w-10 sm:h-10" loading="lazy" width="40" height="40" />
+                      alt="C++" title="C++" class="w-8 h-8 sm:w-10 sm:h-10" loading="lazy" width="40" height="40" />
                   </a>
                 </div>
               </div>
@@ -634,28 +652,31 @@
                   <a href="https://git-scm.com" target="_blank" rel="noopener noreferrer" class="icon-hover"
                     title="Git">
                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git"
-                      class="w-8 h-8 sm:w-10 sm:h-10" loading="lazy" width="40" height="40" />
+                      title="Git" class="w-8 h-8 sm:w-10 sm:h-10" loading="lazy" width="40" height="40" />
                   </a>
 
                   <!-- GitHub -->
                   <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="icon-hover"
                     title="GitHub">
                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"
-                      alt="GitHub" class="w-8 h-8 sm:w-10 sm:h-10 invert" loading="lazy" width="40" height="40" />
+                      alt="GitHub" title="GitHub" class="w-8 h-8 sm:w-10 sm:h-10 invert" loading="lazy" width="40"
+                      height="40" />
                   </a>
 
                   <!-- Postman -->
                   <a href="https://www.postman.com" target="_blank" rel="noopener noreferrer" class="icon-hover"
                     title="Postman">
                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg"
-                      alt="Postman" class="w-8 h-8 sm:w-10 sm:h-10" loading="lazy" width="40" height="40" />
+                      alt="Postman" title="Postman" class="w-8 h-8 sm:w-10 sm:h-10" loading="lazy" width="40"
+                      height="40" />
                   </a>
 
                   <!-- VS Code -->
                   <a href="https://code.visualstudio.com" target="_blank" rel="noopener noreferrer" class="icon-hover"
                     title="VS Code">
                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg"
-                      alt="VS Code" class="w-8 h-8 sm:w-10 sm:h-10" loading="lazy" width="40" height="40" />
+                      alt="VS Code" title="VS Code" class="w-8 h-8 sm:w-10 sm:h-10" loading="lazy" width="40"
+                      height="40" />
                   </a>
                 </div>
               </div>
