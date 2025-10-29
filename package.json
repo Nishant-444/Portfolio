@@ -5,7 +5,8 @@
 	"scripts": {
 		"build:css": "tailwindcss -i ./src/input.css -o ./assets/css/tailwind.min.css --minify",
 		"watch:css": "tailwindcss -i ./src/input.css -o ./assets/css/tailwind.min.css --watch",
-		"build": "npm run build:css"
+		"copy:files": "rm -rf public && mkdir public && cp -r index.html robots.txt sitemap.xml assets public/",
+		"build": "npm run build:css && npm run copy:files"
 	},
 	"keywords": [
 		"portfolio",

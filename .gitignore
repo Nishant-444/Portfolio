@@ -9,6 +9,9 @@ package-lock.json
 # Uncomment next line if using Netlify/Vercel (they build on deploy)
 assets/css/tailwind.min.css
 
+# Vercel build output
+public/
+
 # OS files
 .DS_Store
 Thumbs.db
