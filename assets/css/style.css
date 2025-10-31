@@ -293,6 +293,7 @@ body {
 .icon-hover {
 	transition: all 0.3s ease;
 	display: inline-block;
+	line-height: 0;
 }
 
 .icon-hover:hover {
@@ -301,15 +302,14 @@ body {
 
 .icon-hover img {
 	display: block;
-	width: 100%;
-	height: 100%;
+	object-fit: contain;
 }
 
 /* Mobile-specific optimizations */
 @media (max-width: 768px) {
-	/* Improve touch targets */
-	a:not(.icon-hover),
-	button {
+	/* Improve touch targets for text links and buttons only */
+	.terminal-nav-link,
+	button:not(.icon-hover) {
 		min-height: 44px;
 		min-width: 44px;
 		display: inline-flex;

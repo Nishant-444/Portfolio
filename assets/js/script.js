@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		const isHidden = mobileMenu.classList.contains('hidden');
 		mobileMenuButton.setAttribute('aria-expanded', !isHidden);
 		mobileMenu.setAttribute('aria-hidden', isHidden);
-
+		
 		// Prevent body scroll when menu is open
 		if (!isHidden) {
 			document.body.style.overflow = 'hidden';
@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	}
 
 	// Smooth scroll for anchor links
-	document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+	document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 		anchor.addEventListener('click', function (e) {
 			const href = this.getAttribute('href');
 			if (href !== '#' && href !== '#socials') {
@@ -66,11 +66,10 @@ document.addEventListener('DOMContentLoaded', function () {
 				const target = document.querySelector(href);
 				if (target) {
 					const offset = 80; // Account for sticky nav
-					const targetPosition =
-						target.getBoundingClientRect().top + window.pageYOffset - offset;
+					const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - offset;
 					window.scrollTo({
 						top: targetPosition,
-						behavior: 'smooth',
+						behavior: 'smooth'
 					});
 				}
 			}
@@ -79,11 +78,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
 	// Add touch feedback for mobile interactions
 	if ('ontouchstart' in window) {
-		document.querySelectorAll('a, button').forEach((element) => {
-			element.addEventListener('touchstart', function () {
+		document.querySelectorAll('a, button').forEach(element => {
+			element.addEventListener('touchstart', function() {
 				this.style.opacity = '0.7';
 			});
-			element.addEventListener('touchend', function () {
+			element.addEventListener('touchend', function() {
 				this.style.opacity = '1';
 			});
 		});
