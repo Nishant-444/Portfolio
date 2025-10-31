@@ -351,6 +351,10 @@
       background: rgba(255, 255, 255, 0.05);
     }
 
+    #mobileMenu.hidden {
+      display: none;
+    }
+
     #mobileMenu .terminal-nav-link {
       display: inline-block;
       font-size: 1.1rem;
@@ -361,6 +365,8 @@
     #mobileMenu {
       transition: opacity 0.3s ease-in-out;
     }
+
+
 
     #mobileMenu:not(.hidden) {
       animation: fadeIn 0.3s ease-in-out;
