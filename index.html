@@ -115,6 +115,38 @@
 
   <!-- Inline CSS -->
   <style>
+    /* CSS Variables - Dark Theme Only */
+    :root {
+      --bg-body: #0f172a;
+      --bg-section: #1a1a1a;
+      --bg-terminal: rgba(30, 30, 30, 0.95);
+      --bg-terminal-header: rgba(50, 50, 50, 0.95);
+      --bg-hover: rgba(255, 255, 255, 0.05);
+      --bg-career-detail: #2a2a2a;
+      --bg-career-hover: rgba(255, 255, 255, 0.02);
+      --bg-navbar: #1a1a1a;
+      --bg-hero: #1a1a1a;
+
+      --text-primary: #f1f5f9;
+      --text-secondary: #cbd5e1;
+      --text-tertiary: #94a3b8;
+      --text-muted: #64748b;
+      --text-navbar: #f1f5f9;
+
+      --border-primary: #334155;
+      --border-secondary: rgba(255, 255, 255, 0.1);
+
+      --terminal-title: rgba(255, 255, 255, 0.6);
+
+      --color-green: #4ade80;
+      --color-cyan: #22d3ee;
+      --color-yellow: #fbbf24;
+      --color-pink: #f472b6;
+      --color-blue: #60a5fa;
+
+      --shadow-terminal: 0 20px 40px rgba(0, 0, 0, 0.4);
+    }
+
     /* Portfolio Styles */
     * {
       /* outline: 1px solid white; */
@@ -123,6 +155,9 @@
 
     body {
       font-family: 'Inter', sans-serif;
+      background-color: var(--bg-body);
+      color: var(--text-primary);
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
 
     .font-mono {
@@ -131,15 +166,16 @@
 
     /* Terminal styles */
     .terminal-window {
-      background: rgba(30, 30, 30, 0.95);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: var(--bg-terminal);
+      border: 1px solid var(--border-secondary);
       border-radius: 12px;
       padding: 3rem 2rem 2rem;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+      box-shadow: var(--shadow-terminal);
       position: relative;
       width: calc(100% - 2rem);
       max-width: 800px;
       margin: 0 auto;
+      transition: all 0.3s ease;
     }
 
     /* Base styles for ALL titles */
@@ -150,7 +186,7 @@
       right: 5rem;
       /* Safe zone from right edge */
       text-align: center;
-      color: rgba(255, 255, 255, 0.6);
+      color: var(--terminal-title);
       font-family: 'JetBrains Mono', monospace;
       user-select: none;
       white-space: nowrap;
@@ -158,6 +194,7 @@
       text-overflow: ellipsis;
       font-size: 0.7rem;
       /* Mobile-first font size */
+      transition: color 0.3s ease;
     }
 
     /* Show mobile title by default */
@@ -214,13 +251,14 @@
       left: 0;
       right: 0;
       height: 2rem;
-      background: rgba(50, 50, 50, 0.95);
+      background: var(--bg-terminal-header);
       border-top-left-radius: 11px;
       border-top-right-radius: 11px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      border-bottom: 1px solid var(--border-secondary);
       display: flex;
       align-items: center;
       padding: 0 1rem;
+      transition: all 0.3s ease;
     }
 
     @media (max-width: 640px) {
@@ -315,7 +353,7 @@
     }
 
     .terminal-prompt {
-      color: #4ade80;
+      color: var(--color-green);
       white-space: nowrap;
     }
 
@@ -336,7 +374,7 @@
     }
 
     .terminal-link:hover {
-      background: rgba(255, 255, 255, 0.1);
+      background: var(--bg-hover);
     }
 
     .terminal-nav-link {
@@ -349,7 +387,7 @@
 
     .terminal-nav-link:hover {
       opacity: 1;
-      background: rgba(255, 255, 255, 0.05);
+      background: var(--bg-hover);
     }
 
     #mobileMenu.hidden {
@@ -463,6 +501,27 @@
       animation: blink 1s infinite;
     }
 
+    /* Career Section Styles */
+    .career-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.375rem;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+
+    .career-header:hover {
+      background-color: var(--bg-career-hover);
+    }
+
+    .career-details {
+      padding: 0.75rem 1rem 0.75rem 2rem;
+      background-color: var(--bg-career-detail);
+      border-radius: 0 0 0.375rem 0.375rem;
+      transition: background-color 0.3s ease;
+    }
 
     .icon-hover {
       transition: all 0.3s ease;
@@ -475,12 +534,24 @@
       transform: scale(1.1);
     }
 
+    /* Icon Inversion for Dark Mode */
+    .invert {
+      filter: invert(1);
+      transition: filter 0.3s ease;
+    }
+
     .icon-hover img {
       display: block;
       object-fit: contain;
       width: 2.5rem;
       height: 2.5rem;
       vertical-align: middle;
+    }
+
+    /* Icon inversion for dark mode */
+    .icon-hover img[src*="express"],
+    .icon-hover img[src*="github"] {
+      filter: invert(1);
     }
 
     @media (max-width: 639px) {
@@ -557,13 +628,23 @@
         min-height: -webkit-fill-available;
       }
     }
+
+    /* Career section styles */
+    .career-header:hover {
+      background-color: var(--bg-career-hover);
+    }
+
+    .career-details {
+      background-color: var(--bg-career-detail);
+    }
   </style>
 </head>
 
-<body class="bg-[#1a1a1a] text-gray-100 transition-colors duration-300">
+<body>
 
   <!-- Navbar -->
-  <nav class="sticky top-0 z-50 bg-[#1a1a1a] border-b border-gray-800" role="navigation" aria-label="Main navigation">
+  <nav class="sticky top-0 z-50 border-b" role="navigation" aria-label="Main navigation"
+    style="background-color: #1a1a1a; border-color: var(--border-primary); transition: all 0.3s ease;">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between">
       <a href="index.html" aria-label="Home - Nishant Sharma Portfolio"
         class="font-mono text-base sm:text-lg font-semibold text-green-500 hover:text-green-400 transition">~/Nishant<span
@@ -572,27 +653,34 @@
       <div class="flex items-center gap-4 sm:gap-6 md:gap-8">
         <div class="hidden md:flex gap-4 lg:gap-6 font-mono text-sm">
           <a href="#projects" class="terminal-nav-link hover:text-pink-500 transition"
-            aria-label="View Projects">[Projects]</a>
-          <a href="#about" class="terminal-nav-link hover:text-pink-500 transition" aria-label="About Me">[About]</a>
-          <a href="#stack" class="terminal-nav-link hover:text-pink-500 transition" aria-label="Tech Stack">[Stack]</a>
+            aria-label="View Projects">./projects</a>
+          <a href="#about" class="terminal-nav-link hover:text-pink-500 transition" aria-label="About Me">./about</a>
+          <a href="#stack" class="terminal-nav-link hover:text-pink-500 transition" aria-label="Tech Stack">./stack</a>
           <a href="#career" class="terminal-nav-link hover:text-pink-500 transition"
-            aria-label="Career History">[Career]</a>
+            aria-label="Career History">./career</a>
           <a href="#contact" class="terminal-nav-link hover:text-pink-500 transition"
-            aria-label="Contact Information">[Contact]</a>
+            aria-label="Contact Information">./contact</a>
+          <a href="https://nishants.dev/assets/nishant_cv.pdf"
+            class="terminal-nav-link text-pink-500 hover:text-pink-400 transition">[view_resume]</a>
         </div>
 
         <!-- Hamburger menu -->
         <button id="mobileMenuButton" aria-label="Open mobile menu" aria-expanded="false" aria-controls="mobileMenu"
           class="md:hidden p-2 font-mono text-pink-500 hover:text-pink-400 terminal-nav-link transition text-sm">
-          [menu]
+          [view_resume]
+        </button>
+        <button id="mobileMenuButton" aria-label="Open mobile menu" aria-expanded="false" aria-controls="mobileMenu"
+          class="md:hidden p-2 font-mono text-pink-500 hover:text-pink-400 terminal-nav-link transition text-sm">
+          ./menu
         </button>
       </div>
     </div>
     <!-- Add this mobile menu div after the nav div -->
     <div id="mobileMenu" class="hidden md:hidden fixed inset-0 z-40" aria-hidden="true">
       <div class="fixed inset-0 bg-black opacity-70" aria-hidden="true"></div>
-      <div class="fixed inset-y-0 right-0 w-64 sm:w-72 bg-[#1a1a1a] shadow-lg border-l border-gray-800" role="dialog"
-        aria-modal="true" aria-label="Mobile navigation menu">
+      <div class="fixed inset-y-0 right-0 w-64 sm:w-72 shadow-lg" role="dialog" aria-modal="true"
+        aria-label="Mobile navigation menu"
+        style="background-color: #1a1a1a; border-left: 1px solid var(--border-primary); transition: all 0.3s ease;">
         <div class="p-4 sm:p-6 space-y-3 sm:space-y-4">
           <button id="closeMenu" aria-label="Close mobile menu"
             class="absolute top-3 sm:top-4 right-3 sm:right-4 p-2 font-mono text-pink-500 hover:text-pink-400 terminal-nav-link text-sm">
@@ -600,16 +688,17 @@
           </button>
           <div class="flex flex-col gap-3 sm:gap-4 font-mono text-base sm:text-lg pt-10 sm:pt-8">
             <a href="#projects" class="terminal-nav-link hover:text-pink-500 transition"
-              aria-label="View Projects">[Projects]</a>
-            <a href="#about" class="terminal-nav-link hover:text-pink-500 transition" aria-label="About Me">[About]</a>
+              aria-label="View Projects">./projects</a>
+            <a href="#about" class="terminal-nav-link hover:text-pink-500 transition" aria-label="About Me">./about</a>
             <a href="#stack" class="terminal-nav-link hover:text-pink-500 transition"
-              aria-label="Tech Stack">[Stack]</a>
+              aria-label="Tech Stack">./stack</a>
             <a href="#career" class="terminal-nav-link hover:text-pink-500 transition"
-              aria-label="Career History">[Career]</a>
+              aria-label="Career History">./career</a>
             <a href="#contact" class="terminal-nav-link hover:text-pink-500 transition"
-              aria-label="Contact Information">[Contact]</a>
+              aria-label="Contact Information">./contact</a>
             <a href="https://nishants.dev/assets/nishant_cv.pdf"
-              class="terminal-nav-link text-pink-500 hover:text-pink-400 transition">[View Resume]</a>
+              class="terminal-nav-link text-pink-500 hover:text-pink-400 transition">./view_resume</a>
+
           </div>
         </div>
       </div>
@@ -617,7 +706,8 @@
   </nav>
 
   <!-- Hero Section -->
-  <section id="home" class="min-h-[90vh] flex items-center justify-center px-4 sm:px-6 py-12 sm:py-16 md:py-20">
+  <section id="home" class="min-h-[90vh] flex items-center justify-center px-4 sm:px-6 py-12 sm:py-16 md:py-20"
+    style="background-color: #1a1a1a; transition: background-color 0.3s ease;">
     <div class="w-full">
       <div class="terminal-window">
         <div class="terminal-header">
@@ -634,8 +724,9 @@
             </span>
             <span class="text-yellow-300">echo $USER_NAME</span>
           </div>
-          <div class="terminal-output pl-2 sm:pl-4 md:pl-6 mb-4 sm:mb-6">
-            <h1 class="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl text-gray-200 break-words leading-snug">
+          <div class="terminal-output mb-4 sm:mb-6">
+            <h1 class="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl text-gray-200 break-words leading-snug"
+              style="padding-left: 0.5rem;">
               Nishant Sharma</h1>
           </div>
 
@@ -645,9 +736,10 @@
             </span>
             <span class="text-yellow-300">cat role.txt</span>
           </div>
-          <div class="terminal-output space-y-3 sm:space-y-4 pl-2 sm:pl-4 md:pl-6">
-            <p class="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl text-gray-200 break-words leading-snug">
-              Backend Specialist | Business Logic Expert | Full-Stack Engineer</p>
+          <div class="terminal-output space-y-3 sm:space-y-4">
+            <p class="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl text-gray-200 break-words leading-snug"
+              style="padding-left: 0.5rem;">
+              Backend Specialist | Business Logic Expert | MERN Developer</p>
           </div>
 
           <!-- CTA Buttons as Terminal Output -->
@@ -659,10 +751,10 @@
           </div>
           <div class="terminal-output pl-2 sm:pl-4 md:pl-6">
             <div class="flex flex-row gap-3 sm:gap-4 md:gap-6">
-              <a href="#contact"
-                class="text-pink-500 hover:text-pink-400 hover:bg-pink-500/10 px-3 py-2 sm:px-2 sm:py-1 rounded transition-all duration-200 text-center sm:text-left">[Contact_Me]</a>
               <a href="https://nishants.dev/assets/nishant_cv.pdf"
-                class="text-pink-500 hover:text-pink-400 hover:bg-pink-500/10 px-3 py-2 sm:px-2 sm:py-1 rounded transition-all duration-200 text-center sm:text-left">[View_Resume]</a>
+                class="terminal-nav-link text-pink-500 hover:text-pink-400 transition">[contact_me]</a>
+              <a href="https://nishants.dev/assets/nishant_cv.pdf"
+                class="terminal-nav-link text-pink-500 hover:text-pink-400 transition">[view_resume]</a>
             </div>
           </div>
         </div>
@@ -671,7 +763,8 @@
   </section>
 
   <!-- Projects Section -->
-  <section id="projects" class="py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-[#1a1a1a]">
+  <section id="projects" class="py-12 sm:py-16 md:py-20 px-4 sm:px-6"
+    style="background-color: var(--bg-section); transition: background-color 0.3s ease;">
     <div class="max-w-4xl mx-auto">
       <!-- Terminal Window Wrapper -->
       <div class="terminal-window">
@@ -844,7 +937,8 @@
   </section>
 
   <!-- About Section -->
-  <section id="about" class="py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-[#1a1a1a]">
+  <section id="about" class="py-12 sm:py-16 md:py-20 px-4 sm:px-6"
+    style="background-color: var(--bg-section); transition: background-color 0.3s ease;">
     <div class="max-w-4xl mx-auto">
       <!-- Terminal Window Wrapper -->
       <div class="terminal-window">
@@ -985,14 +1079,14 @@
               </div>
             </div>
           </div>
-
         </div>
       </div>
     </div>
   </section>
 
   <!-- Stack Section -->
-  <section id="stack" class="py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-[#1a1a1a]">
+  <section id="stack" class="py-12 sm:py-16 md:py-20 px-4 sm:px-6"
+    style="background-color: var(--bg-section); transition: background-color 0.3s ease;">
     <div class="max-w-4xl mx-auto">
       <!-- Terminal Window Wrapper -->
       <div class="terminal-window">
@@ -1144,7 +1238,8 @@
   </section>
 
   <!-- Career Changelog Section -->
-  <section id="career" class="py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-[#1a1a1a]">
+  <section id="career" class="py-12 sm:py-16 md:py-20 px-4 sm:px-6"
+    style="background-color: var(--bg-section); transition: background-color 0.3s ease;">
     <div class="max-w-4xl mx-auto">
       <!-- Terminal Window Wrapper -->
       <div class="terminal-window">
@@ -1169,7 +1264,7 @@
             <!-- Internship Completion -->
             <div class="career-entry group">
               <div
-                class="flex items-start sm:items-center gap-2 sm:gap-3 md:gap-4 p-2 sm:p-3 rounded cursor-pointer hover:bg-[#2a2a2a] transition">
+                class="career-header flex items-start sm:items-center gap-2 sm:gap-3 md:gap-4 p-2 sm:p-3 rounded cursor-pointer transition">
                 <span class="text-pink-500 toggle-icon mt-1 sm:mt-0 flex-shrink-0">▲</span>
                 <span class="text-cyan-400 whitespace-nowrap shrink-0 text-xs sm:text-sm">[2025-10]</span>
                 <span class="text-gray-200 leading-relaxed text-xs sm:text-sm md:text-base">Completed Fullstack
@@ -1177,7 +1272,7 @@
                   Interns</span>
               </div>
               <div
-                class="pl-4 sm:pl-6 md:pl-8 lg:pl-12 pr-2 sm:pr-3 md:pr-4 py-3 sm:py-4 bg-[#2a2a2a]/50 rounded-b text-gray-400 text-xs sm:text-sm">
+                class="career-details pl-4 sm:pl-6 md:pl-8 lg:pl-12 pr-2 sm:pr-3 md:pr-4 py-3 sm:py-4 rounded-b text-gray-400 text-xs sm:text-sm">
                 <div class="space-y-2 sm:space-y-3">
                   <div><span class="text-cyan-400">>></span> Architected and deployed a production-ready Node.js data
                     layer,
@@ -1195,7 +1290,7 @@
             <!-- Backend Certification -->
             <div class="career-entry group">
               <div
-                class="flex items-start sm:items-center gap-2 sm:gap-3 md:gap-4 p-2 sm:p-3 rounded cursor-pointer hover:bg-[#2a2a2a] transition">
+                class="career-header flex items-start sm:items-center gap-2 sm:gap-3 md:gap-4 p-2 sm:p-3 rounded cursor-pointer transition">
                 <span class="text-pink-500 toggle-icon mt-1 sm:mt-0 flex-shrink-0">▼</span>
                 <span class="text-cyan-400 whitespace-nowrap shrink-0 text-xs sm:text-sm">[2024-XX]</span>
                 <span class="text-gray-200 leading-relaxed text-xs sm:text-sm md:text-base">Earned Back End Development
@@ -1203,7 +1298,7 @@
                   (freeCodeCamp)</span>
               </div>
               <div
-                class="hidden pl-4 sm:pl-6 md:pl-8 lg:pl-12 pr-2 sm:pr-3 md:pr-4 py-3 sm:py-4 bg-[#2a2a2a]/50 rounded-b text-gray-400 text-xs sm:text-sm">
+                class="career-details hidden pl-4 sm:pl-6 md:pl-8 lg:pl-12 pr-2 sm:pr-3 md:pr-4 py-3 sm:py-4 rounded-b text-gray-400 text-xs sm:text-sm">
                 <div class="space-y-2 sm:space-y-3">
                   <div><span class="text-cyan-400">>></span> Completed 5 microservice projects, including a URL
                     Shortener,
@@ -1220,14 +1315,14 @@
             <!-- GitHub Certification -->
             <div class="career-entry group">
               <div
-                class="flex items-start sm:items-center gap-2 sm:gap-3 md:gap-4 p-2 sm:p-3 rounded cursor-pointer hover:bg-[#2a2a2a] transition">
+                class="career-header flex items-start sm:items-center gap-2 sm:gap-3 md:gap-4 p-2 sm:p-3 rounded cursor-pointer transition">
                 <span class="text-pink-500 toggle-icon mt-1 sm:mt-0 flex-shrink-0">▼</span>
                 <span class="text-cyan-400 whitespace-nowrap shrink-0 text-xs sm:text-sm">[2024-XX]</span>
                 <span class="text-gray-200 leading-relaxed text-xs sm:text-sm md:text-base">Earned Microsoft GitHub
                   Foundations Certification</span>
               </div>
               <div
-                class="hidden pl-4 sm:pl-6 md:pl-8 lg:pl-12 pr-2 sm:pr-3 md:pr-4 py-3 sm:py-4 bg-[#2a2a2a]/50 rounded-b text-gray-400 text-xs sm:text-sm">
+                class="career-details hidden pl-4 sm:pl-6 md:pl-8 lg:pl-12 pr-2 sm:pr-3 md:pr-4 py-3 sm:py-4 rounded-b text-gray-400 text-xs sm:text-sm">
                 <div class="space-y-2 sm:space-y-3">
                   <div><span class="text-cyan-400">>></span> Mastered core Git concepts including branching, merging,
                     pull
@@ -1245,7 +1340,7 @@
             <!-- BCA Start -->
             <div class="career-entry group">
               <div
-                class="flex items-start sm:items-center gap-2 sm:gap-3 md:gap-4 p-2 sm:p-3 rounded cursor-pointer hover:bg-[#2a2a2a] transition">
+                class="career-header flex items-start sm:items-center gap-2 sm:gap-3 md:gap-4 p-2 sm:p-3 rounded cursor-pointer transition">
                 <span class="text-pink-500 toggle-icon mt-1 sm:mt-0 flex-shrink-0">▼</span>
                 <span class="text-cyan-400 whitespace-nowrap shrink-0 text-xs sm:text-sm">[2025-04]</span>
                 <span class="text-gray-200 leading-relaxed text-xs sm:text-sm md:text-base">Started Bachelor of Computer
@@ -1254,7 +1349,7 @@
                   College</span>
               </div>
               <div
-                class="hidden pl-4 sm:pl-6 md:pl-8 lg:pl-12 pr-2 sm:pr-3 md:pr-4 py-3 sm:py-4 bg-[#2a2a2a]/50 rounded-b text-gray-400 text-xs sm:text-sm">
+                class="career-details hidden pl-4 sm:pl-6 md:pl-8 lg:pl-12 pr-2 sm:pr-3 md:pr-4 py-3 sm:py-4 rounded-b text-gray-400 text-xs sm:text-sm">
                 <div class="space-y-2 sm:space-y-3">
                   <div><span class="text-cyan-400">>></span> Began foundational studies in computer science, focusing on
                     programming and data structures.</div>
@@ -1271,14 +1366,14 @@
             <!-- Senior Secondary -->
             <div class="career-entry group">
               <div
-                class="flex items-start sm:items-center gap-2 sm:gap-3 md:gap-4 p-2 sm:p-3 rounded cursor-pointer hover:bg-[#2a2a2a] transition">
+                class="career-header flex items-start sm:items-center gap-2 sm:gap-3 md:gap-4 p-2 sm:p-3 rounded cursor-pointer transition">
                 <span class="text-pink-500 toggle-icon mt-1 sm:mt-0 flex-shrink-0">▼</span>
                 <span class="text-cyan-400 whitespace-nowrap shrink-0 text-xs sm:text-sm">[2024-03]</span>
                 <span class="text-gray-200 leading-relaxed text-xs sm:text-sm md:text-base">Completed Senior Secondary
                   (Grade XII) at KPS Udaan</span>
               </div>
               <div
-                class="hidden pl-4 sm:pl-6 md:pl-8 lg:pl-12 pr-2 sm:pr-3 md:pr-4 py-3 sm:py-4 bg-[#2a2a2a]/50 rounded-b text-gray-400 text-xs sm:text-sm">
+                class="career-details hidden pl-4 sm:pl-6 md:pl-8 lg:pl-12 pr-2 sm:pr-3 md:pr-4 py-3 sm:py-4 rounded-b text-gray-400 text-xs sm:text-sm">
                 <div class="space-y-2 sm:space-y-3">
                   <div><span class="text-cyan-400">>></span> Graduated with a focus on Physics, Chemistry, and
                     Mathematics
@@ -1301,7 +1396,8 @@
   </section>
 
   <!-- Contact Section -->
-  <section id="contact" class="py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-[#1a1a1a]">
+  <section id="contact" class="py-12 sm:py-16 md:py-20 px-4 sm:px-6"
+    style="background-color: var(--bg-section); transition: background-color 0.3s ease;">
     <div class="max-w-4xl mx-auto">
       <!-- Terminal Window Wrapper -->
       <div class="terminal-window">
@@ -1349,13 +1445,15 @@
 
             </div>
           </div>
+
         </div>
       </div>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="py-8 sm:py-10 px-4 sm:px-6 bg-[#1a1a1a]">
+  <footer class="py-8 sm:py-10 px-4 sm:px-6"
+    style="background-color: var(--bg-section); border-top: 1px solid var(--border-primary); transition: all 0.3s ease;">
     <div class="max-w-4xl mx-auto">
       <div class="font-mono text-xs sm:text-sm space-y-3 sm:space-y-4">
         <p class="text-gray-400">// Session closed by $USER</p>
