@@ -1,5 +1,4 @@
 {
-	"outputDirectory": "public",
 	"redirects": [
 		{
 			"source": "/index.html",
