@@ -7,7 +7,7 @@ package-lock.json
 
 # Build outputs (commit the generated CSS for GitHub Pages)
 # Uncomment next line if using Netlify/Vercel (they build on deploy)
-assets/css/tailwind.min.css
+# assets/css/tailwind.min.css
 
 # Vercel build output
 public/
