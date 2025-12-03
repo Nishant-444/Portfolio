@@ -16,7 +16,7 @@ I love solving problems, exploring tech, and bringing ideas to life through code
 
 ## 🛠 Tech Stack
 
-- **Languages**: C, C++, HTML, CSS, SQL  
+- **Languages**: C, C++, HTML, CSS, SQL, JavaScript
 - **Tools & Concepts**:
   - Data Structures & Algorithms (DSA)
   - Object-Oriented Programming (OOP)
@@ -30,11 +30,11 @@ I love solving problems, exploring tech, and bringing ideas to life through code
 
 ## 🚀 Features
 
-- Smooth Scroll Navigation  
-- Scroll-triggered Section Animations  
-- Downloadable Resume (PDF)  
-- Responsive Design  
-- Contact Form (via [Formsubmit](https://formsubmit.co/))  
+- Smooth Scroll Navigation
+- Scroll-triggered Section Animations
+- Downloadable Resume (PDF)
+- Responsive Design
+- Contact Form
 - Lightweight, No Dependencies
 
 ---
