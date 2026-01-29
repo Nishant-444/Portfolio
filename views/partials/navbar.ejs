@@ -1,0 +1,150 @@
+<!-- Navbar -->
+<nav
+	class="sticky top-0 z-50 border-b"
+	role="navigation"
+	aria-label="Main navigation"
+	style="
+		background-color: #1a1a1a;
+		border-color: var(--border-primary);
+		transition: all 0.3s ease;
+	"
+>
+	<div
+		class="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between"
+	>
+		<a
+			href="index.html"
+			aria-label="Home - Nishant Sharma Portfolio"
+			class="font-mono text-base sm:text-lg font-semibold text-green-500 hover:text-green-400 transition"
+			>~/Nishant<span class="blink-cursor text-gray-300" aria-hidden="true"
+				>_</span
+			></a
+		>
+
+		<div class="flex items-center gap-4 sm:gap-6 md:gap-8">
+			<div class="hidden md:flex gap-4 lg:gap-6 font-mono text-sm">
+				<a
+					href="#projects"
+					class="terminal-nav-link hover:text-pink-500 transition"
+					aria-label="View Projects"
+					>./projects</a
+				>
+				<a
+					href="#about"
+					class="terminal-nav-link hover:text-pink-500 transition"
+					aria-label="About Me"
+					>./about</a
+				>
+				<a
+					href="#stack"
+					class="terminal-nav-link hover:text-pink-500 transition"
+					aria-label="Tech Stack"
+					>./stack</a
+				>
+				<a
+					href="#career"
+					class="terminal-nav-link hover:text-pink-500 transition"
+					aria-label="Career History"
+					>./career</a
+				>
+				<a
+					href="#contact"
+					class="terminal-nav-link hover:text-pink-500 transition"
+					aria-label="Contact Information"
+					>./contact</a
+				>
+				<a
+					href="https://nishants.dev/assets/Nishant_Sharma_Resume.pdf"
+					class="terminal-nav-link text-pink-500 hover:text-pink-400 transition"
+					>[view_resume]</a
+				>
+			</div>
+
+			<!-- Resume and Hamburger menu buttons -->
+			<a
+				href="https://nishants.dev/assets/Nishant_Sharma_Resume.pdf"
+				aria-label="View Resume"
+				class="md:hidden p-2 font-mono text-pink-500 hover:text-pink-400 terminal-nav-link transition text-sm"
+			>
+				[view_resume]
+			</a>
+			<button
+				id="mobileMenuButton"
+				aria-label="Open mobile menu"
+				aria-expanded="false"
+				aria-controls="mobileMenu"
+				class="md:hidden p-2 font-mono text-pink-500 hover:text-pink-400 terminal-nav-link transition text-sm"
+			>
+				./menu
+			</button>
+		</div>
+	</div>
+	<!-- Add this mobile menu div after the nav div -->
+	<div
+		id="mobileMenu"
+		class="hidden md:hidden fixed inset-0 z-40"
+		aria-hidden="true"
+	>
+		<div class="fixed inset-0 bg-black opacity-70" aria-hidden="true"></div>
+		<div
+			class="fixed inset-y-0 right-0 w-64 sm:w-72 shadow-lg"
+			role="dialog"
+			aria-modal="true"
+			aria-label="Mobile navigation menu"
+			style="
+				background-color: #1a1a1a;
+				border-left: 1px solid var(--border-primary);
+				transition: all 0.3s ease;
+			"
+		>
+			<div class="p-4 sm:p-6 space-y-3 sm:space-y-4">
+				<button
+					id="closeMenu"
+					aria-label="Close mobile menu"
+					class="absolute top-3 sm:top-4 right-3 sm:right-4 p-2 font-mono text-pink-500 hover:text-pink-400 terminal-nav-link text-sm"
+				>
+					[x]
+				</button>
+				<div
+					class="flex flex-col gap-3 sm:gap-4 font-mono text-base sm:text-lg pt-10 sm:pt-8"
+				>
+					<a
+						href="#projects"
+						class="terminal-nav-link hover:text-pink-500 transition"
+						aria-label="View Projects"
+						>./projects</a
+					>
+					<a
+						href="#about"
+						class="terminal-nav-link hover:text-pink-500 transition"
+						aria-label="About Me"
+						>./about</a
+					>
+					<a
+						href="#stack"
+						class="terminal-nav-link hover:text-pink-500 transition"
+						aria-label="Tech Stack"
+						>./stack</a
+					>
+					<a
+						href="#career"
+						class="terminal-nav-link hover:text-pink-500 transition"
+						aria-label="Career History"
+						>./career</a
+					>
+					<a
+						href="#contact"
+						class="terminal-nav-link hover:text-pink-500 transition"
+						aria-label="Contact Information"
+						>./contact</a
+					>
+					<a
+						href="https://nishants.dev/assets/Nishant_Sharma_Resume.pdf"
+						class="terminal-nav-link text-pink-500 hover:text-pink-400 transition"
+						>./view_resume</a
+					>
+				</div>
+			</div>
+		</div>
+	</div>
+</nav>
