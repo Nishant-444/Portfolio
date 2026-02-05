@@ -1,0 +1,25 @@
+{
+	"blogs": [
+		{
+			"id": "blog-1",
+			"title": "Lorem Ipsum Dolor Sit Amet",
+			"date": "Feb 04, 2026",
+			"readTime": 5,
+			"content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.\n\nDuis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n\nSed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.\n\nNemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.\n\nSed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur."
+		},
+		{
+			"id": "blog-2",
+			"title": "Consectetur Adipiscing Elit",
+			"date": "Feb 03, 2026",
+			"readTime": 4,
+			"content": "Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.\n\nLectus mauris ultrices eros in cursus turpis massa tincidunt. Egestas sed sed risus pretium quam vulputate dignissim suspendisse. Tortor consequat id porta nibh venenatis cras sed felis eget.\n\nVitae sapien pellentesque habitant morbi tristique senectus et netus. Facilisis leo vel fringilla est ullamcorper eget nulla facilisi. Faucibus nisl tincidunt eget nullam non nisi est sit.\n\nAmet luctus venenatis lectus magna fringilla urna porttitor rhoncus. Magna etiam tempor orci eu lobortis elementum nibh tellus molestie. Diam donec adipiscing tristique risus nec feugiat in fermentum posuere.\n\nInteger malesuada nunc vel risus commodo viverra maecenas accumsan lacus. Facilisis gravida neque convallis a cras semper auctor neque vitae."
+		},
+		{
+			"id": "blog-3",
+			"title": "Tempor Incididunt Ut Labore",
+			"date": "Feb 02, 2026",
+			"readTime": 6,
+			"content": "Tempor incididunt ut labore et dolore magna aliqua. Elementum integer enim neque volutpat ac tincidunt vitae semper. Cursus vitae congue mauris rhoncus aenean vel elit scelerisque.\n\nMorbi tincidunt ornare massa eget egestas purus viverra accumsan. Vulputate sapien nec sagittis aliquam malesuada bibendum arcu vitae. Tristique senectus et netus et malesuada fames ac turpis egestas.\n\nNulla facilisi morbi tempus iaculis urna id volutpat lacus laoreet. Sed blandit libero volutpat sed cras ornare arcu dui vivamus. Amet cursus sit amet dictum sit amet justo donec enim.\n\nAuctor urna nunc id cursus metus aliquam eleifend mi. Pellentesque habitant morbi tristique senectus et netus et malesuada. Accumsan tortor posuere ac ut consequat semper viverra nam libero.\n\nNibh venenatis cras sed felis eget velit aliquet sagittis id. Commodo viverra maecenas accumsan lacus vel facilisis volutpat est. Cras tincidunt lobortis feugiat vivamus at augue eget arcu.\n\nEget mi proin sed libero enim sed faucibus turpis. Congue quisque egestas diam in arcu cursus euismod quis viverra. Pharetra vel turpis nunc eget lorem dolor sed viverra ipsum."
+		}
+	]
+}

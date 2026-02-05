@@ -1,0 +1,1160 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Nishant Sharma - Terminal Portfolio</title>
+		<style>
+			/* ============================================
+           GRUVBOX DARK TERMINAL PORTFOLIO
+           Design System: Gruvbox Dark (Strict Standard)
+           Architecture: Single-Page View Switching
+        ============================================ */
+
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+
+			:root {
+				/* Gruvbox Dark Palette - Strict Variables */
+				--bg: #282828;
+				--term-bg: #1d2021;
+				--text: #ebdbb2;
+				--accent-yellow: #fabd2f;
+				--accent-green: #b8bb26;
+				--accent-blue: #83a598;
+				--accent-red: #fb4934;
+				--hover-bg: #3c3836;
+				--border-grey: #504945;
+			}
+
+			body {
+				font-family: 'Fira Code', Consolas, monospace;
+				background-color: var(--bg);
+				color: var(--text);
+				height: 100vh;
+				overflow: hidden;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				padding: 1rem;
+			}
+
+			/* Terminal Container */
+			.terminal {
+				width: 100%;
+				max-width: 1200px;
+				height: 90vh;
+				background-color: var(--term-bg);
+				border-radius: 8px;
+				overflow: hidden;
+				display: flex;
+				flex-direction: column;
+				box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+			}
+
+			/* Window Header - Clean, minimal */
+			.window-header {
+				background: var(--border-grey);
+				padding: 0.75rem 1rem;
+				display: flex;
+				align-items: center;
+				border-bottom: 2px solid var(--bg);
+			}
+
+			.window-controls {
+				display: flex;
+				gap: 0.5rem;
+			}
+
+			.control-btn {
+				width: 12px;
+				height: 12px;
+				border-radius: 50%;
+				cursor: pointer;
+			}
+
+			.control-btn.red {
+				background: var(--accent-red);
+			}
+			.control-btn.yellow {
+				background: var(--accent-yellow);
+			}
+			.control-btn.green {
+				background: var(--accent-green);
+			}
+
+			/* Content Area */
+			.terminal-content {
+				flex: 1;
+				padding: 2rem;
+				overflow-y: auto;
+				position: relative;
+			}
+
+			/* View Management */
+			.view {
+				display: none;
+				animation: fadeIn 0.3s ease-in;
+			}
+
+			.view.active {
+				display: block;
+			}
+
+			@keyframes fadeIn {
+				from {
+					opacity: 0;
+				}
+				to {
+					opacity: 1;
+				}
+			}
+
+			/* ASCII Art */
+			.ascii-art {
+				color: var(--accent-green);
+				font-size: 0.85rem;
+				line-height: 1.2;
+				margin-bottom: 2rem;
+				white-space: pre;
+			}
+
+			/* System Info */
+			.system-info {
+				margin: 1.5rem 0;
+			}
+
+			.info-line {
+				margin: 0.5rem 0;
+				font-size: 1rem;
+			}
+
+			.info-label {
+				color: var(--accent-blue);
+			}
+
+			/* Blended Resume CTA */
+			.resume-cta {
+				color: var(--accent-yellow);
+				font-size: 1rem;
+				margin: 1rem 0;
+				text-decoration: none;
+				display: block;
+				transition: all 0.2s;
+				padding: 0.5rem 0;
+			}
+
+			.resume-cta:hover {
+				background: var(--hover-bg);
+				padding-left: 0.5rem;
+			}
+
+			.status-cursor {
+				display: inline-block;
+				width: 10px;
+				height: 16px;
+				background: var(--accent-green);
+				animation: blink 1s infinite;
+				margin-left: 5px;
+			}
+
+			@keyframes blink {
+				0%,
+				50% {
+					opacity: 1;
+				}
+				51%,
+				100% {
+					opacity: 0;
+				}
+			}
+
+			.hint {
+				color: var(--accent-blue);
+				margin-top: 2rem;
+				font-style: italic;
+				opacity: 0.8;
+			}
+
+			/* Projects Table */
+			.projects-table {
+				width: 100%;
+				border-collapse: collapse;
+				margin: 1rem 0;
+			}
+
+			.projects-table th {
+				background: var(--hover-bg);
+				color: var(--accent-yellow);
+				padding: 0.75rem;
+				text-align: left;
+				border-bottom: 2px solid var(--border-grey);
+			}
+
+			.projects-table td {
+				padding: 0.75rem;
+				border-bottom: 1px solid var(--border-grey);
+				vertical-align: top;
+			}
+
+			.projects-table tr:hover {
+				background: var(--hover-bg);
+				cursor: pointer;
+			}
+
+			.project-name {
+				color: var(--accent-green);
+				font-weight: bold;
+			}
+
+			.project-tech {
+				color: var(--accent-blue);
+				font-size: 0.85rem;
+			}
+
+			.project-links a {
+				color: var(--accent-blue);
+				text-decoration: none;
+				margin-right: 1rem;
+				cursor: pointer;
+			}
+
+			.project-links a:hover {
+				text-decoration: underline;
+				color: var(--accent-yellow);
+			}
+
+			/* Project Cards (Mobile) */
+			.project-card {
+				display: none;
+				background: var(--hover-bg);
+				padding: 1rem;
+				margin: 1rem 0;
+				border-left: 3px solid var(--accent-green);
+				border-radius: 4px;
+			}
+
+			.project-card h3 {
+				color: var(--accent-green);
+				margin-bottom: 0.5rem;
+			}
+
+			.project-card .tech {
+				color: var(--accent-blue);
+				font-size: 0.85rem;
+				margin: 0.5rem 0;
+			}
+
+			.project-card .desc {
+				margin: 0.5rem 0;
+				font-size: 0.9rem;
+			}
+
+			.project-card .links {
+				margin-top: 0.75rem;
+			}
+
+			.project-card .links a {
+				color: var(--accent-blue);
+				text-decoration: none;
+				margin-right: 1rem;
+				cursor: pointer;
+			}
+
+			/* Tech Stack Section */
+			.stack-category {
+				margin: 1.5rem 0;
+			}
+
+			.stack-category h3 {
+				color: var(--accent-yellow);
+				margin-bottom: 0.75rem;
+				font-size: 1.1rem;
+			}
+
+			.stack-list {
+				background: var(--hover-bg);
+				padding: 1rem;
+				border-left: 3px solid var(--accent-green);
+				line-height: 1.8;
+			}
+
+			.stack-item {
+				color: var(--accent-blue);
+				margin: 0.25rem 0;
+			}
+
+			/* Blog List */
+			.blog-list {
+				margin: 1rem 0;
+			}
+
+			.blog-entry {
+				padding: 1rem;
+				margin: 0.5rem 0;
+				border-left: 3px solid var(--accent-blue);
+				background: var(--hover-bg);
+				cursor: pointer;
+				transition: all 0.2s;
+			}
+
+			.blog-entry:hover {
+				border-left-color: var(--accent-yellow);
+				transform: translateX(5px);
+			}
+
+			.blog-date {
+				color: var(--accent-yellow);
+				font-size: 0.85rem;
+			}
+
+			.blog-title {
+				color: var(--accent-green);
+				font-size: 1.1rem;
+				margin-top: 0.25rem;
+			}
+
+			/* Blog Reader Modal */
+			.blog-modal {
+				display: none;
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background: rgba(0, 0, 0, 0.9);
+				z-index: 1000;
+				overflow-y: auto;
+				padding: 2rem;
+			}
+
+			.blog-modal.active {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+
+			.blog-content {
+				background: var(--term-bg);
+				max-width: 800px;
+				width: 100%;
+				padding: 2rem;
+				border-radius: 8px;
+				border: 2px solid var(--border-grey);
+				font-family: Georgia, serif;
+				line-height: 1.8;
+			}
+
+			.blog-content h2 {
+				color: var(--accent-yellow);
+				margin-bottom: 1rem;
+				font-family: 'Fira Code', Consolas, monospace;
+			}
+
+			.blog-content p {
+				margin: 1rem 0;
+				color: var(--text);
+			}
+
+			.close-modal {
+				background: var(--accent-red);
+				color: var(--term-bg);
+				border: none;
+				padding: 0.5rem 1.5rem;
+				border-radius: 4px;
+				cursor: pointer;
+				font-size: 1rem;
+				margin-top: 1.5rem;
+				font-family: 'Fira Code', Consolas, monospace;
+			}
+
+			.close-modal:hover {
+				background: var(--accent-yellow);
+			}
+
+			/* About Section */
+			.bio-section {
+				margin: 2rem 0;
+			}
+
+			.bio-section h2 {
+				color: var(--accent-yellow);
+				margin-bottom: 1rem;
+				font-size: 1.3rem;
+			}
+
+			.bio-highlight {
+				background: var(--hover-bg);
+				padding: 1rem;
+				margin: 0.75rem 0;
+				border-left: 3px solid var(--accent-green);
+				line-height: 1.6;
+			}
+
+			.cert-list {
+				margin: 1rem 0;
+			}
+
+			.cert-item {
+				padding: 0.75rem;
+				margin: 0.5rem 0;
+				background: var(--hover-bg);
+				border-left: 3px solid var(--accent-blue);
+			}
+
+			.cert-check {
+				color: var(--accent-green);
+				margin-right: 0.5rem;
+			}
+
+			/* Contact Section */
+			.contact-section {
+				margin: 2rem 0;
+			}
+
+			.contact-section h2 {
+				color: var(--accent-yellow);
+				margin-bottom: 1rem;
+			}
+
+			.contact-group {
+				margin: 1.5rem 0;
+			}
+
+			.contact-group h3 {
+				color: var(--accent-blue);
+				margin-bottom: 0.75rem;
+			}
+
+			.contact-item {
+				padding: 0.5rem 0;
+			}
+
+			.contact-item a {
+				color: var(--accent-blue);
+				text-decoration: none;
+				cursor: pointer;
+			}
+
+			.contact-item a:hover {
+				color: var(--accent-yellow);
+				text-decoration: underline;
+			}
+
+			/* Neofetch Easter Egg */
+			.neofetch-display {
+				background: var(--hover-bg);
+				padding: 1.5rem;
+				border-radius: 4px;
+				margin: 2rem 0;
+				border: 2px solid var(--accent-green);
+			}
+
+			.neofetch-display pre {
+				color: var(--text);
+				line-height: 1.6;
+			}
+
+			.neofetch-label {
+				color: var(--accent-blue);
+			}
+
+			.neofetch-value {
+				color: var(--accent-green);
+			}
+
+			/* Footer Navigation */
+			.terminal-footer {
+				background: var(--border-grey);
+				padding: 1rem;
+				display: flex;
+				justify-content: center;
+				gap: 0.75rem;
+				flex-wrap: wrap;
+				border-top: 2px solid var(--bg);
+			}
+
+			.nav-btn {
+				background: transparent;
+				color: var(--text);
+				border: 2px solid var(--accent-blue);
+				padding: 0.75rem 1rem;
+				cursor: pointer;
+				transition: all 0.2s;
+				font-family: 'Fira Code', Consolas, monospace;
+				font-size: 0.9rem;
+				border-radius: 4px;
+				min-height: 48px;
+			}
+
+			.nav-btn:hover {
+				background: var(--hover-bg);
+				border-color: var(--accent-yellow);
+				color: var(--accent-yellow);
+			}
+
+			.nav-btn.active {
+				background: var(--accent-blue);
+				color: var(--term-bg);
+				border-color: var(--accent-blue);
+			}
+
+			/* Command Input */
+			.command-input {
+				margin-top: 2rem;
+				display: flex;
+				align-items: center;
+			}
+
+			.prompt-symbol {
+				color: var(--accent-green);
+				margin-right: 0.5rem;
+			}
+
+			.command-input input {
+				background: transparent;
+				border: none;
+				color: var(--text);
+				font-family: 'Fira Code', Consolas, monospace;
+				font-size: 1rem;
+				outline: none;
+				flex: 1;
+			}
+
+			/* Mobile Responsive */
+			@media (max-width: 600px) {
+				body {
+					padding: 0;
+				}
+
+				.terminal {
+					border-radius: 0;
+					height: 100vh;
+				}
+
+				.terminal-content {
+					padding: 1rem;
+				}
+
+				.ascii-art {
+					font-size: 0.6rem;
+				}
+
+				/* Hide table, show cards */
+				.projects-table {
+					display: none;
+				}
+
+				.project-card {
+					display: block;
+				}
+
+				.terminal-footer {
+					gap: 0.5rem;
+					padding: 0.75rem;
+				}
+
+				.nav-btn {
+					flex: 1;
+					min-width: 0;
+					font-size: 0.75rem;
+					padding: 0.65rem 0.4rem;
+				}
+			}
+
+			/* Headings */
+			h1 {
+				color: var(--accent-yellow);
+				margin-bottom: 1.5rem;
+				font-size: 1.8rem;
+			}
+
+			h2 {
+				color: var(--accent-green);
+				margin-bottom: 1rem;
+			}
+
+			/* Links */
+			a {
+				cursor: pointer;
+			}
+
+			/* Scrollbar */
+			.terminal-content::-webkit-scrollbar {
+				width: 8px;
+			}
+
+			.terminal-content::-webkit-scrollbar-track {
+				background: var(--term-bg);
+			}
+
+			.terminal-content::-webkit-scrollbar-thumb {
+				background: var(--border-grey);
+				border-radius: 4px;
+			}
+
+			.terminal-content::-webkit-scrollbar-thumb:hover {
+				background: var(--hover-bg);
+			}
+		</style>
+	</head>
+	<body>
+		<div class="terminal">
+			<!-- Window Header - Clean, only control buttons -->
+			<div class="window-header">
+				<div class="window-controls">
+					<div class="control-btn red"></div>
+					<div class="control-btn yellow"></div>
+					<div class="control-btn green"></div>
+				</div>
+			</div>
+
+			<!-- Main Content Area -->
+			<div class="terminal-content" id="content">
+				<!-- VIEW 1: HOME -->
+				<div class="view active" id="home-view">
+					<div class="ascii-art">
+						_ _ _ _ _ | \ | (_)___| |__ __ _ _ __ | |_ | \| | / __| '_ \ / _` |
+						'_ \| __| | |\ | \__ \ | | | (_| | | | | |_ |_| \_|_|___/_|
+						|_|\__,_|_| |_|\__|
+					</div>
+
+					<div class="system-info">
+						<div class="info-line">
+							<span class="info-label">User:</span> Nishant Sharma
+						</div>
+						<div class="info-line">
+							<span class="info-label">Role:</span> Backend & Cloud Architect
+						</div>
+						<div class="info-line">
+							<span class="info-label">Status:</span> Open for Work<span
+								class="status-cursor"
+							></span>
+						</div>
+
+						<!-- Blended Resume CTA -->
+						<a href="./resume.pdf" target="_blank" class="resume-cta">
+							> [IMPORTANT]: Download Full Dossier (resume.pdf)
+						</a>
+					</div>
+
+					<div class="hint">$ Type 'neofetch' for system info...</div>
+
+					<div class="command-input">
+						<span class="prompt-symbol">$</span>
+						<input
+							type="text"
+							id="command-line"
+							placeholder="Enter command..."
+							autocomplete="off"
+						/>
+					</div>
+				</div>
+
+				<!-- VIEW 2: PROJECTS -->
+				<div class="view" id="projects-view">
+					<h1>Projects</h1>
+
+					<!-- Desktop Table -->
+					<table class="projects-table">
+						<thead>
+							<tr>
+								<th>Name</th>
+								<th>Stack</th>
+								<th>Description</th>
+								<th>Links</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td class="project-name">VizTube</td>
+								<td class="project-tech">
+									Node.js, Express, PostgreSQL, Prisma, AWS (EC2/RDS), Nginx,
+									PM2, GitHub Actions
+								</td>
+								<td>
+									Video infrastructure migrated from MongoDB to PostgreSQL.
+									Implemented CI/CD and Nginx reverse proxy for high
+									availability.
+								</td>
+								<td class="project-links">
+									<a
+										href="https://github.com/nishant-444/viztube"
+										target="_blank"
+										>GitHub</a
+									>
+									<a href="https://viztube.me" target="_blank">Live Demo</a>
+								</td>
+							</tr>
+							<tr>
+								<td class="project-name">BankEase</td>
+								<td class="project-tech">C++, OOP</td>
+								<td>
+									High-performance banking engine using binary file handling for
+									3x faster data operations and secure storage.
+								</td>
+								<td class="project-links">
+									<a
+										href="https://github.com/nishant-444/bankease"
+										target="_blank"
+										>GitHub</a
+									>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<!-- Mobile Cards -->
+					<div class="project-card">
+						<h3>VizTube</h3>
+						<div class="tech">
+							Node.js, Express, PostgreSQL, Prisma, AWS (EC2/RDS), Nginx, PM2,
+							GitHub Actions
+						</div>
+						<div class="desc">
+							Video infrastructure migrated from MongoDB to PostgreSQL.
+							Implemented CI/CD and Nginx reverse proxy for high availability.
+						</div>
+						<div class="links">
+							<a href="https://github.com/nishant-444/viztube" target="_blank"
+								>GitHub</a
+							>
+							<a href="https://viztube.me" target="_blank">Live Demo</a>
+						</div>
+					</div>
+
+					<div class="project-card">
+						<h3>BankEase</h3>
+						<div class="tech">C++, OOP</div>
+						<div class="desc">
+							High-performance banking engine using binary file handling for 3x
+							faster data operations and secure storage.
+						</div>
+						<div class="links">
+							<a href="https://github.com/nishant-444/bankease" target="_blank"
+								>GitHub</a
+							>
+						</div>
+					</div>
+				</div>
+
+				<!-- VIEW 3: TECH STACK (NEW) -->
+				<div class="view" id="stack-view">
+					<h1>Tech Stack</h1>
+
+					<div class="stack-category">
+						<h3>Backend & Core</h3>
+						<div class="stack-list">
+							<div class="stack-item">• Node.js</div>
+							<div class="stack-item">• Express.js</div>
+							<div class="stack-item">• C++</div>
+							<div class="stack-item">• RESTful API Design</div>
+						</div>
+					</div>
+
+					<div class="stack-category">
+						<h3>Cloud & Infrastructure</h3>
+						<div class="stack-list">
+							<div class="stack-item">• AWS (EC2, RDS, S3)</div>
+							<div class="stack-item">• Nginx</div>
+							<div class="stack-item">• PM2</div>
+							<div class="stack-item">• Cloudflare</div>
+							<div class="stack-item">• Linux (WSL)</div>
+							<div class="stack-item">• GitHub Actions (CI/CD)</div>
+						</div>
+					</div>
+
+					<div class="stack-category">
+						<h3>Databases</h3>
+						<div class="stack-list">
+							<div class="stack-item">• PostgreSQL</div>
+							<div class="stack-item">• Prisma ORM</div>
+							<div class="stack-item">• MongoDB</div>
+							<div class="stack-item">• Mongoose</div>
+						</div>
+					</div>
+
+					<div class="stack-category">
+						<h3>Languages</h3>
+						<div class="stack-list">
+							<div class="stack-item">• TypeScript</div>
+							<div class="stack-item">• JavaScript</div>
+							<div class="stack-item">• C++</div>
+							<div class="stack-item">• SQL</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- VIEW 4: BLOG -->
+				<div class="view" id="blog-view">
+					<h1>Engineering Logs</h1>
+
+					<div class="blog-list">
+						<div class="blog-entry" onclick="openBlog('blog1')">
+							<div class="blog-date">Jan 2026</div>
+							<div class="blog-title">
+								Migrating VizTube: Mongo to Postgres (ACID Compliance)
+							</div>
+						</div>
+
+						<div class="blog-entry" onclick="openBlog('blog2')">
+							<div class="blog-date">Dec 2025</div>
+							<div class="blog-title">
+								Why I Switched to Debian for Development
+							</div>
+						</div>
+
+						<div class="blog-entry" onclick="openBlog('blog3')">
+							<div class="blog-date">Nov 2025</div>
+							<div class="blog-title">
+								Optimizing AWS EC2 for Student Budgets
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- VIEW 5: ABOUT -->
+				<div class="view" id="about-view">
+					<h1>About & Credentials</h1>
+
+					<div class="bio-section">
+						<h2>Bio Summary</h2>
+						<div class="bio-highlight">
+							Final Year BCA student specializing in backend development and
+							cloud architecture.
+						</div>
+						<div class="bio-highlight">
+							Twice recommended by SSB for Indian Air Force (Top 0.1%
+							selection), demonstrating resilience and decision-making under
+							pressure.
+						</div>
+						<div class="bio-highlight">
+							Competitive Programming: Solved 300+ algorithmic problems across
+							LeetCode, CodeForces, and HackerRank.
+						</div>
+					</div>
+
+					<div class="bio-section">
+						<h2>Certifications</h2>
+						<div class="cert-list">
+							<div class="cert-item">
+								<span class="cert-check">[✓]</span>
+								Microsoft GitHub Foundations
+							</div>
+							<div class="cert-item">
+								<span class="cert-check">[✓]</span>
+								HackerRank: Problem Solving (Intermediate)
+							</div>
+							<div class="cert-item">
+								<span class="cert-check">[✓]</span>
+								HackerRank: SQL (Basic)
+							</div>
+							<div class="cert-item">
+								<span class="cert-check">[✓]</span>
+								FreeCodeCamp: Back End Development & APIs
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- VIEW 6: CONTACT -->
+				<div class="view" id="contact-view">
+					<h1>Contact</h1>
+
+					<div class="contact-section">
+						<div class="contact-group">
+							<h3>General</h3>
+							<div class="contact-item">
+								<strong>Email:</strong>
+								<a href="mailto:business.nishant777@gmail.com"
+									>business.nishant777@gmail.com</a
+								>
+							</div>
+							<div class="contact-item">
+								<strong>Location:</strong> Jaipur, India
+							</div>
+						</div>
+
+						<div class="contact-group">
+							<h3>Socials</h3>
+							<div class="contact-item">
+								<strong>LinkedIn:</strong>
+								<a
+									href="https://linkedin.com/in/nishant-sharma-522b03256"
+									target="_blank"
+									>linkedin.com/in/nishant-sharma-522b03256</a
+								>
+							</div>
+							<div class="contact-item">
+								<strong>GitHub:</strong>
+								<a href="https://github.com/nishant-444" target="_blank"
+									>github.com/nishant-444</a
+								>
+							</div>
+						</div>
+
+						<div class="contact-group">
+							<h3>Competitive Programming</h3>
+							<div class="contact-item">
+								<strong>LeetCode:</strong>
+								<a href="https://leetcode.com/u/nishant4712/" target="_blank"
+									>leetcode.com/u/nishant4712</a
+								>
+							</div>
+							<div class="contact-item">
+								<strong>CodeForces:</strong>
+								<a
+									href="https://codeforces.com/profile/nishant4712"
+									target="_blank"
+									>codeforces.com/profile/nishant4712</a
+								>
+							</div>
+							<div class="contact-item">
+								<strong>HackerRank:</strong>
+								<a
+									href="https://www.hackerrank.com/profile/business_nishan1"
+									target="_blank"
+									>hackerrank.com/profile/business_nishan1</a
+								>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Footer Navigation - Updated with 6 views -->
+			<div class="terminal-footer">
+				<button class="nav-btn active" onclick="switchView('home')">
+					F1: Home
+				</button>
+				<button class="nav-btn" onclick="switchView('projects')">
+					F2: Projects
+				</button>
+				<button class="nav-btn" onclick="switchView('stack')">F3: Stack</button>
+				<button class="nav-btn" onclick="switchView('blog')">F4: Blog</button>
+				<button class="nav-btn" onclick="switchView('about')">F5: About</button>
+				<button class="nav-btn" onclick="switchView('contact')">
+					F6: Contact
+				</button>
+			</div>
+		</div>
+
+		<!-- Blog Modal -->
+		<div class="blog-modal" id="blog-modal">
+			<div class="blog-content" id="blog-modal-content">
+				<!-- Content injected via JS -->
+			</div>
+		</div>
+
+		<script>
+			// ============================================
+			// VIEW SWITCHING
+			// ============================================
+			function switchView(viewName) {
+				// Hide all views
+				const views = document.querySelectorAll('.view');
+				views.forEach((view) => view.classList.remove('active'));
+
+				// Show selected view
+				const targetView = document.getElementById(viewName + '-view');
+				if (targetView) {
+					targetView.classList.add('active');
+				}
+
+				// Update nav buttons
+				const navButtons = document.querySelectorAll('.nav-btn');
+				navButtons.forEach((btn) => btn.classList.remove('active'));
+				event.target.classList.add('active');
+			}
+
+			// ============================================
+			// BLOG MODAL
+			// ============================================
+			const blogData = {
+				blog1: {
+					title: 'Migrating VizTube: Mongo to Postgres (ACID Compliance)',
+					content: `
+                    <h2>Migrating VizTube: Mongo to Postgres (ACID Compliance)</h2>
+                    <p><strong>January 2026</strong></p>
+                    <p>After running VizTube on MongoDB for several months, I made the decision to migrate to PostgreSQL. The primary motivation was ACID compliance and the need for complex relational queries as the platform scaled.</p>
+                    <p>The migration involved creating a comprehensive data mapping strategy, setting up PostgreSQL on AWS RDS, and implementing a zero-downtime migration using dual-write patterns. The results were impressive: query performance improved by 40%, and data consistency issues disappeared entirely.</p>
+                    <p>This experience taught me the importance of choosing the right database for the job. While MongoDB was great for rapid prototyping, PostgreSQL's robust transaction support and mature ecosystem made it the clear winner for production workloads.</p>
+                    <button class="close-modal" onclick="closeBlog()">Close</button>
+                `,
+				},
+				blog2: {
+					title: 'Why I Switched to Debian for Development',
+					content: `
+                    <h2>Why I Switched to Debian for Development</h2>
+                    <p><strong>December 2025</strong></p>
+                    <p>After years of using various Linux distributions, I finally settled on Debian as my daily driver for development. The decision came down to stability, package management, and the robust community support.</p>
+                    <p>Debian's stability-focused approach means fewer unexpected system updates that break my development environment. The APT package manager is mature and reliable, and the extensive package repositories have everything I need for backend development.</p>
+                    <p>Setting up my environment was straightforward: PostgreSQL, Node.js, Docker, and all my development tools work flawlessly. For any student or professional developer looking for a rock-solid Linux distribution, Debian is hard to beat.</p>
+                    <button class="close-modal" onclick="closeBlog()">Close</button>
+                `,
+				},
+				blog3: {
+					title: 'Optimizing AWS EC2 for Student Budgets',
+					content: `
+                    <h2>Optimizing AWS EC2 for Student Budgets</h2>
+                    <p><strong>November 2025</strong></p>
+                    <p>Running a production web application on AWS as a student requires careful cost optimization. Here are the strategies I used to keep VizTube running on less than $15/month.</p>
+                    <p>First, I leveraged AWS Free Tier credits and chose t3.micro instances for most workloads. I implemented aggressive caching with Redis to reduce database queries, and used CloudFront CDN to minimize data transfer costs.</p>
+                    <p>For CI/CD, I moved from AWS CodePipeline to GitHub Actions, which offers generous free tier minutes. I also set up CloudWatch alarms to catch any unexpected cost spikes before they became problems.</p>
+                    <p>The key lesson: with careful architecture and monitoring, you can run professional-grade infrastructure on a student budget. It's all about understanding the cost model and optimizing accordingly.</p>
+                    <button class="close-modal" onclick="closeBlog()">Close</button>
+                `,
+				},
+			};
+
+			function openBlog(blogId) {
+				const modal = document.getElementById('blog-modal');
+				const content = document.getElementById('blog-modal-content');
+
+				if (blogData[blogId]) {
+					content.innerHTML = blogData[blogId].content;
+					modal.classList.add('active');
+				}
+			}
+
+			function closeBlog() {
+				const modal = document.getElementById('blog-modal');
+				modal.classList.remove('active');
+			}
+
+			// Close modal on outside click
+			document
+				.getElementById('blog-modal')
+				.addEventListener('click', function (e) {
+					if (e.target === this) {
+						closeBlog();
+					}
+				});
+
+			// ============================================
+			// COMMAND LINE / EASTER EGG
+			// ============================================
+			const commandInput = document.getElementById('command-line');
+
+			if (commandInput) {
+				commandInput.addEventListener('keypress', function (e) {
+					if (e.key === 'Enter') {
+						const command = this.value.trim().toLowerCase();
+
+						if (command === 'neofetch') {
+							showNeofetch();
+							this.value = '';
+						} else if (command === 'clear') {
+							this.value = '';
+						} else if (command) {
+							alert(
+								`Command '${command}' not found. Try 'neofetch' or use the menu below.`,
+							);
+							this.value = '';
+						}
+					}
+				});
+			}
+
+			function showNeofetch() {
+				const homeView = document.getElementById('home-view');
+
+				// Check if neofetch already displayed
+				if (document.querySelector('.neofetch-display')) {
+					return;
+				}
+
+				const neofetchHTML = `
+                <div class="neofetch-display">
+                    <pre>
+<span class="neofetch-label">OS:</span>         <span class="neofetch-value">Arch Linux x86_64</span>
+<span class="neofetch-label">Host:</span>       <span class="neofetch-value">Asus Vivobook</span>
+<span class="neofetch-label">Kernel:</span>    <span class="neofetch-value">6.1.0-arch</span>
+<span class="neofetch-label">Uptime:</span>    <span class="neofetch-value">47 days, 3 hours</span>
+<span class="neofetch-label">Shell:</span>     <span class="neofetch-value">bash 5.2.15</span>
+<span class="neofetch-label">DE:</span>        <span class="neofetch-value">GNOME</span>
+<span class="neofetch-label">Terminal:</span>  <span class="neofetch-value">gnome-terminal</span>
+<span class="neofetch-label">CPU:</span>       <span class="neofetch-value">Intel i5-1135G7 (8) @ 4.200GHz</span>
+<span class="neofetch-label">GPU:</span>       <span class="neofetch-value">Intel Iris Xe Graphics</span>
+<span class="neofetch-label">Memory:</span>    <span class="neofetch-value">8192MB</span>
+                    </pre>
+                </div>
+            `;
+
+				homeView.insertAdjacentHTML('beforeend', neofetchHTML);
+			}
+
+			// ============================================
+			// KEYBOARD SHORTCUTS
+			// ============================================
+			document.addEventListener('keydown', function (e) {
+				// Only trigger if not in input field
+				if (e.target.tagName === 'INPUT') return;
+
+				switch (e.key) {
+					case 'F1':
+						e.preventDefault();
+						document.querySelector('[onclick="switchView(\'home\')"]').click();
+						break;
+					case 'F2':
+						e.preventDefault();
+						document
+							.querySelector('[onclick="switchView(\'projects\')"]')
+							.click();
+						break;
+					case 'F3':
+						e.preventDefault();
+						document.querySelector('[onclick="switchView(\'stack\')"]').click();
+						break;
+					case 'F4':
+						e.preventDefault();
+						document.querySelector('[onclick="switchView(\'blog\')"]').click();
+						break;
+					case 'F5':
+						e.preventDefault();
+						document.querySelector('[onclick="switchView(\'about\')"]').click();
+						break;
+					case 'F6':
+						e.preventDefault();
+						document
+							.querySelector('[onclick="switchView(\'contact\')"]')
+							.click();
+						break;
+				}
+			});
+
+			// ============================================
+			// WINDOW CONTROL BUTTONS
+			// ============================================
+			document
+				.querySelector('.control-btn.red')
+				.addEventListener('click', function () {
+					if (confirm('Close terminal?')) {
+						window.close();
+					}
+				});
+
+			document
+				.querySelector('.control-btn.yellow')
+				.addEventListener('click', function () {
+					document.querySelector('.terminal').style.transform = 'scale(0.8)';
+					setTimeout(() => {
+						document.querySelector('.terminal').style.transform = 'scale(1)';
+					}, 300);
+				});
+
+			document
+				.querySelector('.control-btn.green')
+				.addEventListener('click', function () {
+					if (document.fullscreenElement) {
+						document.exitFullscreen();
+					} else {
+						document.documentElement.requestFullscreen();
+					}
+				});
+		</script>
+	</body>
+</html>

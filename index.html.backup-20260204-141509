@@ -1,0 +1,879 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Nishant Sharma - Portfolio</title>
+		<style>
+			@font-face {
+				font-family: 'JetBrains Mono';
+				src: url('./assets/fonts/JetBrainsMono-Regular.woff2') format('woff2');
+				font-weight: 400;
+				font-style: normal;
+			}
+			@font-face {
+				font-family: 'JetBrains Mono';
+				src: url('./assets/fonts/JetBrainsMono-Bold.woff2') format('woff2');
+				font-weight: 700;
+				font-style: normal;
+			}
+
+			:root {
+				/* Night Owl Theme */
+				--bg-app: #011627;
+				--bg-editor: #011627;
+				--bg-panel: #01111d;
+				--border: rgba(95, 126, 151, 0.2);
+				--tab-active-border: #82aaff;
+				
+				/* Syntax Highlighting - Night Owl (Italic) */
+				--text-main: #d6deeb;
+				--comment: #637777;
+				--keyword: #c792ea;
+				--function: #82aaff;
+				--string: #ecc48d;
+				--variable: #addb67;
+			}
+
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+
+			body {
+				font-family: 'JetBrains Mono', monospace;
+				background: var(--bg-main);
+				color: var(--text-white);
+				overflow: hidden;
+				height: 100vh;
+			}
+
+			.container {
+				display: flex;
+				flex-direction: column;
+				height: 100vh;
+			}
+
+			/* Top Bar */
+			.top-bar {
+				background: var(--bg-sidebar);
+				border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+				display: flex;
+				align-items: center;
+				height: 40px;
+				padding: 0 10px;
+			}
+
+			.hamburger {
+				display: none;
+				background: none;
+				border: none;
+				color: var(--text-white);
+				font-size: 20px;
+				cursor: pointer;
+				padding: 5px 10px;
+			}
+
+			.logo {
+				font-size: 14px;
+				color: var(--text-white);
+				margin-right: 20px;
+				white-space: nowrap;
+			}
+
+			.tab-container {
+				display: flex;
+				overflow-x: auto;
+				white-space: nowrap;
+				-ms-overflow-style: none;
+				scrollbar-width: none;
+				background: var(--bg-sidebar);
+				border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+				height: 40px;
+			}
+
+			.tab-container::-webkit-scrollbar {
+				display: none;
+			}
+
+			.tab {
+				padding: 0 15px;
+				height: 40px;
+				display: inline-flex;
+				align-items: center;
+				border-right: 1px solid rgba(255, 255, 255, 0.1);
+				cursor: pointer;
+				font-size: 13px;
+				color: var(--text-main);
+				background: var(--bg-sidebar);
+				transition: all 0.2s;
+				flex-shrink: 0;
+			}
+
+			.tab:hover {
+				background: rgba(77, 91, 206, 0.1);
+			}
+
+			.tab.active {
+				background: var(--bg-main);
+				color: var(--text-white);
+			}
+
+			/* Main Layout */
+			.main-layout {
+				display: flex;
+				flex: 1;
+				overflow: hidden;
+			}
+
+			/* Sidebar */
+			.sidebar {
+				width: 250px;
+				background: var(--bg-sidebar);
+				border-right: 1px solid rgba(255, 255, 255, 0.1);
+				overflow-y: auto;
+				transition: left 0.3s;
+			}
+
+			.sidebar-header {
+				padding: 15px;
+				font-size: 11px;
+				text-transform: uppercase;
+				color: var(--text-main);
+				letter-spacing: 1px;
+			}
+
+			.file-item {
+				padding: 8px 15px;
+				cursor: pointer;
+				display: flex;
+				align-items: center;
+				gap: 8px;
+				font-size: 13px;
+				color: var(--text-white);
+				transition: background 0.2s;
+			}
+
+			.file-item:hover {
+				background: rgba(77, 91, 206, 0.2);
+			}
+
+			.file-item.active {
+				background: rgba(77, 91, 206, 0.3);
+			}
+
+			.file-icon {
+				font-size: 16px;
+			}
+
+			/* Content Area (tabs + main view) */
+			.content-area {
+				flex: 1;
+				display: flex;
+				flex-direction: column;
+				overflow: hidden;
+			}
+
+			/* Main View */
+			.main-view {
+				flex: 1;
+				overflow-y: auto;
+				padding: 30px;
+			}
+
+			.view-content {
+				display: none;
+			}
+
+			.view-content.active {
+				display: block;
+			}
+
+			/* Footer */
+			.footer {
+				background: var(--bg-sidebar);
+				border-top: 1px solid rgba(255, 255, 255, 0.1);
+				padding: 5px 15px;
+				display: flex;
+				gap: 20px;
+				font-size: 12px;
+				color: var(--text-main);
+				height: 25px;
+				align-items: center;
+			}
+
+			/* Hello View */
+			.hello-split {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				gap: 40px;
+				align-items: center;
+				min-height: 400px;
+			}
+
+			.hello-bio {
+				font-size: 14px;
+				line-height: 1.8;
+			}
+
+			.hello-bio .comment {
+				color: var(--text-main);
+			}
+
+			.hello-bio .keyword {
+				color: var(--syntax-purple);
+			}
+
+			.hello-bio .string {
+				color: var(--syntax-orange);
+			}
+
+			.hello-bio .property {
+				color: var(--syntax-green);
+			}
+
+			/* Projects View */
+			.projects-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+				gap: 25px;
+			}
+
+			.project-card {
+				background: rgba(255, 255, 255, 0.03);
+				border: 1px solid rgba(255, 255, 255, 0.1);
+				border-radius: 8px;
+				padding: 25px;
+				font-size: 13px;
+				line-height: 1.8;
+			}
+
+			.project-card .bracket {
+				color: var(--text-main);
+			}
+
+			.project-card .key {
+				color: var(--syntax-green);
+			}
+
+			.project-card .string {
+				color: var(--syntax-orange);
+			}
+
+			.project-card .links {
+				margin-top: 15px;
+				display: flex;
+				gap: 15px;
+			}
+
+			.project-card .links a {
+				color: var(--accent);
+				text-decoration: none;
+				padding: 6px 12px;
+				border: 1px solid var(--accent);
+				border-radius: 4px;
+				font-size: 12px;
+				transition: all 0.2s;
+			}
+
+			.project-card .links a:hover {
+				background: var(--accent);
+				color: var(--bg-main);
+			}
+
+			/* About View */
+			.about-code {
+				display: flex;
+				gap: 20px;
+			}
+
+			.line-numbers {
+				color: var(--text-main);
+				font-size: 13px;
+				line-height: 1.8;
+				text-align: right;
+				user-select: none;
+			}
+
+			.code-content {
+				flex: 1;
+				font-size: 13px;
+				line-height: 1.8;
+			}
+
+			.code-content .keyword {
+				color: var(--syntax-purple);
+			}
+
+			.code-content .property {
+				color: var(--syntax-green);
+			}
+
+			.code-content .string {
+				color: var(--syntax-orange);
+			}
+
+			/* Contact View */
+			.contact-rules {
+				font-size: 14px;
+				line-height: 2;
+			}
+
+			.contact-rules .selector {
+				color: var(--syntax-orange);
+			}
+
+			.contact-rules .property {
+				color: var(--syntax-green);
+			}
+
+			.contact-rules .value {
+				color: var(--text-white);
+			}
+
+			.contact-rules a {
+				color: var(--accent);
+				text-decoration: none;
+			}
+
+			/* Blog View */
+			.blog-view {
+				font-family:
+					-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+					'Helvetica Neue', Arial, sans-serif;
+				max-width: 700px;
+				margin: 0 auto;
+			}
+
+			.blog-list {
+				display: block;
+			}
+
+			.blog-post-link {
+				display: block;
+				padding: 20px 0;
+				border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+				cursor: pointer;
+				transition: opacity 0.2s;
+			}
+
+			.blog-post-link:hover {
+				opacity: 0.8;
+			}
+
+			.blog-post-link h2 {
+				font-size: 24px;
+				margin-bottom: 10px;
+				color: var(--text-white);
+			}
+
+			.blog-post-link p {
+				color: var(--text-main);
+				font-size: 16px;
+				line-height: 1.6;
+			}
+
+			.blog-reader {
+				display: none;
+			}
+
+			.blog-reader.active {
+				display: block;
+			}
+
+			.blog-back {
+				color: var(--accent);
+				cursor: pointer;
+				margin-bottom: 30px;
+				font-size: 14px;
+			}
+
+			.blog-reader h1 {
+				font-size: 36px;
+				margin-bottom: 20px;
+				line-height: 1.3;
+			}
+
+			.blog-reader p {
+				font-size: 18px;
+				line-height: 1.7;
+				margin-bottom: 20px;
+				color: var(--text-main);
+			}
+
+			.blog-reader h2 {
+				font-size: 28px;
+				margin: 30px 0 15px;
+			}
+
+			/* Mobile Styles */
+			@media (max-width: 768px) {
+				.hamburger {
+					display: block;
+				}
+
+				.sidebar {
+					position: fixed;
+					left: -100%;
+					top: 0;
+					bottom: 0;
+					z-index: 999;
+				}
+
+				.sidebar.open {
+					left: 0;
+				}
+
+				.sidebar-backdrop {
+					display: none;
+					position: fixed;
+					top: 0;
+					left: 0;
+					right: 0;
+					bottom: 0;
+					background: rgba(0, 0, 0, 0.5);
+					z-index: 998;
+				}
+
+				.sidebar-backdrop.open {
+					display: block;
+				}
+
+				.hello-split {
+					grid-template-columns: 1fr;
+				}
+
+				.ascii-art {
+					font-size: 8px;
+				}
+
+				.projects-grid {
+					grid-template-columns: 1fr;
+				}
+
+				.main-view {
+					padding: 20px;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<!-- Top Bar -->
+			<div class="top-bar">
+				<button class="hamburger" onclick="toggleSidebar()">☰</button>
+				<div class="logo">Nishant Sharma</div>
+			</div>
+
+			<!-- Main Layout -->
+			<div class="main-layout">
+				<!-- Sidebar Backdrop -->
+				<div class="sidebar-backdrop" onclick="toggleSidebar()"></div>
+
+				<!-- Sidebar -->
+				<div class="sidebar" id="sidebar">
+					<div class="sidebar-header">Explorer</div>
+					<div class="file-item" data-file="hello" onclick="openTab('hello')">
+						<span class="file-icon">📄</span>
+						_hello.js
+					</div>
+					<div
+						class="file-item"
+						data-file="projects"
+						onclick="openTab('projects')"
+					>
+						<span class="file-icon">📋</span>
+						_projects.json
+					</div>
+					<div class="file-item" data-file="blog" onclick="openTab('blog')">
+						<span class="file-icon">📝</span>
+						_blog.md
+					</div>
+					<div class="file-item" data-file="about" onclick="openTab('about')">
+						<span class="file-icon">ℹ️</span>
+						_about.js
+					</div>
+					<div
+						class="file-item"
+						data-file="contact"
+						onclick="openTab('contact')"
+					>
+						<span class="file-icon">📧</span>
+						_contact.css
+					</div>
+				</div>
+
+				<!-- Content Area with Tabs and Main View -->
+				<div class="content-area">
+					<div class="tab-container" id="tabContainer"></div>
+					<div class="main-view">
+						<!-- Hello View -->
+						<div class="view-content active" id="view-hello">
+							<div class="hello-split">
+								<div class="hello-bio">
+									<div class="comment">// Final Year BCA Student</div>
+									<div class="comment">
+										// Twice Recommended by SSB for Indian Air Force (Top 0.1%)
+									</div>
+									<div class="comment">
+										// Solved 300+ DSA Problems (LeetCode/CodeForces)
+									</div>
+									<br />
+									<div>
+										<span class="keyword">const</span>
+										<span class="property">developer</span> = {
+									</div>
+									<div>
+										&nbsp;&nbsp;<span class="property">name</span>:
+										<span class="string">"Nishant Sharma"</span>,
+									</div>
+									<div>
+										&nbsp;&nbsp;<span class="property">role</span>:
+										<span class="string">"Backend & Cloud Architect"</span>,
+									</div>
+									<div>
+										&nbsp;&nbsp;<span class="property">github</span>:
+										<span class="string">"github.com/nishant-444"</span>
+									</div>
+									<div>};</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- Projects View -->
+						<div class="view-content" id="view-projects">
+							<div class="projects-grid">
+								<div class="project-card">
+									<div><span class="bracket">{</span></div>
+									<div>
+										&nbsp;&nbsp;<span class="key">"name"</span>:
+										<span class="string">"VizTube"</span>,
+									</div>
+									<div>
+										&nbsp;&nbsp;<span class="key">"stack"</span>:
+										<span class="string"
+											>"Node.js, AWS (EC2/RDS), Postgres, Prisma, Nginx"</span
+										>,
+									</div>
+									<div>
+										&nbsp;&nbsp;<span class="key">"description"</span>:
+										<span class="string"
+											>"Video Infrastructure. Migrated Mongo->Postgres for ACID.
+											CI/CD via GitHub Actions."</span
+										>
+									</div>
+									<div><span class="bracket">}</span></div>
+									<div class="links">
+										<a href="https://github.com/nishant-444" target="_blank"
+											>Source</a
+										>
+										<a href="#" target="_blank">Live</a>
+									</div>
+								</div>
+
+								<div class="project-card">
+									<div><span class="bracket">{</span></div>
+									<div>
+										&nbsp;&nbsp;<span class="key">"name"</span>:
+										<span class="string">"BankEase"</span>,
+									</div>
+									<div>
+										&nbsp;&nbsp;<span class="key">"stack"</span>:
+										<span class="string">"C++, OOP, Binary I/O"</span>,
+									</div>
+									<div>
+										&nbsp;&nbsp;<span class="key">"description"</span>:
+										<span class="string"
+											>"High-performance banking engine. 3x faster data ops via
+											custom binary file handling."</span
+										>
+									</div>
+									<div><span class="bracket">}</span></div>
+									<div class="links">
+										<a href="https://github.com/nishant-444" target="_blank"
+											>Source</a
+										>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- Blog View -->
+						<div class="view-content blog-view" id="view-blog">
+							<div class="blog-list" id="blogList">
+								<div class="blog-post-link" onclick="openBlogPost(0)">
+									<h2>Migrating VizTube: From NoSQL to ACID</h2>
+									<p>
+										How we resolved data consistency issues by migrating from
+										MongoDB to PostgreSQL...
+									</p>
+								</div>
+								<div class="blog-post-link" onclick="openBlogPost(1)">
+									<h2>C++ Performance: Binary I/O</h2>
+									<p>
+										Achieving 3x faster data operations through custom binary
+										file handling...
+									</p>
+								</div>
+								<div class="blog-post-link" onclick="openBlogPost(2)">
+									<h2>Surviving Production on 1GB RAM</h2>
+									<p>
+										Optimizing AWS EC2 hosting within strict memory constraints
+										using Nginx and PM2...
+									</p>
+								</div>
+							</div>
+
+							<div class="blog-reader" id="blogReader">
+								<div class="blog-back" onclick="closeBlogPost()">
+									← Back to posts
+								</div>
+								<div id="blogContent"></div>
+							</div>
+						</div>
+
+						<!-- About View -->
+						<div class="view-content" id="view-about">
+							<div class="about-code">
+								<div class="line-numbers">
+									<div>1</div>
+									<div>2</div>
+									<div>3</div>
+									<div>4</div>
+									<div>5</div>
+									<div>6</div>
+									<div>7</div>
+									<div>8</div>
+									<div>9</div>
+									<div>10</div>
+									<div>11</div>
+									<div>12</div>
+								</div>
+								<div class="code-content">
+									<div><span class="keyword">const</span> skills = {</div>
+									<div>
+										&nbsp;&nbsp;<span class="property">languages</span>: [<span
+											class="string"
+											>"TypeScript"</span
+										>, <span class="string">"JavaScript"</span>,
+										<span class="string">"C++"</span>,
+										<span class="string">"SQL"</span>],
+									</div>
+									<div>
+										&nbsp;&nbsp;<span class="property">backend</span>: [<span
+											class="string"
+											>"Node.js"</span
+										>, <span class="string">"Express"</span>,
+										<span class="string">"RESTful APIs"</span>],
+									</div>
+									<div>&nbsp;&nbsp;<span class="property">cloud</span>: [</div>
+									<div>
+										&nbsp;&nbsp;&nbsp;&nbsp;<span class="string"
+											>"AWS (EC2/RDS/S3)"</span
+										>,
+									</div>
+									<div>
+										&nbsp;&nbsp;&nbsp;&nbsp;<span class="string">"Nginx"</span>,
+									</div>
+									<div>
+										&nbsp;&nbsp;&nbsp;&nbsp;<span class="string">"PM2"</span>,
+									</div>
+									<div>
+										&nbsp;&nbsp;&nbsp;&nbsp;<span class="string">"Linux"</span>,
+									</div>
+									<div>
+										&nbsp;&nbsp;&nbsp;&nbsp;<span class="string"
+											>"Cloudflare"</span
+										>
+									</div>
+									<div>&nbsp;&nbsp;],</div>
+									<div>
+										&nbsp;&nbsp;<span class="property">certifications</span>:
+										[<span class="string">"GitHub Foundations"</span>,
+										<span class="string">"HackerRank (Problem Solving)"</span>,
+										<span class="string">"FreeCodeCamp Backend"</span>]
+									</div>
+									<div>};</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- Contact View -->
+						<div class="view-content" id="view-contact">
+							<div class="contact-rules">
+								<div><span class="selector">.email</span> {</div>
+								<div>
+									&nbsp;&nbsp;<span class="property">content</span>:
+									<span class="value">"business.nishant777@gmail.com"</span>;
+								</div>
+								<div>}</div>
+								<br />
+								<div><span class="selector">.phone</span> {</div>
+								<div>
+									&nbsp;&nbsp;<span class="property">content</span>:
+									<span class="value">"+91 6350435068"</span>;
+								</div>
+								<div>}</div>
+								<br />
+								<div><span class="selector">.github</span> {</div>
+								<div>
+									&nbsp;&nbsp;<span class="property">url</span>:
+									<a href="https://github.com/nishant-444" target="_blank"
+										>github.com/nishant-444</a
+									>;
+								</div>
+								<div>}</div>
+								<br />
+								<div><span class="selector">.linkedin</span> {</div>
+								<div>
+									&nbsp;&nbsp;<span class="property">url</span>:
+									<a href="#" target="_blank">linkedin.com/in/nishant-sharma</a
+									>;
+								</div>
+								<div>}</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Footer -->
+			<div class="footer">
+				<span>master*</span>
+				<span>Ln 12, Col 45</span>
+				<span>UTF-8</span>
+			</div>
+		</div>
+
+		<script>
+			const BLOG_POSTS = [
+				{
+					title: 'Migrating VizTube: From NoSQL to ACID',
+					content: `
+                    <h1>Migrating VizTube: From NoSQL to ACID</h1>
+                    <p>When we started building VizTube, MongoDB seemed like the perfect choice. Fast, flexible, and familiar. But as our platform grew, we hit a wall with data consistency issues.</p>
+                    
+                    <h2>The Problem</h2>
+                    <p>Managing complex relational features like user subscriptions and video likes became increasingly difficult. We needed transactions, foreign keys, and the reliability that comes with ACID guarantees.</p>
+                    
+                    <h2>The Solution</h2>
+                    <p>We migrated to PostgreSQL using Prisma ORM. This gave us strong consistency, better query performance for complex joins, and the type safety we needed for production reliability.</p>
+                    
+                    <p>The migration took careful planning, but the results were worth it. Our data integrity issues vanished, and we gained the foundation needed for future feature development.</p>
+                `,
+				},
+				{
+					title: 'C++ Performance: Binary I/O',
+					content: `
+                    <h1>C++ Performance: Binary I/O</h1>
+                    <p>When building BankEase, performance was critical. We needed to handle thousands of account records with minimal latency.</p>
+                    
+                    <h2>The Challenge</h2>
+                    <p>Traditional text-based file storage was too slow. Reading and parsing CSV or JSON files for every transaction created unacceptable delays.</p>
+                    
+                    <h2>Binary File Handling</h2>
+                    <p>We implemented custom binary file handling using C++'s fstream capabilities. By writing structures directly to disk in binary format, we achieved 3x faster data operations.</p>
+                    
+                    <p>The key was understanding memory layout and using fixed-size records. This allowed us to seek directly to any account record without parsing the entire file.</p>
+                    
+                    <p>Security came through proper file permissions and encryption at rest, while performance came from eliminating serialization overhead.</p>
+                `,
+				},
+				{
+					title: 'Surviving Production on 1GB RAM',
+					content: `
+                    <h1>Surviving Production on 1GB RAM</h1>
+                    <p>Running a video platform on a 1GB RAM EC2 instance sounds impossible. Here's how we made it work.</p>
+                    
+                    <h2>The Constraint</h2>
+                    <p>Budget limitations meant we had to work within strict memory constraints. Every megabyte mattered.</p>
+                    
+                    <h2>Optimization Strategy</h2>
+                    <p>We configured Nginx as a reverse proxy to handle static assets and connection pooling. PM2 managed our Node.js processes with cluster mode disabled to conserve memory.</p>
+                    
+                    <p>Database connections were pooled aggressively, with a maximum of 5 concurrent connections. We offloaded heavy processing to background jobs and used Redis for caching when needed.</p>
+                    
+                    <p>The result? A stable platform that handles thousands of requests while staying under memory limits. It taught us that constraints breed creativity.</p>
+                `,
+				},
+			];
+
+			let currentTab = 'hello';
+
+			function initTabs() {
+				const tabs = ['hello', 'projects', 'blog', 'about', 'contact'];
+				const tabContainer = document.getElementById('tabContainer');
+
+				tabs.forEach((tab) => {
+					const tabEl = document.createElement('div');
+					tabEl.className = 'tab' + (tab === 'hello' ? ' active' : '');
+					tabEl.textContent = `_${tab}.${getExtension(tab)}`;
+					tabEl.onclick = () => openTab(tab);
+					tabContainer.appendChild(tabEl);
+				});
+			}
+
+			function getExtension(tab) {
+				const exts = {
+					hello: 'js',
+					projects: 'json',
+					blog: 'md',
+					about: 'js',
+					contact: 'css',
+				};
+				return exts[tab];
+			}
+
+			function openTab(tabName) {
+				currentTab = tabName;
+
+				document
+					.querySelectorAll('.tab')
+					.forEach((tab) => tab.classList.remove('active'));
+				document
+					.querySelectorAll('.view-content')
+					.forEach((view) => view.classList.remove('active'));
+				document
+					.querySelectorAll('.file-item')
+					.forEach((item) => item.classList.remove('active'));
+
+				const tabs = document.querySelectorAll('.tab');
+				const index = ['hello', 'projects', 'blog', 'about', 'contact'].indexOf(
+					tabName,
+				);
+				if (tabs[index]) tabs[index].classList.add('active');
+
+				document.getElementById(`view-${tabName}`).classList.add('active');
+				document
+					.querySelector(`[data-file="${tabName}"]`)
+					.classList.add('active');
+
+				if (window.innerWidth <= 768) {
+					toggleSidebar();
+				}
+			}
+
+			function toggleSidebar() {
+				const sidebar = document.getElementById('sidebar');
+				const backdrop = document.querySelector('.sidebar-backdrop');
+				sidebar.classList.toggle('open');
+				backdrop.classList.toggle('open');
+			}
+
+			function openBlogPost(index) {
+				const post = BLOG_POSTS[index];
+				document.getElementById('blogList').style.display = 'none';
+				document.getElementById('blogReader').classList.add('active');
+				document.getElementById('blogContent').innerHTML = post.content;
+			}
+
+			function closeBlogPost() {
+				document.getElementById('blogList').style.display = 'block';
+				document.getElementById('blogReader').classList.remove('active');
+			}
+
+			initTabs();
+		</script>
+	</body>
+</html>
