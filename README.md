@@ -1,67 +1,67 @@
 # 🌐 Nishant Sharma — Portfolio
 
-**Backend Developer | System Architect | Problem Solver**
+**Backend-Focused Full-Stack Developer • Cloud Infrastructure • AI-Integrated Systems**
 
-A terminal-inspired portfolio showcasing expertise in scalable infrastructure, backend development, and system design.  
-Visit here 👉 [nishant.dev](https://nishant.dev)
+A terminal-inspired portfolio showcasing expertise in scalable RESTful APIs, cloud infrastructure, vector search & AI-integrated RAG pipelines, and automated CI/CD.  
+Visit here 👉 [nishant.dev](https://nishant.dev) | [nishant-444.github.io](https://nishant-444.github.io)
 
 ---
 
 ## 👋 About Me
 
-I'm **Nishant Sharma**, a Backend Developer specializing in scalable infrastructure and system design. Experienced in building production-grade applications with **Node.js**, **PostgreSQL**, and **AWS**. Passionate about clean architecture, performance optimization, and solving complex technical challenges.
+I'm **Nishant Sharma**, a Backend-focused full-stack developer specializing in scalable RESTful APIs, cloud infrastructure, vector search & AI-integrated RAG pipelines, and automated CI/CD.
 
-Currently pursuing **Bachelor of Computer Applications** at S.S. Jain Subodh PG College (2024–2027).
+Currently **Full Stack Developer Intern** at **Zytexa Technology LLP**, and pursuing **Bachelor of Computer Applications (BCA)** at S.S. Jain Subodh PG College (2024–2027).
 
-**Notable Achievement:** Twice recommended by SSB for Indian Air Force — elite 0.1% selection from 600,000+ applicants, demonstrating exceptional leadership and decision-making under pressure.
+**Notable Achievement:** 2× Recommended by SSB for the Indian Air Force — elite selection demonstrating exceptional leadership, adaptability, and decision-making under pressure.
+
+---
+
+## 💼 Work Experience
+
+- **Zytexa Technology LLP** | *Full Stack Developer Intern* (July 2026 – Present)
+  - Building backend of CivilCheck (three-sided property-verification marketplace) with 12 Prisma/PostgreSQL models and role-isolated JWT auth.
+  - Engineering financial logic, seller earnings/settlement APIs, admin refund workflows, and frozen commission splits.
+- **Pratham Software** | *Software Engineer Intern* (March 2026 – June 2026)
+  - Built an employee appraisal platform end-to-end with Spring Boot on MySQL, DTO isolation, and Spring Security 6 + JWT auth.
 
 ---
 
 ## 🛠 Tech Stack
 
 ### **Languages**
+TypeScript, JavaScript, Java, SQL, Python, C++
 
-TypeScript, JavaScript, C++, SQL
-
-### **Backend**
-
-Node.js, Express.js, RESTful API Design
-
-### **Databases**
-
-PostgreSQL, Prisma ORM, MongoDB, Mongoose
-
-### **Cloud & DevOps**
-
-AWS (EC2, RDS, S3), Nginx, PM2, Cloudflare, Linux, GitHub Actions (CI/CD)
+### **Backend & APIs**
+Node.js, Express.js, Spring Boot, FastAPI, RESTful API Design, JWT Auth
 
 ### **Frontend**
+Next.js, React, HTML/CSS, Shadcn/ui, EJS, TailwindCSS
 
-HTML, CSS, EJS, TailwindCSS
+### **Databases & Storage**
+PostgreSQL (pgvector), MySQL, MongoDB, Prisma ORM, NeonDB, Mongoose ODM
+
+### **Cloud & AI / DevOps**
+AWS (EC2, RDS, S3), Docker & Docker Compose, GitHub Actions CI/CD, Nginx, Cloudflare, Groq Whisper, Hugging Face, OpenRouter, Vercel AI SDK
 
 ### **Tools**
+Git, VS Code, WSL, Postman, Linux
 
-Git, GitHub Actions, WSL
-
-### **Problem Solving**
-
-300+ problems solved across [LeetCode](https://leetcode.com/u/nishant4712/), [CodeForces](https://codeforces.com/profile/nishant4712), [HackerRank](https://www.hackerrank.com/profile/business_nishan1)
+### **Problem Solving & Profiles**
+150+ problems solved across [LeetCode](https://leetcode.com/u/nishant4712/), [CodeForces](https://codeforces.com/profile/nishant4712), [HackerRank](https://www.hackerrank.com/profile/business_nishan1)
 
 ---
 
-## 🚀 Features
+## 🎯 Featured Projects
 
-- **Terminal-Inspired Interface** — Unique command-line style portfolio
-- **Interactive Commands** — Navigate using terminal commands (help, about, skills, projects, etc.)
-- **Tab Autocomplete** — Smart command suggestions
-- **Command History** — Arrow keys to navigate previous commands
-- **Blog System** — Dynamic blog loading from JSON with navigation
-- **Boot Sequence Animation** — Linux-style system boot on page load
-- **SEO Optimized** — Comprehensive meta tags, Open Graph, Schema.org structured data
-- **PWA Ready** — Manifest file for progressive web app support
-- **Fully Responsive** — Mobile-first design with fluid typography
-- **Zero Dependencies** — Pure vanilla JavaScript, no frameworks
-- **Custom Font** — JetBrains Mono for authentic terminal experience
+1. **VizTube** — Video Platform with AI-Powered RAG Engine (TypeScript, Node.js, FastAPI, pgvector, Docker, AWS EC2)
+2. **AppraiseHub** — Employee Appraisal Platform (Java, Spring Boot, Next.js, MySQL, Spring Security 6, Docker)
+3. **EchoInbox** — Anonymous Messaging & AI-Assisted Responses (Next.js, PostgreSQL, NeonDB, Vercel AI SDK)
+4. **Job Application Tracker** — Full-Stack Kanban Board (Next.js, Server Actions, Prisma, O(1) ordering, Docker)
+5. **Trend-Engine** — Real-Time Movie Analytics (React.js, Appwrite BaaS, Tailwind CSS, Vite)
+6. **BankEase** — High-Performance Banking Engine (C++, Binary I/O Serialization, SOLID OOP)
+7. **Modern Web Stack Boilerplate** — Production Web Stack Setup Guide (Next.js 16, Express 5, React 19, Prisma 7)
+8. **Terminal Portfolio** — Interactive CLI Interface (Vanilla JS, PWA, SEO)
 
 ---
 
@@ -70,7 +70,7 @@ Git, GitHub Actions, WSL
 ```text
 .
 ├── assets/
-│   ├── blogs.json              # Blog posts data
+│   ├── blogs.json              # Real blog posts data
 │   ├── fonts/                  # JetBrains Mono font files
 │   ├── Nishant_Sharma_Resume.pdf
 │   ├── nslogo.svg              # Logo and favicon
@@ -89,43 +89,31 @@ Git, GitHub Actions, WSL
 
 ## 💻 Available Commands
 
-Once you open the portfolio, you can use these terminal commands:
-
 | Command      | Description                                |
 | ------------ | ------------------------------------------ |
 | `help`       | Show all available commands                |
 | `about`      | About Nishant Sharma                       |
 | `skills`     | Technical skills and technologies          |
-| `projects`   | View featured projects (VizTube, BankEase) |
-| `experience` | Work experience and opportunities          |
+| `projects`   | View featured projects                     |
+| `experience` | Work experience & intern roles             |
 | `blogs`      | Read blog posts                            |
-| `certs`      | Certifications and achievements            |
+| `certs`      | Certifications & open-source achievements  |
 | `education`  | Educational background                     |
-| `contact`    | Contact information and links              |
+| `contact`    | Contact information and social links       |
 | `resume`     | View/download resume PDF                   |
 | `clear`      | Clear terminal screen                      |
 
-**Tips:**
-
-- Press **Tab** for autocomplete
-- Use **↑/↓** arrow keys for command history
-- **Ctrl+L** to clear screen
-
 ---
 
-## 🎯 Featured Projects
+## 🏆 Certifications & Achievements
 
-### **VizTube - Video Sharing Infrastructure**
-
-Full-stack video platform with PostgreSQL, AWS deployment, and automated CI/CD. Implemented dual-token JWT auth, Nginx reverse proxy, and PM2 process management.  
-**Tech:** Node.js, Express, PostgreSQL, Prisma, AWS (EC2/RDS), Nginx, PM2, Cloudflare  
-**Links:** [GitHub](https://github.com/nishant-444/viztube) | [Live Demo](https://viztube.me)
-
-### **BankEase - Banking System Simulation**
-
-High-performance banking engine using C++ and OOP principles with secure account management and persistent binary file storage.  
-**Tech:** C++, Object-Oriented Programming  
-**Links:** [GitHub](https://github.com/nishant-444/bankease)
+- **Open-Source Contributor (ed-donner/llm_engineering)** (2026) — Merged PR #3492 (900+ LOC)
+- [Microsoft GitHub Foundations](https://learn.microsoft.com/en-gb/users/nishantsharma-2380/credentials/aefb5214ce0ab643) (Oct 2025)
+- [Back End Development & APIs - FreeCodeCamp](https://drive.google.com/file/d/1obbSvmpeBubq7X_yRFtkk741NJMX8yI2/view?usp=sharing) (Oct 2025)
+- [Problem Solving (Intermediate) - HackerRank](https://www.hackerrank.com/certificates/17f976a57553) (Jul 2025)
+- [SQL (Basic) - HackerRank](https://www.hackerrank.com/certificates/c3e4298b5e2e) (Mar 2025)
+- **2× Recommended by SSB for Indian Air Force**
+- **150+ Algorithmic Problems Solved** across LeetCode, CodeForces & HackerRank
 
 ---
 
@@ -135,86 +123,12 @@ High-performance banking engine using C++ and OOP principles with secure account
 📱 **Phone:** +91 6350435068  
 🐙 **GitHub:** [github.com/nishant-444](https://github.com/nishant-444)  
 💼 **LinkedIn:** [linkedin.com/in/nishant-developer](https://linkedin.com/in/nishant-developer)  
-🌐 **Portfolio:** [nishant.dev](https://nishant.dev)
-
----
-
-## 🧾 How to Use
-
-No build process or dependencies — just clone and open:
-
-```bash
-git clone https://github.com/Nishant-444/portfolio.git
-cd portfolio
-# Open index.html in your browser
-# Windows:
-start index.html
-# Mac:
-open index.html
-# Linux:
-xdg-open index.html
-```
-
----
-
-## 📦 Deployment
-
-- **Primary:** [https://nishant.dev](https://nishant.dev)
-- **Platform:** Vercel (Cloudflare CDN)
-- **Project Inspired By:** [Roadmap.sh Portfolio Project](https://roadmap.sh/projects/portfolio-website)
-
----
-
-## 🎨 Design Philosophy
-
-This portfolio embraces a **terminal-first design** inspired by developer tools and command-line interfaces. The aesthetic uses:
-
-- **Night Owl Color Scheme** — Popular VS Code theme colors
-- **JetBrains Mono Font** — Monospace font for readability
-- **Minimalist UI** — Focus on content, not distractions
-- **No JavaScript Frameworks** — Lightweight, fast loading
-
----
-
-## 🏆 Certifications & Achievements
-
-- [Microsoft GitHub Foundations](https://learn.microsoft.com/en-gb/users/nishantsharma-2380/credentials/aefb5214ce0ab643)
-- [Problem Solving (Intermediate) - HackerRank](https://www.hackerrank.com/certificates/17f976a57553)
-- [Back End Development & APIs - FreeCodeCamp](https://drive.google.com/file/d/1obbSvmpeBubq7X_yRFtkk741NJMX8yI2/view?usp=sharing)
-- [SQL (Basic) - HackerRank](https://www.hackerrank.com/certificates/c3e4298b5e2e)
-- **Twice Recommended by SSB for Indian Air Force** (Elite 0.1% selection)
-- **300+ Competitive Programming Problems Solved**
-
----
-
-## 🔧 Technical Highlights
-
-- **SEO Optimized:** Complete meta tags, Open Graph, Twitter Cards, Schema.org JSON-LD
-- **Accessibility:** Semantic HTML, keyboard navigation support
-- **Performance:** Lazy-loaded fonts, optimized assets, minimal DOM manipulation
-- **Progressive Enhancement:** Works without JavaScript (graceful degradation)
-- **Cross-Browser Compatible:** Tested on Chrome, Firefox, Safari, Edge
+🐦 **Twitter/X:** [@_nishant4712](https://twitter.com/_nishant4712/)  
+🌐 **Portfolio:** [nishant.dev](https://nishant.dev) | [nishant-444.github.io](https://nishant-444.github.io)
 
 ---
 
 ## 📜 License
 
 © 2025–2026 Nishant Sharma. All rights reserved.
-
-Content on this site is shared under the [Creative Commons Attribution-NoDerivatives 4.0 International License](https://creativecommons.org/licenses/by-nd/4.0/).  
-You may share with credit, but no modifications are allowed.
-
----
-
-## 🚀 Future Enhancements
-
-- [ ] Dark/Light theme toggle
-- [ ] Real-time command suggestions with fuzzy matching
-- [ ] Export terminal session as text
-- [ ] Easter eggs and hidden commands
-- [ ] Performance analytics dashboard
-- [ ] More blog posts and technical writing
-
----
-
-**Built with ❤️ and ☕ by Nishant Sharma**
+Shared under [Creative Commons Attribution-NoDerivatives 4.0 International License](https://creativecommons.org/licenses/by-nd/4.0/).

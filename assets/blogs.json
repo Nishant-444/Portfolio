@@ -1,25 +1,25 @@
 {
 	"blogs": [
 		{
-			"id": "blog-1",
-			"title": "Lorem Ipsum Dolor Sit Amet",
+			"id": "aws-survival",
+			"title": "Surviving Production on 1GB RAM",
 			"date": "Feb 04, 2026",
-			"readTime": 5,
-			"content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.\n\nDuis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n\nSed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.\n\nNemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.\n\nSed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur."
+			"readTime": 3,
+			"content": "Hosting a full-stack video platform on an AWS t2.micro instance is not for the faint of heart. You have exactly 1GB of RAM. One memory leak, one unoptimized process, and the server crashes.\n\nHere is how I engineered VizTube to survive in this harsh environment.\n\n1. Nginx as the Gatekeeper\nI configured Nginx as a reverse proxy. Instead of letting Node.js handle static assets (which eats memory), Nginx serves images and CSS files efficiently, leaving Node.js to handle only the API logic.\n\n2. PM2 Process Management\nI used PM2 not just to keep the app running, but to limit it. I set strict memory restart limits. If a process exceeded 400MB, PM2 would gracefully restart it before it crashed the entire server.\n\n3. Swap Memory\nI configured a 2GB swap file on the Linux instance. While disk-based memory is slow, it prevented the OOM (Out of Memory) killer from terminating my database process during traffic spikes.\n\nThis experience taught me that constraints breed creativity. You don't need a massive server to build scalable software; you just need to understand your resources."
 		},
 		{
-			"id": "blog-2",
-			"title": "Consectetur Adipiscing Elit",
-			"date": "Feb 03, 2026",
+			"id": "viztube-migration",
+			"title": "The Great Migration: Why I Ditched MongoDB for PostgreSQL",
+			"date": "Dec 29, 2025",
 			"readTime": 4,
-			"content": "Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.\n\nLectus mauris ultrices eros in cursus turpis massa tincidunt. Egestas sed sed risus pretium quam vulputate dignissim suspendisse. Tortor consequat id porta nibh venenatis cras sed felis eget.\n\nVitae sapien pellentesque habitant morbi tristique senectus et netus. Facilisis leo vel fringilla est ullamcorper eget nulla facilisi. Faucibus nisl tincidunt eget nullam non nisi est sit.\n\nAmet luctus venenatis lectus magna fringilla urna porttitor rhoncus. Magna etiam tempor orci eu lobortis elementum nibh tellus molestie. Diam donec adipiscing tristique risus nec feugiat in fermentum posuere.\n\nInteger malesuada nunc vel risus commodo viverra maecenas accumsan lacus. Facilisis gravida neque convallis a cras semper auctor neque vitae."
+			"content": "When I started building VizTube, I chose MongoDB. It was flexible, easy to set up, and the JSON-like structure felt natural with JavaScript.\n\nBut as the platform grew, I hit a wall. Managing complex relationships—like user subscriptions, video likes, and comment threads—became a nightmare of manual data joins and inconsistent states.\n\nThe Breaking Point:\nI found myself writing convoluted code just to ensure that when a user deleted their account, their comments didn't turn into 'orphan data.' MongoDB's eventual consistency wasn't cutting it for a system that needed strict relational integrity.\n\nThe Solution: PostgreSQL + Prisma\nI decided to migrate the entire backend to PostgreSQL. I used Prisma ORM to manage the schema and migrations.\n\nThe benefits were immediate:\n1. ACID Compliance: Transactions became reliable. No more partial updates.\n2. Relational Integrity: Foreign keys ensured that data remained consistent automatically.\n3. Complex Queries: What used to be three database calls and a map function became a single SQL join.\n\nThis migration taught me that while NoSQL is great for rapid prototyping, relational databases are often the better choice for structured, interconnected data."
 		},
 		{
-			"id": "blog-3",
-			"title": "Tempor Incididunt Ut Labore",
-			"date": "Feb 02, 2026",
-			"readTime": 6,
-			"content": "Tempor incididunt ut labore et dolore magna aliqua. Elementum integer enim neque volutpat ac tincidunt vitae semper. Cursus vitae congue mauris rhoncus aenean vel elit scelerisque.\n\nMorbi tincidunt ornare massa eget egestas purus viverra accumsan. Vulputate sapien nec sagittis aliquam malesuada bibendum arcu vitae. Tristique senectus et netus et malesuada fames ac turpis egestas.\n\nNulla facilisi morbi tempus iaculis urna id volutpat lacus laoreet. Sed blandit libero volutpat sed cras ornare arcu dui vivamus. Amet cursus sit amet dictum sit amet justo donec enim.\n\nAuctor urna nunc id cursus metus aliquam eleifend mi. Pellentesque habitant morbi tristique senectus et netus et malesuada. Accumsan tortor posuere ac ut consequat semper viverra nam libero.\n\nNibh venenatis cras sed felis eget velit aliquet sagittis id. Commodo viverra maecenas accumsan lacus vel facilisis volutpat est. Cras tincidunt lobortis feugiat vivamus at augue eget arcu.\n\nEget mi proin sed libero enim sed faucibus turpis. Congue quisque egestas diam in arcu cursus euismod quis viverra. Pharetra vel turpis nunc eget lorem dolor sed viverra ipsum."
+			"id": "cpp-optimization",
+			"title": "Why Text Files are Slow: Optimizing C++ Banking Ops",
+			"date": "Feb 15, 2024",
+			"readTime": 3,
+			"content": "When building BankEase, a banking simulation engine, I initially used standard text file I/O (fstream with << operators) to store user records. It was readable, but slow.\n\nAs the dataset grew to thousands of accounts, the overhead of parsing text (converting '1000.50' string to 1000.50 float) became a bottleneck.\n\nThe Solution: Binary I/O\nI rewrote the storage engine to use Binary Serialization. Instead of writing human-readable characters, I dumped the raw memory of the C++ objects directly to the disk.\n\nOld Way (Text) - Slow parsing:\nfile << account.id << \" \" << account.balance << endl;\n\nNew Way (Binary) - Raw memory copy:\nfile.write(reinterpret_cast<char*>(&account), sizeof(Account));\n\nThis single change achieved 300% faster read/write operations for account transactions."
 		}
 	]
 }
