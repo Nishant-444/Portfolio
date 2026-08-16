@@ -1,0 +1,122 @@
+---
+import Base from '../layouts/Base.astro';
+import About from '../components/sections/About.astro';
+import Skills from '../components/sections/Skills.astro';
+import Experience from '../components/sections/Experience.astro';
+import Projects from '../components/sections/Projects.astro';
+import BlogList from '../components/sections/BlogList.astro';
+import Credentials from '../components/sections/Credentials.astro';
+import Education from '../components/sections/Education.astro';
+import Contact from '../components/sections/Contact.astro';
+import SiteNav from '../components/SiteNav.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+
+import { SITE, PERSON } from '../config/site';
+import { getPublishedPosts } from '../lib/blog';
+
+import '../styles/terminal.css';
+
+const posts = await getPublishedPosts();
+const prompt = `${SITE.user}@${SITE.host}:~$`;
+
+/*
+ * Block lettering rather than a slant font: at the sizes this has to render
+ * at on a phone, thin diagonal strokes turn to mush while solid blocks stay
+ * legible. 56 columns wide, which is what sets the banner's font-size clamp.
+ */
+const BANNER = `███╗   ██╗██╗███████╗██╗  ██╗ █████╗ ███╗   ██╗████████╗
+████╗  ██║██║██╔════╝██║  ██║██╔══██╗████╗  ██║╚══██╔══╝
+██╔██╗ ██║██║███████╗███████║███████║██╔██╗ ██║   ██║
+██║╚██╗██║██║╚════██║██╔══██║██╔══██║██║╚██╗██║   ██║
+██║ ╚████║██║███████║██║  ██║██║  ██║██║ ╚████║   ██║
+╚═╝  ╚═══╝╚═╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝   ╚═╝
+███████╗██╗  ██╗ █████╗ ██████╗ ███╗   ███╗ █████╗
+██╔════╝██║  ██║██╔══██╗██╔══██╗████╗ ████║██╔══██╗
+███████╗███████║███████║██████╔╝██╔████╔██║███████║
+╚════██║██╔══██║██╔══██║██╔══██╗██║╚██╔╝██║██╔══██║
+███████║██║  ██║██║  ██║██║  ██║██║ ╚═╝ ██║██║  ██║
+╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝     ╚═╝╚═╝  ╚═╝`;
+---
+
+<Base
+	title={`${PERSON.name} — ${PERSON.jobTitle}, Jaipur`}
+	description={SITE.description}
+	ogSlug="index"
+	bareTitle
+	bodyClass="terminal-page"
+>
+	<div class="boot" aria-hidden="true"></div>
+
+	<main id="main">
+		<div class="doc-title-wrap">
+			<h1>{PERSON.name} — {PERSON.jobTitle}</h1>
+		</div>
+
+		<div class="terminal-app">
+			<div class="title-bar">
+				<div class="window-dots" aria-hidden="true">
+					<span></span><span></span><span></span>
+				</div>
+				<p class="title-bar__title">{prompt} — {SITE.url.replace('https://', '')}</p>
+				<a class="title-bar__exit" href="/about">Read as a page →</a>
+			</div>
+
+			<div class="screen">
+				<div
+					id="stream"
+					class="stream"
+					role="log"
+					aria-live="polite"
+					aria-label="Terminal output"
+				>
+					<div>
+						<pre class="banner" aria-hidden="true">{BANNER}</pre>
+						<p class="msg">{SITE.tagline}</p>
+					</div>
+				</div>
+
+				<p id="command-help" class="terminal-hint">
+					Type <code>help</code> and press Enter. Tab completes, ↑ walks history.
+				</p>
+				<div class="prompt-line">
+					<label class="prompt-line__label" for="command-input">{prompt}</label>
+					<span class="prompt-line__field">
+						<span id="command-ghost" class="prompt-line__ghost" aria-hidden="true"
+						></span>
+						<input
+							id="command-input"
+							type="text"
+							autocomplete="off"
+							autocapitalize="off"
+							autocorrect="off"
+							spellcheck="false"
+							enterkeyhint="go"
+							aria-describedby="command-help"
+						/>
+					</span>
+				</div>
+			</div>
+		</div>
+
+		<div class="doc">
+			<div class="shell">
+				<SiteNav />
+				<div>
+					<About level={2} />
+					<Experience level={2} />
+					<Projects level={2} />
+					<Skills level={2} />
+					<BlogList level={2} posts={posts} />
+					<Credentials level={2} />
+					<Education level={2} />
+					<Contact level={2} />
+				</div>
+				<SiteFooter />
+			</div>
+		</div>
+	</main>
+
+	<script>
+		import '../scripts/terminal.ts';
+	</script>
+</Base>

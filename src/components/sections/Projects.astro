@@ -1,0 +1,76 @@
+---
+import { PROJECTS, OPEN_SOURCE } from '../../data/projects';
+
+export interface Props {
+	level?: 1 | 2;
+	/** Show only the featured set — used on the homepage document fallback. */
+	featuredOnly?: boolean;
+}
+
+const { level = 2, featuredOnly = false } = Astro.props;
+const Heading = `h${level}` as 'h1' | 'h2';
+const list = featuredOnly ? PROJECTS.filter((p) => p.featured) : PROJECTS;
+---
+
+<section class="section" id="sec-projects" data-section="projects">
+	<Heading>Projects</Heading>
+	<p class="section__lede">
+		Things I have shipped and kept running, not tutorials I followed.
+	</p>
+
+	{
+		list.map((project) => (
+			<article class="entry" id={`project-${project.slug}`}>
+				<div class="entry__head">
+					<h3 class="entry__title">{project.name}</h3>
+					<p class="entry__meta">{project.period}</p>
+				</div>
+				<p>{project.blurb}</p>
+				<ul>
+					{project.highlights.map((point) => (
+						<li>{point}</li>
+					))}
+				</ul>
+				<ul class="tags">
+					{project.stack.map((tech) => (
+						<li>{tech}</li>
+					))}
+				</ul>
+				<ul class="linkrow">
+					{project.links.map((link) => (
+						<li>
+							<a href={link.url} rel="noopener noreferrer" target="_blank">
+								{link.label} ↗
+							</a>
+						</li>
+					))}
+				</ul>
+			</article>
+		))
+	}
+
+	<h3 id="open-source">Open-source contributions</h3>
+	<article class="entry">
+		<div class="entry__head">
+			<h4 class="entry__title">
+				<a href={OPEN_SOURCE.repoUrl} rel="noopener noreferrer" target="_blank">
+					{OPEN_SOURCE.repo}
+				</a>
+			</h4>
+			<p class="entry__meta">{OPEN_SOURCE.period}</p>
+		</div>
+		<p class="entry__sub">{OPEN_SOURCE.meta}</p>
+		<ul>
+			{
+				OPEN_SOURCE.items.map((item) => (
+					<li>
+						<a href={item.url} rel="noopener noreferrer" target="_blank">
+							{item.id}
+						</a>{' '}
+						{item.description}
+					</li>
+				))
+			}
+		</ul>
+	</article>
+</section>

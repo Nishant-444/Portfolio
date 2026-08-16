@@ -1,0 +1,19 @@
+---
+import Page from '../layouts/Page.astro';
+import Experience from '../components/sections/Experience.astro';
+import Education from '../components/sections/Education.astro';
+import { EXPERIENCE } from '../data/experience';
+---
+
+<Page
+	title="Experience"
+	description={`Software engineering roles: ${EXPERIENCE.map((role) => `${role.title} at ${role.company}`).join('; ')}.`}
+	ogSlug="experience"
+	breadcrumbs={[
+		{ name: 'Home', path: '/' },
+		{ name: 'Experience', path: '/experience' },
+	]}
+>
+	<Experience level={1} />
+	<Education level={2} />
+</Page>

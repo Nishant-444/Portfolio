@@ -1,0 +1,49 @@
+---
+import { formatDate, postPath, readingTime, type Post } from '../../lib/blog';
+
+export interface Props {
+	level?: 1 | 2;
+	posts: Post[];
+}
+
+const { level = 2, posts } = Astro.props;
+const Heading = `h${level}` as 'h1' | 'h2';
+---
+
+<section class="section" id="sec-blogs" data-section="blogs">
+	<Heading>Writing</Heading>
+	<p class="section__lede">
+		Notes from building and running things in production.
+	</p>
+
+	{
+		posts.length === 0 ? (
+			<p>No posts published yet.</p>
+		) : (
+			posts.map((post) => (
+				<article class="entry">
+					<div class="entry__head">
+						<h3 class="entry__title">
+							<a href={postPath(post)}>{post.data.title}</a>
+						</h3>
+						<p class="entry__meta">
+							<time datetime={post.data.pubDate.toISOString()}>
+								{formatDate(post.data.pubDate)}
+							</time>
+							{' · '}
+							{readingTime(post.body)} min read
+						</p>
+					</div>
+					<p>{post.data.description}</p>
+					{post.data.tags.length > 0 && (
+						<ul class="tags">
+							{post.data.tags.map((tag) => (
+								<li>{tag}</li>
+							))}
+						</ul>
+					)}
+				</article>
+			))
+		)
+	}
+</section>

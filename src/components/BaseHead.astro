@@ -1,0 +1,130 @@
+---
+import { SITE, PERSON, TWITTER_HANDLE, absolute } from '../config/site';
+import { canonicalUrl } from '../lib/url';
+
+export interface Props {
+	title: string;
+	description: string;
+	/** Filename (no extension) of the generated card under /og/. */
+	ogSlug: string;
+	type?: 'website' | 'article' | 'profile';
+	publishedTime?: Date;
+	modifiedTime?: Date;
+	tags?: string[];
+	noindex?: boolean;
+	/** Set on the homepage, whose <title> should not repeat the site name. */
+	bareTitle?: boolean;
+}
+
+const {
+	title,
+	description,
+	ogSlug,
+	type = 'website',
+	publishedTime,
+	modifiedTime,
+	tags = [],
+	noindex = false,
+	bareTitle = false,
+} = Astro.props;
+
+const canonical = canonicalUrl(Astro.url);
+const fullTitle = bareTitle ? title : `${title} · ${PERSON.name}`;
+const ogImage = absolute(`/og/${ogSlug}.png`);
+---
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>{fullTitle}</title>
+<meta name="description" content={description} />
+<meta name="author" content={PERSON.name} />
+<link rel="canonical" href={canonical} />
+
+{
+	noindex ? (
+		<meta name="robots" content="noindex, follow" />
+	) : (
+		<meta
+			name="robots"
+			content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+		/>
+	)
+}
+
+<!-- Open Graph -->
+<meta property="og:type" content={type} />
+<meta property="og:url" content={canonical} />
+<meta property="og:title" content={fullTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:site_name" content={`${PERSON.name} — Portfolio`} />
+<meta property="og:locale" content={SITE.locale} />
+<meta property="og:image" content={ogImage} />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content={`${title} — ${PERSON.name}`} />
+{
+	publishedTime && (
+		<meta
+			property="article:published_time"
+			content={publishedTime.toISOString()}
+		/>
+	)
+}
+{
+	modifiedTime && (
+		<meta
+			property="article:modified_time"
+			content={modifiedTime.toISOString()}
+		/>
+	)
+}
+{type === 'article' && <meta property="article:author" content={PERSON.name} />}
+{tags.map((tag) => <meta property="article:tag" content={tag} />)}
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content={TWITTER_HANDLE} />
+<meta name="twitter:creator" content={TWITTER_HANDLE} />
+<meta name="twitter:title" content={fullTitle} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImage} />
+<meta name="twitter:image:alt" content={`${title} — ${PERSON.name}`} />
+
+<!-- Icons & PWA -->
+<link rel="icon" href="/favicon-32x32.png" sizes="32x32" type="image/png" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="manifest" href="/site.webmanifest" />
+<meta name="theme-color" content={SITE.themeColor} />
+<meta name="apple-mobile-web-app-title" content={SITE.shortName} />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta
+	name="apple-mobile-web-app-status-bar-style"
+	content="black-translucent"
+/>
+<meta name="format-detection" content="telephone=no" />
+
+<!-- Feeds -->
+<link
+	rel="alternate"
+	type="application/rss+xml"
+	title={`${PERSON.name} — Blog`}
+	href={absolute('/rss.xml')}
+/>
+
+<!-- The two weights needed for first paint. -->
+<link
+	rel="preload"
+	href="/assets/fonts/JetBrainsMono-Regular.woff2"
+	as="font"
+	type="font/woff2"
+	crossorigin
+/>
+<link
+	rel="preload"
+	href="/assets/fonts/JetBrainsMono-Medium.woff2"
+	as="font"
+	type="font/woff2"
+	crossorigin
+/>

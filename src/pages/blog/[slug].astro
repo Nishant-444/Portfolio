@@ -1,0 +1,108 @@
+---
+import { render } from 'astro:content';
+import type { GetStaticPaths } from 'astro';
+
+import Page from '../../layouts/Page.astro';
+import {
+	getPublishedPosts,
+	formatDate,
+	readingTime,
+	postPath,
+	type Post,
+} from '../../lib/blog';
+import { SITE, PERSON, absolute } from '../../config/site';
+
+export const getStaticPaths = (async () => {
+	const posts = await getPublishedPosts();
+	return posts.map((post, index) => ({
+		params: { slug: post.id },
+		props: {
+			post,
+			newer: posts[index - 1] ?? null,
+			older: posts[index + 1] ?? null,
+		},
+	}));
+}) satisfies GetStaticPaths;
+
+interface Props {
+	post: Post;
+	newer: Post | null;
+	older: Post | null;
+}
+
+const { post, newer, older } = Astro.props as Props;
+const { Content } = await render(post);
+
+const url = absolute(postPath(post));
+const personId = `${SITE.url}/#person`;
+const minutes = readingTime(post.body);
+
+const posting = {
+	'@type': 'BlogPosting',
+	'@id': `${url}#post`,
+	headline: post.data.title,
+	description: post.data.description,
+	datePublished: post.data.pubDate.toISOString(),
+	dateModified: (post.data.updatedDate ?? post.data.pubDate).toISOString(),
+	author: { '@id': personId },
+	publisher: { '@id': personId },
+	image: absolute(`/og/post-${post.id}.png`),
+	keywords: post.data.tags.join(', '),
+	inLanguage: 'en',
+	wordCount: post.body?.trim().split(/\s+/).length ?? 0,
+	timeRequired: `PT${minutes}M`,
+	mainEntityOfPage: { '@type': 'WebPage', '@id': `${url}#webpage` },
+};
+---
+
+<Page
+	title={post.data.title}
+	description={post.data.description}
+	ogSlug={`post-${post.id}`}
+	type="article"
+	publishedTime={post.data.pubDate}
+	modifiedTime={post.data.updatedDate ?? post.data.pubDate}
+	tags={post.data.tags}
+	breadcrumbs={[
+		{ name: 'Home', path: '/' },
+		{ name: 'Blog', path: '/blog' },
+		{ name: post.data.title, path: postPath(post) },
+	]}
+	schemaNodes={[posting]}
+>
+	<article class="prose">
+		<h1>{post.data.title}</h1>
+		<p class="entry__meta">
+			<time datetime={post.data.pubDate.toISOString()}>
+				{formatDate(post.data.pubDate)}
+			</time>
+			{' · '}{minutes} min read{' · '}{PERSON.name}
+			{
+				post.data.updatedDate && (
+					<>
+						{' · updated '}
+						<time datetime={post.data.updatedDate.toISOString()}>
+							{formatDate(post.data.updatedDate)}
+						</time>
+					</>
+				)
+			}
+		</p>
+		{
+			post.data.tags.length > 0 && (
+				<ul class="tags">
+					{post.data.tags.map((tag) => (
+						<li>{tag}</li>
+					))}
+				</ul>
+			)
+		}
+
+		<Content />
+	</article>
+
+	<nav class="site-footer" aria-label="More posts" style="margin-top:2.5rem">
+		{older ? <a href={postPath(older)}>← {older.data.title}</a> : <span></span>}
+		{newer ? <a href={postPath(newer)}>{newer.data.title} →</a> : <span></span>}
+	</nav>
+</Page>

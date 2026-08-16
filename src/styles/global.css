@@ -1,0 +1,531 @@
+/* ---------------------------------------------------------------------------
+   Fonts — subset at build time by scripts/build-assets.mjs
+   --------------------------------------------------------------------------- */
+
+@font-face {
+	font-family: 'JetBrains Mono';
+	src: url('/assets/fonts/JetBrainsMono-Regular.woff2') format('woff2');
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'JetBrains Mono';
+	src: url('/assets/fonts/JetBrainsMono-Italic.woff2') format('woff2');
+	font-weight: 400;
+	font-style: italic;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'JetBrains Mono';
+	src: url('/assets/fonts/JetBrainsMono-Medium.woff2') format('woff2');
+	font-weight: 500;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'JetBrains Mono';
+	src: url('/assets/fonts/JetBrainsMono-Bold.woff2') format('woff2');
+	font-weight: 700;
+	font-style: normal;
+	font-display: swap;
+}
+
+/* ---------------------------------------------------------------------------
+   Tokens — Night Owl, with contrast corrected to WCAG AA on --bg
+   --------------------------------------------------------------------------- */
+
+:root {
+	--bg: #011627;
+	--bg-raised: #0b2942;
+	--bg-chrome: #01111d;
+	--fg: #d6deeb;
+	--green: #addb67;
+	--cyan: #7fdbca;
+	--blue: #82aaff;
+	--purple: #c792ea;
+	--red: #ef5350;
+	--yellow: #ffcb8b;
+
+	/* 5.4:1 on --bg. The original #637777 measured 3.8:1 and failed AA. */
+	--comment: #7a9198;
+	/* Non-text decoration only — rules, borders, disabled glyphs. */
+	--muted: #37505c;
+
+	--font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas,
+		'Liberation Mono', monospace;
+
+	--step-0: clamp(0.8125rem, 0.75rem + 0.3vw, 0.9375rem);
+	--step-1: clamp(0.95rem, 0.88rem + 0.35vw, 1.1rem);
+	--step-2: clamp(1.15rem, 1rem + 0.7vw, 1.5rem);
+	--step-3: clamp(1.4rem, 1.15rem + 1.2vw, 2.1rem);
+
+	--space: clamp(0.75rem, 0.5rem + 1vw, 1.25rem);
+	--radius: 12px;
+	--measure: 72ch;
+
+	color-scheme: dark;
+	accent-color: var(--cyan);
+}
+
+/* ---------------------------------------------------------------------------
+   Reset
+   --------------------------------------------------------------------------- */
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	-webkit-text-size-adjust: 100%;
+	scrollbar-color: var(--muted) transparent;
+}
+
+body {
+	background: var(--bg);
+	color: var(--fg);
+	font-family: var(--font-mono);
+	font-size: var(--step-0);
+	line-height: 1.7;
+	min-height: 100dvh;
+	-webkit-font-smoothing: antialiased;
+	text-rendering: optimizeLegibility;
+}
+
+img,
+svg {
+	display: block;
+	max-width: 100%;
+	height: auto;
+}
+
+a {
+	color: var(--cyan);
+	text-underline-offset: 0.2em;
+	text-decoration-thickness: from-font;
+}
+
+a:hover {
+	color: var(--blue);
+}
+
+:focus-visible {
+	outline: 2px solid var(--yellow);
+	outline-offset: 2px;
+	border-radius: 2px;
+}
+
+ul,
+ol {
+	list-style-position: outside;
+	padding-left: 1.2em;
+}
+
+/* ---------------------------------------------------------------------------
+   Utilities
+   --------------------------------------------------------------------------- */
+
+.visually-hidden {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	padding: 0;
+	overflow: hidden;
+	clip-path: inset(50%);
+	white-space: nowrap;
+	border: 0;
+}
+
+.skip-link {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 10000;
+	transform: translateY(-150%);
+	padding: 0.6rem 1rem;
+	background: var(--cyan);
+	color: var(--bg);
+	font-weight: 700;
+	text-decoration: none;
+}
+
+.skip-link:focus-visible {
+	transform: translateY(0);
+	color: var(--bg);
+}
+
+/* ---------------------------------------------------------------------------
+   Document pages — the crawlable, no-JS-safe view
+   --------------------------------------------------------------------------- */
+
+.shell {
+	width: min(var(--measure), 100% - 2.5rem);
+	margin-inline: auto;
+	padding-block: clamp(1.5rem, 4vw, 3rem);
+	display: flex;
+	flex-direction: column;
+	min-height: 100dvh;
+	gap: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+.site-header {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem 1.25rem;
+	align-items: baseline;
+	justify-content: space-between;
+	padding-bottom: 1rem;
+	border-bottom: 1px solid var(--muted);
+}
+
+.site-header__brand {
+	color: var(--green);
+	font-weight: 700;
+	text-decoration: none;
+	font-size: var(--step-1);
+}
+
+.site-header__brand:hover {
+	color: var(--cyan);
+}
+
+.site-nav {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.35rem 1rem;
+}
+
+.site-nav a {
+	color: var(--comment);
+	text-decoration: none;
+}
+
+.site-nav a:hover,
+.site-nav a[aria-current='page'] {
+	color: var(--cyan);
+}
+
+.site-nav a[aria-current='page'] {
+	text-decoration: underline;
+}
+
+main {
+	flex: 1;
+}
+
+.site-footer {
+	padding-top: 1rem;
+	border-top: 1px solid var(--muted);
+	color: var(--comment);
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem 1rem;
+	justify-content: space-between;
+}
+
+/* ---------------------------------------------------------------------------
+   Prose
+   --------------------------------------------------------------------------- */
+
+.prose {
+	max-width: var(--measure);
+}
+
+.prose > * + * {
+	margin-top: 1.1em;
+}
+
+h1,
+h2,
+h3,
+h4 {
+	line-height: 1.3;
+	text-wrap: balance;
+	font-weight: 700;
+}
+
+h1 {
+	font-size: var(--step-3);
+	color: var(--cyan);
+}
+
+h2 {
+	font-size: var(--step-2);
+	color: var(--blue);
+}
+
+h3 {
+	font-size: var(--step-1);
+	color: var(--purple);
+}
+
+h4 {
+	font-size: var(--step-0);
+	color: var(--fg);
+}
+
+.prose h2,
+.prose h3 {
+	margin-top: 2em;
+}
+
+.prose :where(h2, h3) + * {
+	margin-top: 0.6em;
+}
+
+p {
+	text-wrap: pretty;
+}
+
+code {
+	font-family: var(--font-mono);
+	font-size: 0.95em;
+	background: var(--bg-raised);
+	padding: 0.1em 0.4em;
+	border-radius: 4px;
+	color: var(--yellow);
+}
+
+pre {
+	background: var(--bg-raised);
+	border: 1px solid var(--muted);
+	border-radius: var(--radius);
+	padding: var(--space);
+	overflow-x: auto;
+	font-size: 0.92em;
+	line-height: 1.6;
+}
+
+pre code {
+	background: none;
+	padding: 0;
+	color: inherit;
+	font-size: 1em;
+}
+
+blockquote {
+	border-left: 3px solid var(--purple);
+	padding-left: 1rem;
+	color: var(--comment);
+	font-style: italic;
+}
+
+hr {
+	border: 0;
+	border-top: 1px solid var(--muted);
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+	font-size: 0.95em;
+}
+
+th,
+td {
+	text-align: left;
+	padding: 0.5rem 0.75rem;
+	border-bottom: 1px solid var(--muted);
+}
+
+/* Wide content must scroll in its own box, never the page. */
+.scroll-x {
+	overflow-x: auto;
+	max-width: 100%;
+}
+
+/* ---------------------------------------------------------------------------
+   Section primitives — shared by document pages and cloned terminal output
+   --------------------------------------------------------------------------- */
+
+.section + .section {
+	margin-top: clamp(2rem, 6vw, 3.5rem);
+}
+
+.section__lede {
+	color: var(--comment);
+	margin-top: 0.4em;
+}
+
+.entry {
+	padding-block: 0.9rem;
+}
+
+.entry + .entry {
+	border-top: 1px solid var(--muted);
+}
+
+.entry__head {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.15rem 1rem;
+	align-items: baseline;
+	justify-content: space-between;
+}
+
+.entry__title {
+	color: var(--purple);
+	font-weight: 700;
+	font-size: var(--step-1);
+}
+
+.entry__title a {
+	color: inherit;
+	text-decoration: none;
+}
+
+.entry__title a:hover {
+	color: var(--cyan);
+	text-decoration: underline;
+}
+
+.entry__meta {
+	color: var(--comment);
+	font-size: 0.92em;
+	white-space: nowrap;
+}
+
+.entry__sub {
+	color: var(--green);
+	font-style: italic;
+}
+
+.entry ul {
+	margin-top: 0.5rem;
+}
+
+.entry li + li {
+	margin-top: 0.35rem;
+}
+
+.tags {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.35rem;
+	list-style: none;
+	padding: 0;
+	margin-top: 0.6rem;
+}
+
+.tags li {
+	font-size: 0.85em;
+	color: var(--cyan);
+	border: 1px solid var(--muted);
+	border-radius: 999px;
+	padding: 0.05rem 0.6rem;
+	white-space: nowrap;
+}
+
+.linkrow {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.35rem 1rem;
+	margin-top: 0.6rem;
+	list-style: none;
+	padding: 0;
+}
+
+.definitions {
+	display: grid;
+	grid-template-columns: minmax(7rem, max-content) 1fr;
+	gap: 0.4rem 1.25rem;
+	margin: 0;
+}
+
+.definitions dt {
+	color: var(--green);
+	font-weight: 500;
+}
+
+.definitions dd {
+	margin: 0;
+	min-width: 0;
+	overflow-wrap: anywhere;
+}
+
+@media (max-width: 34rem) {
+	.definitions {
+		grid-template-columns: 1fr;
+		gap: 0 0;
+	}
+
+	.definitions dd + dt {
+		margin-top: 0.7rem;
+	}
+}
+
+.callout {
+	border: 1px solid var(--muted);
+	border-left: 3px solid var(--green);
+	border-radius: 0 var(--radius) var(--radius) 0;
+	padding: var(--space);
+	background: color-mix(in srgb, var(--bg-raised) 55%, transparent);
+}
+
+/* ---------------------------------------------------------------------------
+   Motion
+   --------------------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.001ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.001ms !important;
+		scroll-behavior: auto !important;
+	}
+}
+
+/* ---------------------------------------------------------------------------
+   Print — the document pages double as a printable CV
+   --------------------------------------------------------------------------- */
+
+@media print {
+	:root {
+		--bg: #fff;
+		--fg: #111;
+		--comment: #555;
+		--muted: #bbb;
+		--cyan: #05505a;
+		--blue: #123a8a;
+		--purple: #5b2a86;
+		--green: #14532d;
+		--bg-raised: #f4f4f4;
+	}
+
+	body {
+		background: #fff;
+		color: #111;
+	}
+
+	.site-nav,
+	.skip-link,
+	.terminal-hint {
+		display: none !important;
+	}
+
+	a::after {
+		content: ' (' attr(href) ')';
+		font-size: 0.8em;
+		color: #555;
+		word-break: break-all;
+	}
+
+	a[href^='#']::after,
+	a[href^='/']::after {
+		content: '';
+	}
+
+	.entry {
+		break-inside: avoid;
+	}
+}

@@ -1,0 +1,61 @@
+---
+import BaseHead, { type Props as HeadProps } from '../components/BaseHead.astro';
+import StructuredData, {
+	type Breadcrumb,
+} from '../components/StructuredData.astro';
+import { SITE } from '../config/site';
+
+import '../styles/global.css';
+
+export interface Props extends HeadProps {
+	bodyClass?: string;
+	breadcrumbs?: Breadcrumb[];
+	schemaNodes?: Record<string, unknown>[];
+}
+
+const {
+	bodyClass = '',
+	breadcrumbs = [],
+	schemaNodes = [],
+	...head
+} = Astro.props;
+
+const isTerminal = bodyClass.includes('terminal-page');
+
+/**
+ * Runs before first paint so the terminal never flashes the document view.
+ * The watchdog restores the document if the terminal module never reports
+ * ready — a failed asset must not leave the page blank.
+ */
+const bootstrap = `(function(){var r=document.documentElement;r.classList.add('js');setTimeout(function(){if(r.dataset.terminal!=='ready')r.classList.remove('js')},5000)})()`;
+---
+
+<!doctype html>
+<html lang={SITE.lang}>
+	<head>
+		{isTerminal && <script is:inline set:html={bootstrap} />}
+		<BaseHead {...head} />
+		<StructuredData
+			title={head.title}
+			description={head.description}
+			breadcrumbs={breadcrumbs}
+			nodes={schemaNodes}
+		/>
+	</head>
+	<body class={bodyClass}>
+		<a class="skip-link" href="#main">Skip to content</a>
+		<slot />
+
+		<script>
+			// Offline support. Registered after load so it never competes with
+			// first paint, and skipped in dev where stale caches only get in the way.
+			if ('serviceWorker' in navigator && import.meta.env.PROD) {
+				window.addEventListener('load', () => {
+					navigator.serviceWorker.register('/sw.js').catch(() => {
+						/* An unavailable service worker is not worth reporting. */
+					});
+				});
+			}
+		</script>
+	</body>
+</html>

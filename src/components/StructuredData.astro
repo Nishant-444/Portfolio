@@ -1,0 +1,109 @@
+---
+import { SITE, PERSON, SOCIALS, absolute } from '../config/site';
+import { ALL_SKILLS } from '../data/skills';
+import { EDUCATION } from '../data/education';
+import { EXPERIENCE } from '../data/experience';
+import { canonicalUrl } from '../lib/url';
+
+export interface Breadcrumb {
+	name: string;
+	path: string;
+}
+
+export interface Props {
+	/** Page title used for the WebPage node. */
+	title: string;
+	description: string;
+	breadcrumbs?: Breadcrumb[];
+	/** Extra @graph nodes — BlogPosting, ItemList, and so on. */
+	nodes?: Record<string, unknown>[];
+}
+
+const { title, description, breadcrumbs = [], nodes = [] } = Astro.props;
+
+const personId = `${SITE.url}/#person`;
+const siteId = `${SITE.url}/#website`;
+const pageUrl = canonicalUrl(Astro.url);
+
+const person = {
+	'@type': 'Person',
+	'@id': personId,
+	name: PERSON.name,
+	givenName: PERSON.givenName,
+	familyName: PERSON.familyName,
+	url: SITE.url,
+	image: absolute('/icon-192.png'),
+	jobTitle: PERSON.jobTitle,
+	description: SITE.tagline,
+	email: `mailto:${PERSON.email}`,
+	telephone: PERSON.phone,
+	address: {
+		'@type': 'PostalAddress',
+		addressLocality: PERSON.location.city,
+		addressRegion: PERSON.location.region,
+		addressCountry: PERSON.location.countryCode,
+	},
+	alumniOf: EDUCATION.map((study) => ({
+		'@type': 'EducationalOrganization',
+		name: study.institution,
+	})),
+	hasOccupation: EXPERIENCE.map((role) => ({
+		'@type': 'Role',
+		roleName: role.title,
+		startDate: role.startISO,
+		...(role.endISO ? { endDate: role.endISO } : {}),
+		'@reverse': {
+			employee: [{ '@type': 'Organization', name: role.company }],
+		},
+	})),
+	knowsAbout: ALL_SKILLS,
+	sameAs: SOCIALS.filter((s) => s.sameAs).map((s) => s.url),
+};
+
+const website = {
+	'@type': 'WebSite',
+	'@id': siteId,
+	url: SITE.url,
+	name: `${PERSON.name} — Portfolio`,
+	description: SITE.description,
+	inLanguage: 'en',
+	publisher: { '@id': personId },
+	author: { '@id': personId },
+};
+
+const webPage = {
+	'@type': 'WebPage',
+	'@id': `${pageUrl}#webpage`,
+	url: pageUrl,
+	name: title,
+	description,
+	isPartOf: { '@id': siteId },
+	about: { '@id': personId },
+	inLanguage: 'en',
+};
+
+const breadcrumbNode = breadcrumbs.length
+	? {
+			'@type': 'BreadcrumbList',
+			'@id': `${pageUrl}#breadcrumbs`,
+			itemListElement: breadcrumbs.map((crumb, index) => ({
+				'@type': 'ListItem',
+				position: index + 1,
+				name: crumb.name,
+				item: absolute(crumb.path),
+			})),
+		}
+	: null;
+
+const graph = [
+	person,
+	website,
+	webPage,
+	...(breadcrumbNode ? [breadcrumbNode] : []),
+	...nodes,
+];
+
+const jsonLd = JSON.stringify({ '@context': 'https://schema.org', '@graph': graph });
+---
+
+<script type="application/ld+json" set:html={jsonLd} is:inline />

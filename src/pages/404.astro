@@ -1,0 +1,29 @@
+---
+import Page from '../layouts/Page.astro';
+---
+
+<Page
+	title="404 — Not found"
+	description="That path does not exist on this site."
+	ogSlug="404"
+	noindex
+>
+	<div class="prose">
+		<h1>404 — no such file or directory</h1>
+		<p class="section__lede">
+			The path you asked for isn’t here. It may have moved, or it may never
+			have existed.
+		</p>
+
+		<div class="callout">
+			<p>Somewhere to go instead:</p>
+			<ul>
+				<li><a href="/">The terminal</a> — type <code>help</code> to explore</li>
+				<li><a href="/about">About</a> — who I am and what I build</li>
+				<li><a href="/projects">Projects</a> — things I have shipped</li>
+				<li><a href="/blog">Blog</a> — notes from production</li>
+				<li><a href="/contact">Contact</a> — how to reach me</li>
+			</ul>
+		</div>
+	</div>
+</Page>

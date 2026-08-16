@@ -1,0 +1,16 @@
+---
+import Page from '../layouts/Page.astro';
+import Skills from '../components/sections/Skills.astro';
+---
+
+<Page
+	title="Skills"
+	description="Technical skills — TypeScript, Python, Node.js, FastAPI, Spring Boot, PostgreSQL with pgvector, Prisma, AWS, Docker, React and Next.js."
+	ogSlug="skills"
+	breadcrumbs={[
+		{ name: 'Home', path: '/' },
+		{ name: 'Skills', path: '/skills' },
+	]}
+>
+	<Skills level={1} />
+</Page>

@@ -1,0 +1,24 @@
+---
+import { PERSON, SOCIALS } from '../config/site';
+
+const year = new Date().getFullYear();
+const primary = SOCIALS.filter((social) =>
+	['GitHub', 'LinkedIn', 'X / Twitter'].includes(social.label),
+);
+---
+
+<footer class="site-footer">
+	<p>© {year} {PERSON.name}</p>
+	<nav class="site-nav" aria-label="Elsewhere">
+		{
+			primary.map((social) => (
+				<a href={social.url} rel="noopener noreferrer me" target="_blank">
+					{social.label}
+				</a>
+			))
+		}
+		<a href={PERSON.resume}>résumé</a>
+		<a href="/rss.xml">rss</a>
+		<a href="/">terminal</a>
+	</nav>
+</footer>

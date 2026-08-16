@@ -1,0 +1,17 @@
+---
+import Page from '../layouts/Page.astro';
+import Contact from '../components/sections/Contact.astro';
+import { PERSON } from '../config/site';
+---
+
+<Page
+	title="Contact"
+	description={`Get in touch with ${PERSON.name} — email, LinkedIn, GitHub and résumé. ${PERSON.availability}`}
+	ogSlug="contact"
+	breadcrumbs={[
+		{ name: 'Home', path: '/' },
+		{ name: 'Contact', path: '/contact' },
+	]}
+>
+	<Contact level={1} />
+</Page>

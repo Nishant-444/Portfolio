@@ -1,0 +1,19 @@
+---
+import Page from '../layouts/Page.astro';
+import About from '../components/sections/About.astro';
+import Education from '../components/sections/Education.astro';
+import { PERSON } from '../config/site';
+---
+
+<Page
+	title="About"
+	description={`${PERSON.name} is a backend software engineer in Jaipur, India — production REST APIs, RAG pipelines on pgvector, and AWS infrastructure.`}
+	ogSlug="about"
+	breadcrumbs={[
+		{ name: 'Home', path: '/' },
+		{ name: 'About', path: '/about' },
+	]}
+>
+	<About level={1} />
+	<Education level={2} />
+</Page>

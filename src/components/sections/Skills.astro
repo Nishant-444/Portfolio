@@ -1,0 +1,29 @@
+---
+import { SKILLS } from '../../data/skills';
+
+export interface Props {
+	level?: 1 | 2;
+}
+
+const { level = 2 } = Astro.props;
+const Heading = `h${level}` as 'h1' | 'h2';
+---
+
+<section class="section" id="sec-skills" data-section="skills">
+	<Heading>Technical Skills</Heading>
+	<p class="section__lede">
+		Grouped the way I actually reach for them, not by how impressive the list
+		looks.
+	</p>
+
+	<dl class="definitions">
+		{
+			SKILLS.map((group) => (
+				<>
+					<dt>{group.category}</dt>
+					<dd>{group.items.join(', ')}</dd>
+				</>
+			))
+		}
+	</dl>
+</section>

@@ -1,0 +1,39 @@
+---
+import Page from '../../layouts/Page.astro';
+import BlogList from '../../components/sections/BlogList.astro';
+import { getPublishedPosts, postPath } from '../../lib/blog';
+import { SITE, absolute } from '../../config/site';
+
+const posts = await getPublishedPosts();
+const personId = `${SITE.url}/#person`;
+
+const blogNode = {
+	'@type': 'Blog',
+	'@id': `${absolute('/blog')}#blog`,
+	name: 'Nishant Sharma — Writing',
+	description:
+		'Notes on backend engineering, databases, AI infrastructure and running things in production.',
+	author: { '@id': personId },
+	blogPost: posts.map((post) => ({
+		'@type': 'BlogPosting',
+		headline: post.data.title,
+		description: post.data.description,
+		datePublished: post.data.pubDate.toISOString(),
+		url: absolute(postPath(post)),
+		author: { '@id': personId },
+	})),
+};
+---
+
+<Page
+	title="Blog"
+	description="Notes on backend engineering — surviving production on 1GB of RAM, migrating MongoDB to PostgreSQL, and why binary I/O beat text parsing in C++."
+	ogSlug="blog"
+	breadcrumbs={[
+		{ name: 'Home', path: '/' },
+		{ name: 'Blog', path: '/blog' },
+	]}
+	schemaNodes={[blogNode]}
+>
+	<BlogList level={1} posts={posts} />
+</Page>

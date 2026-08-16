@@ -1,0 +1,31 @@
+---
+import { EDUCATION } from '../../data/education';
+
+export interface Props {
+	level?: 1 | 2;
+}
+
+const { level = 2 } = Astro.props;
+const Heading = `h${level}` as 'h1' | 'h2';
+---
+
+<section class="section" id="sec-education" data-section="education">
+	<Heading>Education</Heading>
+
+	{
+		EDUCATION.map((study) => (
+			<article class="entry">
+				<div class="entry__head">
+					<h3 class="entry__title">{study.institution}</h3>
+					<p class="entry__meta">
+						<time datetime={study.startISO}>{study.start}</time>
+						{' – '}
+						<time datetime={study.endISO}>{study.end}</time>
+					</p>
+				</div>
+				<p class="entry__sub">{study.credential} · {study.location}</p>
+				{study.detail && <p>{study.detail}</p>}
+			</article>
+		))
+	}
+</section>

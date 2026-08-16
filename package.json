@@ -1,0 +1,38 @@
+{
+	"name": "nishant-portfolio",
+	"version": "2.0.0",
+	"private": true,
+	"type": "module",
+	"description": "Terminal-inspired portfolio for Nishant Sharma — backend software engineer.",
+	"homepage": "https://nishants.dev",
+	"license": "CC-BY-ND-4.0",
+	"engines": {
+		"node": ">=20"
+	},
+	"scripts": {
+		"assets": "node scripts/build-assets.mjs",
+		"predev": "npm run assets",
+		"dev": "astro dev",
+		"start": "astro dev",
+		"prebuild": "npm run assets",
+		"build": "astro build",
+		"postbuild": "node scripts/verify-build.mjs",
+		"verify": "node scripts/verify-build.mjs",
+		"preview": "astro preview",
+		"check": "astro check",
+		"astro": "astro"
+	},
+	"dependencies": {
+		"@astrojs/rss": "^4.0.19",
+		"@astrojs/sitemap": "^3.7.3",
+		"astro": "^7.2.2"
+	},
+	"devDependencies": {
+		"@astrojs/check": "^0.9.10",
+		"@resvg/resvg-js": "^2.6.2",
+		"subset-font": "^2.5.0",
+		"svgo": "^4.0.2",
+		"typescript": "^6.0.3",
+		"wawoff2": "^2.0.1"
+	}
+}

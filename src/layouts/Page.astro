@@ -1,0 +1,17 @@
+---
+import Base, { type Props as BaseProps } from './Base.astro';
+import SiteNav from '../components/SiteNav.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+
+export type Props = BaseProps;
+---
+
+<Base {...Astro.props}>
+	<div class="shell">
+		<SiteNav />
+		<main id="main">
+			<slot />
+		</main>
+		<SiteFooter />
+	</div>
+</Base>

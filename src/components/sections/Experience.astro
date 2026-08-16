@@ -1,0 +1,50 @@
+---
+import { EXPERIENCE } from '../../data/experience';
+
+export interface Props {
+	level?: 1 | 2;
+}
+
+const { level = 2 } = Astro.props;
+const Heading = `h${level}` as 'h1' | 'h2';
+---
+
+<section class="section" id="sec-experience" data-section="experience">
+	<Heading>Work Experience</Heading>
+
+	{
+		EXPERIENCE.map((role) => (
+			<article class="entry">
+				<div class="entry__head">
+					<h3 class="entry__title">
+						{role.title} ·{' '}
+						{role.companyUrl ? (
+							<a href={role.companyUrl} rel="noopener noreferrer nofollow" target="_blank">
+								{role.company}
+							</a>
+						) : (
+							role.company
+						)}
+					</h3>
+					<p class="entry__meta">
+						<time datetime={role.startISO}>{role.start}</time>
+						{' – '}
+						{role.endISO ? (
+							<time datetime={role.endISO}>{role.end}</time>
+						) : (
+							role.end
+						)}
+					</p>
+				</div>
+				<p class="entry__sub">
+					{role.location} · {role.stack.join(', ')}
+				</p>
+				<ul>
+					{role.highlights.map((point) => (
+						<li>{point}</li>
+					))}
+				</ul>
+			</article>
+		))
+	}
+</section>

@@ -1,0 +1,38 @@
+---
+import { PERSON, SOCIALS } from '../../config/site';
+
+export interface Props {
+	level?: 1 | 2;
+}
+
+const { level = 2 } = Astro.props;
+const Heading = `h${level}` as 'h1' | 'h2';
+---
+
+<section class="section" id="sec-contact" data-section="contact">
+	<Heading>Contact</Heading>
+	<p class="section__lede">{PERSON.availability}</p>
+
+	<dl class="definitions">
+		<dt>Email</dt>
+		<dd><a href={`mailto:${PERSON.email}`}>{PERSON.email}</a></dd>
+		<dt>Phone</dt>
+		<dd><a href={`tel:${PERSON.phone}`}>{PERSON.phoneDisplay}</a></dd>
+		<dt>Location</dt>
+		<dd>{PERSON.location.city}, {PERSON.location.region}, {PERSON.location.country}</dd>
+		<dt>Résumé</dt>
+		<dd><a href={PERSON.resume} download>Download PDF</a></dd>
+		{
+			SOCIALS.map((social) => (
+				<>
+					<dt>{social.label}</dt>
+					<dd>
+						<a href={social.url} rel="noopener noreferrer me" target="_blank">
+							{social.handle}
+						</a>
+					</dd>
+				</>
+			))
+		}
+	</dl>
+</section>

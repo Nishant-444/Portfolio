@@ -1,0 +1,34 @@
+---
+import { PERSON, SITE } from '../config/site';
+
+const NAV = [
+	{ label: 'about', href: '/about' },
+	{ label: 'experience', href: '/experience' },
+	{ label: 'projects', href: '/projects' },
+	{ label: 'skills', href: '/skills' },
+	{ label: 'blog', href: '/blog' },
+	{ label: 'credentials', href: '/credentials' },
+	{ label: 'contact', href: '/contact' },
+];
+
+const here = Astro.url.pathname.replace(/\/$/, '') || '/';
+---
+
+<header class="site-header">
+	<a class="site-header__brand" href="/">
+		{SITE.user}@{SITE.host}<span aria-hidden="true">:~$</span>
+		<span class="visually-hidden">{PERSON.name} — home</span>
+	</a>
+	<nav class="site-nav" aria-label="Primary">
+		{
+			NAV.map((item) => (
+				<a
+					href={item.href}
+					aria-current={here === item.href ? 'page' : undefined}
+				>
+					{item.label}
+				</a>
+			))
+		}
+	</nav>
+</header>

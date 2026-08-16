@@ -1,0 +1,355 @@
+/* ---------------------------------------------------------------------------
+   Terminal shell.
+
+   Progressive enhancement contract:
+   - Server renders the full document AND the terminal chrome.
+   - `<html class="js">` is set by an inline script before first paint.
+   - Without JS the document shows and the terminal never appears.
+   - With JS the terminal shows and clones its output from the same document
+     nodes, so there is exactly one copy of every fact on the page.
+   --------------------------------------------------------------------------- */
+
+html:not(.js) .terminal-app,
+html:not(.js) .boot {
+	display: none !important;
+}
+
+html.js .terminal-page .doc {
+	display: none;
+}
+
+html.js .terminal-page {
+	overflow: hidden;
+	height: 100dvh;
+	padding: clamp(0px, 2vw, 24px);
+}
+
+html.js .terminal-page main {
+	height: 100%;
+	display: grid;
+	place-items: center;
+}
+
+/*
+ * The page keeps exactly one <h1> in the DOM at all times. In terminal mode it
+ * is hidden from sight but stays in the accessibility tree, and the ASCII
+ * banner takes over as decoration. It lives outside `.doc` precisely so that
+ * hiding the document does not take the heading out of the a11y tree with it.
+ */
+html.js .terminal-page .doc-title-wrap {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	clip-path: inset(50%);
+	white-space: nowrap;
+}
+
+/*
+ * The wrapper carries body font-size so `--measure` (in ch) resolves against
+ * the same character width as the rest of the page rather than the heading's.
+ */
+html:not(.js) .terminal-page .doc-title-wrap {
+	width: min(var(--measure), 100% - 2.5rem);
+	margin: clamp(1.5rem, 4vw, 3rem) auto 0;
+}
+
+/* --- Boot sequence ------------------------------------------------------- */
+
+.boot {
+	position: fixed;
+	inset: 0;
+	z-index: 9999;
+	background: var(--bg);
+	display: grid;
+	place-content: center;
+	padding: 1.5rem;
+	transition: opacity 0.3s ease;
+}
+
+.boot[hidden] {
+	display: none;
+}
+
+.boot.is-done {
+	opacity: 0;
+	pointer-events: none;
+}
+
+.boot__line {
+	color: var(--fg);
+	margin: 3px 0;
+	white-space: nowrap;
+}
+
+.boot__line b {
+	color: var(--green);
+	font-weight: 500;
+}
+
+/* --- Window chrome ------------------------------------------------------- */
+
+.terminal-app {
+	width: min(1180px, 100%);
+	height: min(840px, 100%);
+	background: var(--bg);
+	border: 1px solid var(--bg-raised);
+	border-radius: var(--radius);
+	box-shadow: 0 24px 70px rgb(0 0 0 / 0.55);
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+	opacity: 0;
+	transition: opacity 0.3s ease;
+}
+
+.terminal-app.is-ready {
+	opacity: 1;
+}
+
+.title-bar {
+	background: var(--bg-chrome);
+	padding: 0.7rem 0.9rem;
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+	border-bottom: 1px solid var(--bg-raised);
+	user-select: none;
+	flex-shrink: 0;
+}
+
+.window-dots {
+	display: flex;
+	gap: 8px;
+	flex-shrink: 0;
+}
+
+.window-dots span {
+	width: 12px;
+	height: 12px;
+	border-radius: 50%;
+}
+
+.window-dots span:nth-child(1) {
+	background: #ff5f56;
+}
+.window-dots span:nth-child(2) {
+	background: #ffbd2e;
+}
+.window-dots span:nth-child(3) {
+	background: #27c93f;
+}
+
+.title-bar__title {
+	flex: 1;
+	text-align: center;
+	color: var(--comment);
+	font-size: 0.9em;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.title-bar__exit {
+	color: var(--comment);
+	font-size: 0.85em;
+	text-decoration: none;
+	white-space: nowrap;
+	flex-shrink: 0;
+	border: 1px solid var(--muted);
+	border-radius: 999px;
+	padding: 0.1rem 0.6rem;
+}
+
+.title-bar__exit:hover {
+	color: var(--cyan);
+	border-color: var(--cyan);
+}
+
+@media (max-width: 34rem) {
+	.title-bar__title {
+		display: none;
+	}
+}
+
+/* --- Screen -------------------------------------------------------------- */
+
+.screen {
+	flex: 1;
+	padding: var(--space);
+	overflow-y: auto;
+	overscroll-behavior: contain;
+	scrollbar-width: thin;
+	scrollbar-color: var(--muted) transparent;
+	scroll-behavior: smooth;
+}
+
+.screen::-webkit-scrollbar {
+	width: 8px;
+}
+
+.screen::-webkit-scrollbar-thumb {
+	background: var(--muted);
+	border-radius: 4px;
+}
+
+.screen::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+/* Roughly a wide terminal's column count — full-bleed prose is unreadable. */
+.stream {
+	max-width: 104ch;
+}
+
+.stream > * + * {
+	margin-top: 0.9rem;
+}
+
+.stream .section + .section {
+	margin-top: 1.6rem;
+}
+
+/* Echoed command lines. */
+.echo {
+	color: var(--fg);
+	overflow-wrap: anywhere;
+}
+
+.echo__prompt {
+	color: var(--green);
+	font-weight: 500;
+}
+
+.echo__cmd {
+	color: var(--yellow);
+}
+
+.stream .msg {
+	color: var(--comment);
+}
+
+.stream .msg--error {
+	color: var(--red);
+}
+
+/* Resets the shared <pre> code-block treatment — this is art, not code. */
+.banner {
+	background: none;
+	border: 0;
+	border-radius: 0;
+	padding: 0;
+	margin: 0;
+	color: var(--cyan);
+	font-weight: 400;
+	/* Blocks have to stack flush — any leading shows as seams through the art. */
+	line-height: 1;
+	white-space: pre;
+	overflow-x: auto;
+	scrollbar-width: none;
+	/* Sized so all 56 columns fit without horizontal scrolling on a phone. */
+	font-size: clamp(5px, 1.5vw, 15px);
+	width: fit-content;
+	max-width: 100%;
+}
+
+.banner::-webkit-scrollbar {
+	display: none;
+}
+
+.cmdlist {
+	display: grid;
+	grid-template-columns: max-content 1fr;
+	gap: 0.15rem 1.25rem;
+	margin: 0.6rem 0 0;
+}
+
+.cmdlist dt {
+	color: var(--green);
+	font-weight: 500;
+}
+
+.cmdlist dd {
+	margin: 0;
+	color: var(--comment);
+}
+
+@media (max-width: 30rem) {
+	.cmdlist {
+		grid-template-columns: 1fr;
+	}
+	.cmdlist dd {
+		margin-bottom: 0.4rem;
+	}
+}
+
+/* --- Prompt -------------------------------------------------------------- */
+
+.prompt-line {
+	display: flex;
+	align-items: baseline;
+	gap: 0.5ch;
+	margin-top: 0.3rem;
+}
+
+.screen > .terminal-hint {
+	margin-top: 1.4rem;
+}
+
+.prompt-line__label {
+	color: var(--green);
+	font-weight: 500;
+	white-space: nowrap;
+	flex-shrink: 0;
+}
+
+.prompt-line__field {
+	position: relative;
+	flex: 1;
+	min-width: 0;
+}
+
+.prompt-line__ghost {
+	position: absolute;
+	inset: 0;
+	color: var(--muted);
+	pointer-events: none;
+	white-space: pre;
+	overflow: hidden;
+}
+
+#command-input {
+	width: 100%;
+	min-width: 0;
+	background: none;
+	border: 0;
+	outline: none;
+	padding: 0;
+	color: var(--fg);
+	font: inherit;
+	caret-color: var(--cyan);
+}
+
+.prompt-line:focus-within .prompt-line__label {
+	color: var(--cyan);
+}
+
+.terminal-hint {
+	margin-top: 0.5rem;
+	color: var(--muted);
+	font-size: 0.85em;
+}
+
+/* Cloned sections sit tighter inside the stream than on a document page. */
+.stream .section h2 {
+	font-size: var(--step-1);
+}
+
+.stream .section h3 {
+	font-size: var(--step-0);
+}
+
+.stream .section__lede {
+	margin-bottom: 0.5rem;
+}

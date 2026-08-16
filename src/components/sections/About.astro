@@ -1,0 +1,57 @@
+---
+import { PERSON, SITE } from '../../config/site';
+import { EXPERIENCE } from '../../data/experience';
+import { EDUCATION } from '../../data/education';
+
+export interface Props {
+	level?: 1 | 2;
+}
+
+const { level = 2 } = Astro.props;
+const Heading = `h${level}` as 'h1' | 'h2';
+const degree = EDUCATION[0]!;
+const latest = EXPERIENCE[0]!;
+---
+
+<section class="section" id="sec-about" data-section="about">
+	<Heading>About {PERSON.name}</Heading>
+	<p class="section__lede">{SITE.tagline}</p>
+
+	<div class="prose">
+		<p>
+			I build the parts of a product that have to keep working when nobody is
+			watching — REST APIs, database schemas, auth boundaries, and the
+			deployment pipeline that ships them. Most recently that meant a
+			three-sided property-verification marketplace at {latest.company}: 18
+			Prisma/PostgreSQL models, 106 endpoints, and money logic where a
+			commission split is frozen onto the purchase row at transaction time so
+			the historical record survives a policy change.
+		</p>
+		<p>
+			The work I care most about sits where backend engineering meets AI
+			infrastructure. On <a href="/projects#viztube">VizTube</a> that is a RAG
+			pipeline running on a deliberately small 1&nbsp;GB EC2 box — a decoupled
+			FastAPI worker for transcription, embeddings generated locally, and
+			pgvector search living inside the same Postgres as the relational data
+			so a semantic query and a permissions check happen in one round-trip.
+		</p>
+		<p>
+			I am currently in my third year of a {degree.credential} at {
+				degree.institution
+			}, and twice cleared the Indian Air Force SSB — a 5-day assessment of
+			leadership and decision-making under pressure that turns out to be
+			surprisingly good preparation for a production incident.
+		</p>
+	</div>
+
+	<dl class="definitions">
+		<dt>Location</dt>
+		<dd>{PERSON.location.city}, {PERSON.location.region}, {PERSON.location.country}</dd>
+		<dt>Focus</dt>
+		<dd>Backend APIs, RAG &amp; vector search, cloud infrastructure</dd>
+		<dt>Studying</dt>
+		<dd>{degree.credential}, {degree.institution} ({degree.start.split(' ')[1]}–{degree.end.split(' ')[1]})</dd>
+		<dt>Status</dt>
+		<dd>{PERSON.availability}</dd>
+	</dl>
+</section>

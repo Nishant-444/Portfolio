@@ -1,0 +1,73 @@
+{
+	"$schema": "https://openapi.vercel.sh/vercel.json",
+	"buildCommand": "npm run build",
+	"outputDirectory": "dist",
+	"framework": "astro",
+	"cleanUrls": true,
+	"trailingSlash": false,
+	"redirects": [
+		{ "source": "/resume", "destination": "/assets/Nishant_Sharma_Resume.pdf", "permanent": false },
+		{ "source": "/cv", "destination": "/assets/Nishant_Sharma_Resume.pdf", "permanent": false },
+		{ "source": "/certs", "destination": "/credentials", "permanent": true },
+		{ "source": "/certifications", "destination": "/credentials", "permanent": true },
+		{ "source": "/blogs", "destination": "/blog", "permanent": true },
+		{ "source": "/feed", "destination": "/rss.xml", "permanent": true },
+		{ "source": "/rss", "destination": "/rss.xml", "permanent": true },
+		{ "source": "/sitemap.xml", "destination": "/sitemap-index.xml", "permanent": true },
+		{ "source": "/github", "destination": "https://github.com/Nishant-444", "permanent": false },
+		{ "source": "/linkedin", "destination": "https://www.linkedin.com/in/nishant-developer", "permanent": false }
+	],
+	"headers": [
+		{
+			"source": "/(.*)",
+			"headers": [
+				{ "key": "X-Content-Type-Options", "value": "nosniff" },
+				{ "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+				{ "key": "X-Frame-Options", "value": "SAMEORIGIN" },
+				{
+					"key": "Permissions-Policy",
+					"value": "camera=(), microphone=(), geolocation=(), interest-cohort=()"
+				},
+				{
+					"key": "Strict-Transport-Security",
+					"value": "max-age=63072000; includeSubDomains; preload"
+				},
+				{
+					"key": "Content-Security-Policy",
+					"value": "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'; frame-ancestors 'self'; upgrade-insecure-requests"
+				}
+			]
+		},
+		{
+			"source": "/assets/fonts/(.*)",
+			"headers": [
+				{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+			]
+		},
+		{
+			"source": "/_astro/(.*)",
+			"headers": [
+				{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+			]
+		},
+		{
+			"source": "/og/(.*).png",
+			"headers": [
+				{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+			]
+		},
+		{
+			"source": "/(.*).html",
+			"headers": [
+				{ "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
+			]
+		},
+		{
+			"source": "/rss.xml",
+			"headers": [
+				{ "key": "Content-Type", "value": "application/rss+xml; charset=utf-8" },
+				{ "key": "Cache-Control", "value": "public, max-age=3600" }
+			]
+		}
+	]
+}

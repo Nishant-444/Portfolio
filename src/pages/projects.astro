@@ -1,0 +1,41 @@
+---
+import Page from '../layouts/Page.astro';
+import Projects from '../components/sections/Projects.astro';
+import { PROJECTS } from '../data/projects';
+import { SITE, absolute } from '../config/site';
+
+const personId = `${SITE.url}/#person`;
+
+const itemList = {
+	'@type': 'ItemList',
+	'@id': `${absolute('/projects')}#projects`,
+	name: 'Projects by Nishant Sharma',
+	numberOfItems: PROJECTS.length,
+	itemListElement: PROJECTS.map((project, index) => ({
+		'@type': 'ListItem',
+		position: index + 1,
+		item: {
+			'@type': 'SoftwareSourceCode',
+			name: project.name,
+			description: project.blurb,
+			url: absolute(`/projects#project-${project.slug}`),
+			codeRepository: project.links.find((link) => link.label === 'GitHub')?.url,
+			programmingLanguage: project.stack,
+			author: { '@id': personId },
+		},
+	})),
+};
+---
+
+<Page
+	title="Projects"
+	description="Production systems I built and kept running: a video platform with a pgvector RAG engine, an AI messaging app, and a Kanban tracker on React Server Components."
+	ogSlug="projects"
+	breadcrumbs={[
+		{ name: 'Home', path: '/' },
+		{ name: 'Projects', path: '/projects' },
+	]}
+	schemaNodes={[itemList]}
+>
+	<Projects level={1} />
+</Page>
