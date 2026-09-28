@@ -198,19 +198,19 @@ export const PROJECTS: Project[] = [
 	},
 	{
 		slug: 'portfolio',
-		name: 'Terminal Portfolio',
+		name: 'Engineering Portfolio',
 		blurb:
-			'This site — a browser CLI over a fully pre-rendered static document, so it reads well to both humans and crawlers.',
+			'This site — built with Next.js 15, React 19, TypeScript, and Catppuccin design tokens, optimized for maximum recruiter hirability.',
 		period: '2025 – Present',
 		sortKey: '2025-00',
 		featured: false,
-		stack: ['Astro', 'TypeScript', 'Vanilla JS', 'PWA', 'SEO'],
+		stack: ['Next.js 15', 'React 19', 'TypeScript', 'Tailwind CSS', 'SEO'],
 		highlights: [
-			'Every command output is pre-rendered to semantic HTML at build time, so the terminal is progressive enhancement rather than the only way in.',
+			'Engineered with high recruiter scanability, Catppuccin color scheme, interactive CLI drawer, and structured JSON-LD schema.',
 		],
 		links: [
 			{ label: 'GitHub', url: 'https://github.com/Nishant-444/Portfolio' },
-			{ label: 'Live', url: 'https://nishants.dev' },
+			{ label: 'Live', url: 'https://nishantsharma.vercel.app' },
 		],
 	},
 ];

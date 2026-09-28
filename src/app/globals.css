@@ -1,0 +1,136 @@
+@import "tailwindcss";
+
+@layer base {
+  :root,
+  .mocha {
+    --bg-base: #1e1e2e;
+    --bg-mantle: #181825;
+    --bg-crust: #11111b;
+    --bg-surface0: #313244;
+    --bg-surface1: #45475a;
+    --bg-surface2: #585b70;
+    --text-main: #cdd6f4;
+    --text-sub0: #a6adc8;
+    --text-sub1: #bac2de;
+    --text-muted: #6c7086;
+    
+    /* Accents */
+    --accent-peach: #fab387;
+    --accent-mauve: #cba6f7;
+    --accent-blue: #89b4fa;
+    --accent-sapphire: #74c7ec;
+    --accent-teal: #94e2d5;
+    --accent-green: #a6e3a1;
+    --accent-red: #f38ba8;
+    --accent-pink: #f5c2e7;
+    --accent-yellow: #f9e2af;
+    
+    --current-accent: var(--accent-peach);
+    --border-color: rgba(255, 255, 255, 0.08);
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    --shadow-md: 0 8px 16px -4px rgba(0, 0, 0, 0.5), 0 2px 4px -1px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    --shadow-lg: 0 20px 30px -10px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+
+  .macchiato {
+    --bg-base: #24273a;
+    --bg-mantle: #1e2030;
+    --bg-crust: #181926;
+    --bg-surface0: #363a4f;
+    --bg-surface1: #494d64;
+    --text-main: #cad3f5;
+    --text-sub0: #a5adcb;
+    --text-sub1: #b8c0e0;
+    --accent-peach: #f5a97f;
+    --accent-mauve: #c6a0f6;
+    --accent-blue: #8aadf4;
+    --accent-teal: #8bd5ca;
+    --current-accent: var(--accent-peach);
+  }
+
+  .frappe {
+    --bg-base: #303446;
+    --bg-mantle: #292c3c;
+    --bg-crust: #232634;
+    --bg-surface0: #414559;
+    --bg-surface1: #51576d;
+    --text-main: #c6d0f5;
+    --text-sub0: #a5adce;
+    --text-sub1: #b5bfe2;
+    --accent-peach: #ef9f76;
+    --accent-mauve: #ca9ee6;
+    --accent-blue: #8caaee;
+    --accent-teal: #81c8be;
+    --current-accent: var(--accent-peach);
+  }
+
+  .latte {
+    --bg-base: #eff1f5;
+    --bg-mantle: #e6e9ef;
+    --bg-crust: #dce0e8;
+    --bg-surface0: #ccd0da;
+    --bg-surface1: #bcc0cc;
+    --bg-surface2: #acb0be;
+    --text-main: #4c4f69;
+    --text-sub0: #6c6f85;
+    --text-sub1: #5c5f77;
+    --text-muted: #8c8fa1;
+    --accent-peach: #fe640b;
+    --accent-mauve: #8839ef;
+    --accent-blue: #1e66f5;
+    --accent-sapphire: #209fb5;
+    --accent-teal: #179299;
+    --accent-green: #40a02b;
+    --accent-red: #d20f39;
+    --accent-pink: #ea76cb;
+    --accent-yellow: #df8e1d;
+    --current-accent: var(--accent-peach);
+    --border-color: rgba(0, 0, 0, 0.08);
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    --shadow-md: 0 8px 16px -4px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    --shadow-lg: 0 20px 30px -10px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 1);
+  }
+}
+
+body {
+  background-color: var(--bg-base);
+  color: var(--text-main);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
+}
+
+/* Custom UI Utilities for Depth */
+.bg-theme-base { background-color: var(--bg-base); }
+.bg-theme-mantle { background-color: var(--bg-mantle); }
+.bg-theme-surface0 { background-color: var(--bg-surface0); }
+.bg-theme-surface1 { background-color: var(--bg-surface1); }
+.text-theme-main { color: var(--text-main); }
+.text-theme-sub0 { color: var(--text-sub0); }
+.text-theme-sub1 { color: var(--text-sub1); }
+.text-theme-accent { color: var(--current-accent); }
+
+.border-theme { border-color: var(--border-color); }
+.shadow-depth-sm { box-shadow: var(--shadow-sm); }
+.shadow-depth-md { box-shadow: var(--shadow-md); }
+.shadow-depth-lg { box-shadow: var(--shadow-lg); }
+
+.accent-glow {
+  box-shadow: 0 0 20px -3px var(--current-accent);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-mantle);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--bg-surface1);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--current-accent);
+}
